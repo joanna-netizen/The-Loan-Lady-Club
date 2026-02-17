@@ -7,7 +7,7 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://loanlady.club',
-  output: 'hybrid',
+  output: 'static',
   adapter: node({ mode: 'standalone' }),
   integrations: [tailwind(), sitemap()],
 });
