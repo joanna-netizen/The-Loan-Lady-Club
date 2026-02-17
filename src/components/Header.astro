@@ -1,0 +1,108 @@
+---
+---
+
+<header class="bg-white border-b border-soft-sage sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      
+      <!-- Logo + Company Name -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center gap-3">
+          <img 
+            src="/images/loan-lady-logo-black.png" 
+            alt="The Loan Lady Club Logo" 
+            class="h-16 w-auto"
+          />
+          <span style="font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.02em; font-size: 0.9rem;" class="text-charcoal block">
+            Joanna Perry | Mortgage Broker
+            <span class="block text-[0.6rem] font-normal opacity-60 mt-0.5">NMLS 243348</span>
+          </span>
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-charcoal hover:text-warm-gold transition text-sm font-medium">Home</a>
+        <a href="/about" class="text-charcoal hover:text-warm-gold transition text-sm font-medium">About</a>
+        <a href="/buyers-edge" class="text-charcoal hover:text-warm-gold transition text-sm font-medium">Process</a>
+        
+        <!-- Simple Dropdown -->
+        <div class="relative group">
+          <button class="text-charcoal hover:text-warm-gold transition text-sm font-medium flex items-center">
+            Programs
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-56 bg-white border border-soft-sage rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <a href="/first-time-buyers" class="block px-4 py-3 text-sm hover:bg-warm-cream transition">First-Time Buyers</a>
+            <a href="/heloc" class="block px-4 py-3 text-sm hover:bg-warm-cream transition">Digital HELOC</a>
+            <a href="/investment-properties" class="block px-4 py-3 text-sm hover:bg-warm-cream transition">Investment Properties</a>
+            <a href="/self-employed" class="block px-4 py-3 text-sm hover:bg-warm-cream transition">Self-Employed</a>
+            <a href="/va-loans" class="block px-4 py-3 text-sm hover:bg-warm-cream transition">VA Loans</a>
+          </div>
+        </div>
+        
+        <a href="/contact" class="text-charcoal hover:text-warm-gold transition text-sm font-medium">Contact</a>
+        
+        <a href="/contact" class="bg-warm-gold text-white px-5 py-2 rounded-sm text-sm font-medium hover:opacity-90 transition">
+          Get Started
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-charcoal p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu (order matches desktop: Home, About, Process, Programs, Contact) -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <a href="/" class="block py-2 text-sm font-medium text-charcoal">Home</a>
+      <a href="/about" class="block py-2 text-sm font-medium text-charcoal">About</a>
+      <a href="/buyers-edge" class="block py-2 text-sm font-medium text-charcoal">Process</a>
+      <button type="button" id="mobile-programs-toggle" class="w-full flex items-center justify-between py-2 text-sm font-medium text-charcoal text-left" aria-expanded="false" aria-controls="mobile-programs-list">
+        Programs
+        <svg id="mobile-programs-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <div id="mobile-programs-list" class="hidden overflow-hidden">
+        <a href="/first-time-buyers" class="block py-2 text-sm pl-4 text-charcoal">First-Time Buyers</a>
+        <a href="/heloc" class="block py-2 text-sm pl-4 text-charcoal">Digital HELOC</a>
+        <a href="/investment-properties" class="block py-2 text-sm pl-4 text-charcoal">Investment Properties</a>
+        <a href="/self-employed" class="block py-2 text-sm pl-4 text-charcoal">Self-Employed</a>
+        <a href="/va-loans" class="block py-2 text-sm pl-4 text-charcoal">VA Loans</a>
+      </div>
+      <a href="/contact" class="block py-2 text-sm font-medium text-charcoal pt-2">Contact</a>
+      <div class="pt-4">
+        <a href="/contact" class="block bg-warm-gold text-white px-5 py-2 rounded-sm text-sm font-medium text-center">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const programsToggle = document.getElementById('mobile-programs-toggle');
+  const programsList = document.getElementById('mobile-programs-list');
+  const programsChevron = document.getElementById('mobile-programs-chevron');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  programsToggle?.addEventListener('click', () => {
+    const isExpanded = programsToggle?.getAttribute('aria-expanded') === 'true';
+    programsList?.classList.toggle('hidden', isExpanded);
+    programsToggle?.setAttribute('aria-expanded', String(!isExpanded));
+    programsChevron?.classList.toggle('rotate-180', !isExpanded);
+  });
+</script>

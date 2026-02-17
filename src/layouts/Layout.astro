@@ -1,0 +1,138 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = '/images/joanna-headshot.jpg',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`https://loanladyclub.com${ogImage}`} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Loan Lady Club" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`https://loanladyclub.com${ogImage}`} />
+
+    <!-- Local SEO -->
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="Sacramento, California" />
+    <meta name="geo.position" content="38.5816;-121.4944" />
+    <meta name="ICBM" content="38.5816, -121.4944" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MortgageBroker",
+  "name": "The Loan Lady Club",
+  "alternateName": "Loan Lady Club",
+  "description": "Education-first mortgage brokerage offering pre-underwriting, CalHFA, FHA, VA, DSCR, and HELOC programs for California homebuyers and homeowners.",
+  "url": "https://loanladyclub.com",
+  "logo": "https://loanladyclub.com/images/theloanladyclublogocolorgoldtransparent.png",
+  "image": "https://loanladyclub.com/images/joanna-headshot.jpg",
+  "telephone": "(916) 708-8555",
+  "email": "joanna@loanlady.club",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9278 Madison Ave",
+    "addressLocality": "Orangevale",
+    "addressRegion": "CA",
+    "postalCode": "95662",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "38.6824",
+    "longitude": "-121.2263"
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "California"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Joanna Perry",
+    "jobTitle": "CEO and Senior Mortgage Broker",
+    "identifier": "NMLS #243348"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Mortgage Programs",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CalHFA First-Time Buyer Programs"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "FHA Loans"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "VA Loans"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Conventional Loans"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DSCR Investment Property Loans"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Digital HELOC"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Down Payment Assistance Programs"}}
+    ]
+  },
+  "sameAs": [
+    "https://www.instagram.com/theloanladyjoanna/",
+    "https://www.facebook.com/JoLoanLady",
+    "https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/243348"
+  ]
+}
+</script>
+    <slot name="head" />
+  </head>
+  <body class="bg-white text-charcoal font-body antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+</style>
