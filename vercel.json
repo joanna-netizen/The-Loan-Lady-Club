@@ -1,5 +1,7 @@
 {
-    "redirects": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "redirects": [
       {
         "source": "/invest",
         "destination": "/investment-properties",
