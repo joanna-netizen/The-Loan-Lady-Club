@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://loanladyclub.com/sitemap.xml
+Sitemap: https://loanladyclub.com/sitemap-index.xml
 
 Disallow: /api/
 Disallow: /_astro/
