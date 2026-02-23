@@ -67,12 +67,14 @@ public/
 
 ## Color System
 
+Source of truth: `tailwind.config.mjs`. Use these hex codes for brand assets and marketing.
+
 ```
-warm-gold:   #C9A84C   (CTAs, icons, accent)
+warm-gold:   #B8860B   (CTAs, icons, accent)
 warm-cream:  #F5F0E8   (section backgrounds, cards)
 charcoal:    #2C2C2C   (headings, body text)
 white:       #FFFFFF   (primary backgrounds)
-warm-taupe:  #D4C5B0   (borders, dividers)
+warm-taupe:  #E8E2D9   (borders, dividers)
 ```
 
 ---
