@@ -8,7 +8,7 @@ export default defineConfig({
   output: 'static',
   integrations: [tailwind(), sitemap()],
   redirects: {
-    '/home/home-loan-options/': '/',
+    '/home/home-loan-options/': '/loan-products',
     '/now-tell-me-about-you/': '/contact',
     '/home/blog-posts/': '/',
     '/home/about/': '/about',
