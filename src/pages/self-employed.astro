@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const cards = [
+  {
+    title: '12 or 24 Month Bank Statements',
+    description: 'We use your actual deposits instead of tax returns. Personal or business bank statements both work. Qualify with up to 85 percent of deposits on business statements without needing a Profit and Loss statement. Minimum 10 percent down payment. Credit scores as low as 620.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="8" width="36" height="28" rx="2"/><path d="M6 16h36"/><path d="M12 24h12"/><path d="M12 30h8"/></svg>',
+  },
+  {
+    title: 'Profit and Loss Statement Loan',
+    description: 'If your bookkeeper or CPA prepares a P&L, we can use that to document your income. No tax returns required. This works well for borrowers whose business expenses are high on paper but whose actual cash flow tells a better story.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8H8a2 2 0 00-2 2v28a2 2 0 002 2h32a2 2 0 002-2V18"/><path d="M14 8v10h10"/><path d="M14 8l16 16 10-10-10-10"/><path d="M24 18v20"/><path d="M18 28h12"/></svg>',
+  },
+  {
+    title: '1099 Only',
+    description: 'Commission-based income should not stop you from buying a home. We calculate your qualifying income directly from your 1099 earning statements. Loan amounts up to 3 million dollars. Minimum 20 percent down payment. Requires a minimum two-year self-employment history.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="6" width="32" height="36" rx="2"/><path d="M16 14h16"/><path d="M16 22h16"/><path d="M16 30h10"/></svg>',
+  },
+  {
+    title: 'Other Ways to Qualify',
+    description: 'Additional options include asset utilization, VOE only, and one-year self-employment programs. Every situation is different. Schedule a consultation and we will identify the right fit for your income type.',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><path d="M24 16v8l4 4"/><circle cx="24" cy="24" r="2"/></svg>',
+  },
+];
+
+const whoList = [
+  'Business owners and entrepreneurs with at least two years of self-employment history.',
+  '1099 contractors and commission-based earners.',
+  'Seasonal workers and independent contractors.',
+  'Borrowers whose tax returns understate their true income.',
+];
+
+const checkmarkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+---
+
+<Layout
+  title="Self-Employed Mortgage Loans Sacramento | Bank Statement Loans | Joanna Perry | The Loan Lady Club | NMLS 243348"
+  description="Self-employed borrowers and 1099 contractors can qualify using 12 or 24 months of bank statements or a Profit and Loss statement. No tax returns required. Serving California. Joanna Perry NMLS 243348."
+>
+
+  <!-- Hero -->
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+      <h1 class="font-heading text-5xl lg:text-6xl text-charcoal mb-6 leading-tight">
+        You Built Your Business. Now Buy Your Home.
+      </h1>
+      <p class="text-xl text-charcoal opacity-70 max-w-3xl mx-auto leading-relaxed">
+        Most mortgage lenders want two years of tax returns. But if you are self-employed, your tax returns often show less income than you actually earn. That is by design. We have a better way.
+      </p>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="py-20 bg-warm-cream">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <h2 class="font-heading text-4xl text-charcoal mb-10 text-center">Who This Is For</h2>
+      <ul class="space-y-4 max-w-3xl mx-auto">
+        {whoList.map((item) => (
+          <li class="flex items-start gap-3 text-charcoal">
+            <span class="text-warm-gold flex-shrink-0 mt-0.5" set:html={checkmarkIcon} />
+            <span class="opacity-90">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- How You Can Qualify -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <h2 class="font-heading text-4xl text-charcoal mb-12 text-center">How You Can Qualify</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {cards.map((card) => (
+          <div class="bg-warm-cream p-8 rounded-md border-l-4 border-warm-gold">
+            <div class="w-12 h-12 mb-4 text-warm-gold [&>svg]:w-12 [&>svg]:h-12" set:html={card.icon} />
+            <h3 class="font-heading text-xl text-charcoal mb-3">{card.title}</h3>
+            <p class="text-charcoal opacity-70 text-sm leading-relaxed">{card.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="py-20 bg-warm-cream">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+      <h2 class="font-heading text-4xl text-charcoal mb-6 text-center">What to Expect</h2>
+      <p class="text-lg text-charcoal opacity-80 leading-relaxed mb-12 text-center">
+        We start with a free 30-minute consultation to review your documents and get a clear picture of your qualifying income before anything else happens. No credit pull. No application fee. Just clarity on where you stand and what you can do.
+      </p>
+      <div class="text-center">
+        <a
+          href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-warm-gold text-white px-8 py-3 rounded-sm font-medium hover:opacity-90 transition"
+        >
+          Schedule Your Free Consultation
+        </a>
+      </div>
+      <p class="text-xs text-charcoal opacity-60 mt-12 text-center max-w-2xl mx-auto">
+        All loan programs are subject to credit approval. Guidelines are subject to change. Program and other restrictions may apply. This is not a commitment to lend.
+      </p>
+    </div>
+  </section>
+
+</Layout>
