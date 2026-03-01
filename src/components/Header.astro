@@ -24,9 +24,21 @@
       <div class="hidden md:flex items-center space-x-8">
         <a href="/" class="text-charcoal hover:text-warm-gold transition text-sm font-medium">Home</a>
         <a href="/about" class="text-charcoal hover:text-warm-gold transition text-sm font-medium">About</a>
-        <a href="/buyers-edge" class="text-charcoal hover:text-warm-gold transition text-sm font-medium">Process</a>
+        <!-- Process Dropdown -->
+        <div class="relative group">
+          <button class="text-charcoal hover:text-warm-gold transition text-sm font-medium flex items-center">
+            Process
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-48 bg-white border border-soft-sage rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <a href="/buyers-edge" class="block px-4 py-3 text-sm hover:bg-warm-cream transition">Purchase</a>
+            <a href="/refinancing" class="block px-4 py-3 text-sm hover:bg-warm-cream transition">Refinance</a>
+          </div>
+        </div>
         
-        <!-- Simple Dropdown -->
+        <!-- Programs Dropdown -->
         <div class="relative group">
           <button class="text-charcoal hover:text-warm-gold transition text-sm font-medium flex items-center">
             Programs
@@ -65,7 +77,16 @@
     <div id="mobile-menu" class="hidden md:hidden pb-4">
       <a href="/" class="block py-2 text-sm font-medium text-charcoal">Home</a>
       <a href="/about" class="block py-2 text-sm font-medium text-charcoal">About</a>
-      <a href="/buyers-edge" class="block py-2 text-sm font-medium text-charcoal">Process</a>
+      <button type="button" id="mobile-process-toggle" class="w-full flex items-center justify-between py-2 text-sm font-medium text-charcoal text-left" aria-expanded="false" aria-controls="mobile-process-list">
+        Process
+        <svg id="mobile-process-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <div id="mobile-process-list" class="hidden overflow-hidden">
+        <a href="/buyers-edge" class="block py-2 text-sm pl-4 text-charcoal">Purchase</a>
+        <a href="/refinancing" class="block py-2 text-sm pl-4 text-charcoal">Refinance</a>
+      </div>
       <button type="button" id="mobile-programs-toggle" class="w-full flex items-center justify-between py-2 text-sm font-medium text-charcoal text-left" aria-expanded="false" aria-controls="mobile-programs-list">
         Programs
         <svg id="mobile-programs-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,12 +114,22 @@
 <script>
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
+  const processToggle = document.getElementById('mobile-process-toggle');
+  const processList = document.getElementById('mobile-process-list');
+  const processChevron = document.getElementById('mobile-process-chevron');
   const programsToggle = document.getElementById('mobile-programs-toggle');
   const programsList = document.getElementById('mobile-programs-list');
   const programsChevron = document.getElementById('mobile-programs-chevron');
 
   mobileMenuButton?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
+  });
+
+  processToggle?.addEventListener('click', () => {
+    const isExpanded = processToggle?.getAttribute('aria-expanded') === 'true';
+    processList?.classList.toggle('hidden', isExpanded);
+    processToggle?.setAttribute('aria-expanded', String(!isExpanded));
+    processChevron?.classList.toggle('rotate-180', !isExpanded);
   });
 
   programsToggle?.addEventListener('click', () => {
