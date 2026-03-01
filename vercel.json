@@ -8,11 +8,6 @@
         "permanent": true
       },
       {
-        "source": "/loan-products",
-        "destination": "/buyers-edge",
-        "permanent": true
-      },
-      {
         "source": "/mortgage-calculator",
         "destination": "/buyers-edge",
         "permanent": true
