@@ -1,0 +1,418 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Refinancing | Should You Refinance? | Joanna Perry NMLS 243348 | The Loan Lady Club"
+  description="Use our free refinance calculator to find your break-even point. Rate and term and cash-out scenarios. Education-first guidance from Joanna Perry, NMLS 243348."
+>
+
+  <!-- Hero -->
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <p class="text-warm-gold font-medium mb-4">Refinancing Education</p>
+      <h1 class="font-heading text-5xl text-charcoal mb-6 leading-tight">
+        Should You Refinance?
+      </h1>
+      <p class="text-lg text-charcoal opacity-70 mb-4 leading-relaxed">
+        Before you refinance, there is one question that matters more than the rate: when do you break even? If you spend money to lower your payment, how long before that cost pays itself back?
+      </p>
+      <p class="text-charcoal opacity-60 leading-relaxed">
+        The calculator below is built around the same logic I walk every client through. Run your numbers, understand your timeline, and then let's talk about whether it makes sense for your situation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="border-t border-warm-taupe opacity-30"></div>
+  </div>
+
+  <!-- Education Section -->
+  <section class="py-16 bg-warm-cream">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+      <h2 class="font-heading text-3xl text-charcoal mb-8 text-center">The Way I Think About Refinancing</h2>
+
+      <div class="space-y-8">
+
+        <div class="bg-white rounded-md p-8 shadow-sm">
+          <h3 class="font-heading text-xl text-charcoal mb-3">The Break-Even Point</h3>
+          <p class="text-charcoal opacity-70 leading-relaxed">
+            Every refinance costs money. Closing costs, lender fees, title. The only way to know if it is worth it is to divide what you spend by how much you save each month. That tells you how many months until you break even and start actually benefiting. If the market is likely to bring rates down again before you hit that point, the refi may not be worth it.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-md p-8 shadow-sm">
+          <h3 class="font-heading text-xl text-charcoal mb-3">Rate and Term: Lowering Your Payment</h3>
+          <p class="text-charcoal opacity-70 leading-relaxed">
+            This is the most common refinance. You keep the same home, same loan purpose, but you get a new rate and possibly a new term. It makes sense when the rate environment has dropped enough that your monthly savings will recover the cost of refinancing within a reasonable time. How long you plan to stay in the home matters a lot here.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-md p-8 shadow-sm">
+          <h3 class="font-heading text-xl text-charcoal mb-3">Cash-Out: Accessing Your Equity</h3>
+          <p class="text-charcoal opacity-70 leading-relaxed">
+            A cash-out refinance replaces your current loan with a larger one so you can pull equity out as cash. This can be a smart move for home improvements, debt consolidation, or other major needs. The important thing to understand is that you are trading equity for cash and your new payment will likely be higher. The math needs to make sense for your goals, not just your monthly cash flow.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-md p-8 shadow-sm">
+          <h3 class="font-heading text-xl text-charcoal mb-3">FHA to Conventional: Removing Mortgage Insurance</h3>
+          <p class="text-charcoal opacity-70 leading-relaxed">
+            FHA loans carry mortgage insurance for the life of the loan. Once you have enough equity, refinancing into a conventional loan can remove that monthly cost permanently. This is one of the most overlooked refinance opportunities. Even without a dramatically lower rate, the removal of mortgage insurance can mean real monthly savings.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+
+      <div class="text-center mb-10">
+        <h2 class="font-heading text-3xl text-charcoal mb-4">Refinance Analysis Calculator</h2>
+        <p class="text-charcoal opacity-60 text-sm leading-relaxed max-w-xl mx-auto">
+          These calculations are for educational illustration only. They are not a quote, commitment, or guarantee of any loan terms or savings. Every loan situation is unique. Schedule a consultation to review your actual numbers.
+        </p>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="flex border border-warm-taupe rounded-sm overflow-hidden mb-10" id="calc-tabs">
+        <button
+          class="calc-tab flex-1 py-3 px-4 text-sm font-medium transition-all duration-200 bg-warm-gold text-white"
+          data-tab="rate-term"
+        >
+          Rate &amp; Term
+        </button>
+        <button
+          class="calc-tab flex-1 py-3 px-4 text-sm font-medium transition-all duration-200 bg-white text-charcoal hover:bg-warm-cream"
+          data-tab="cash-out"
+        >
+          Cash-Out
+        </button>
+      </div>
+
+      <!-- Tab: Rate and Term -->
+      <div class="calc-panel" id="panel-rate-term">
+        <div class="bg-warm-cream rounded-md p-8 space-y-6">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Current Loan Balance</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">$</span>
+                <input type="number" id="rt-balance" placeholder="380,000" class="w-full pl-7 pr-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Remaining Loan Term (years)</label>
+              <input type="number" id="rt-remaining-term" placeholder="27" class="w-full px-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Current Interest Rate (%)</label>
+              <div class="relative">
+                <input type="number" step="0.01" id="rt-current-rate" placeholder="7.25" class="w-full px-4 pr-8 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">%</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">New Interest Rate Being Considered (%)</label>
+              <div class="relative">
+                <input type="number" step="0.01" id="rt-new-rate" placeholder="6.25" class="w-full px-4 pr-8 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">%</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Estimated Closing Costs</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">$</span>
+                <input type="number" id="rt-closing-costs" placeholder="6,000" class="w-full pl-7 pr-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">How Many Years Do You Plan to Stay?</label>
+              <input type="number" id="rt-years-stay" placeholder="7" class="w-full px-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+            </div>
+          </div>
+
+          <button
+            onclick="calcRateTerm()"
+            class="w-full bg-warm-gold text-white py-4 rounded-sm font-medium hover:opacity-90 transition"
+          >
+            Calculate Break-Even
+          </button>
+
+          <div id="rt-result" class="hidden bg-white rounded-md p-6 border border-warm-taupe space-y-4">
+            <h3 class="font-heading text-xl text-charcoal">Your Results</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">Current Monthly Payment (P&amp;I)</p>
+                <p class="font-heading text-2xl text-charcoal" id="rt-current-payment-display"></p>
+              </div>
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">New Monthly Payment (P&amp;I)</p>
+                <p class="font-heading text-2xl text-charcoal" id="rt-new-payment-display"></p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">Monthly Savings</p>
+                <p class="font-heading text-2xl text-warm-gold" id="rt-monthly-savings"></p>
+              </div>
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">Break-Even Point</p>
+                <p class="font-heading text-2xl text-charcoal" id="rt-breakeven"></p>
+              </div>
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">Total Savings if You Stay</p>
+                <p class="font-heading text-2xl text-charcoal" id="rt-total-savings"></p>
+              </div>
+            </div>
+            <p class="text-xs text-charcoal opacity-50 leading-relaxed" id="rt-verdict"></p>
+            <p class="text-xs text-charcoal opacity-40 leading-relaxed">
+              Example only. Not a quote or commitment. Actual savings depend on your loan terms, credit profile, and market conditions at the time of application. Schedule a consultation to review your real numbers.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tab: Cash-Out -->
+      <div class="calc-panel hidden" id="panel-cash-out">
+        <div class="bg-warm-cream rounded-md p-8 space-y-6">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Current Loan Balance</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">$</span>
+                <input type="number" id="co-current-balance" placeholder="350,000" class="w-full pl-7 pr-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Current Interest Rate (%)</label>
+              <div class="relative">
+                <input type="number" step="0.01" id="co-current-rate" placeholder="3.75" class="w-full px-4 pr-8 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">%</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Current Monthly Payment (P&amp;I)</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">$</span>
+                <input type="number" id="co-current-payment" placeholder="2,100" class="w-full pl-7 pr-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Cash You Want to Access</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">$</span>
+                <input type="number" id="co-cash-amount" placeholder="50,000" class="w-full pl-7 pr-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">New Estimated Interest Rate (%)</label>
+              <div class="relative">
+                <input type="number" step="0.01" id="co-new-rate" placeholder="6.75" class="w-full px-4 pr-8 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">%</span>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-charcoal mb-2">Estimated Closing Costs</label>
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal opacity-50">$</span>
+                <input type="number" id="co-closing-costs" placeholder="7,000" class="w-full pl-7 pr-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+              </div>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-charcoal mb-2">New Loan Term (years)</label>
+              <input type="number" id="co-new-term" placeholder="30" class="w-full px-4 py-3 border border-warm-taupe rounded-sm bg-white text-charcoal focus:outline-none focus:border-warm-gold" />
+            </div>
+          </div>
+
+          <button
+            onclick="calcCashOut()"
+            class="w-full bg-warm-gold text-white py-4 rounded-sm font-medium hover:opacity-90 transition"
+          >
+            Calculate My Numbers
+          </button>
+
+          <div id="co-result" class="hidden bg-white rounded-md p-6 border border-warm-taupe space-y-4">
+            <h3 class="font-heading text-xl text-charcoal">Your Results</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">Current Monthly Payment (P&amp;I)</p>
+                <p class="font-heading text-2xl text-charcoal" id="co-current-payment-display"></p>
+              </div>
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">New Estimated Monthly Payment (P&amp;I)</p>
+                <p class="font-heading text-2xl text-charcoal" id="co-new-payment-display"></p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">New Loan Amount</p>
+                <p class="font-heading text-2xl text-charcoal" id="co-new-loan"></p>
+              </div>
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">Payment Increase</p>
+                <p class="font-heading text-2xl text-charcoal" id="co-payment-increase"></p>
+              </div>
+              <div class="text-center p-4 bg-warm-cream rounded-sm">
+                <p class="text-xs text-charcoal opacity-50 mb-1">Net Cash After Costs</p>
+                <p class="font-heading text-2xl text-warm-gold" id="co-net-cash"></p>
+              </div>
+            </div>
+            <p class="text-xs text-charcoal opacity-50 leading-relaxed" id="co-verdict"></p>
+            <p class="text-xs text-charcoal opacity-40 leading-relaxed">
+              Example only. Not a quote or commitment. Actual loan amounts, payments, and available equity depend on your home value, credit profile, and program guidelines. Schedule a consultation to review your real numbers.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="border-t border-warm-taupe opacity-30"></div>
+  </div>
+
+  <!-- CTA -->
+  <section class="py-20 bg-white">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="font-heading text-3xl text-charcoal mb-4">Ready to Look at Your Real Numbers?</h2>
+      <p class="text-charcoal opacity-70 mb-8 leading-relaxed">
+        The calculator gives you a starting point. A real conversation gives you a clear answer. Schedule your free 30-minute consultation and we will review your actual loan, your actual equity, and what refinancing would actually cost and save you.
+      </p>
+      <a
+        href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-warm-gold text-white px-10 py-4 rounded-sm font-medium hover:opacity-90 transition text-lg"
+      >
+        Schedule Your Free Consultation
+      </a>
+      <p class="mt-6 text-sm text-charcoal opacity-50">
+        Joanna Perry, NMLS #243348. The Loan Lady Club powered by Xpert Home Lending Inc, NMLS #2179191. Licensed in California.
+      </p>
+    </div>
+  </section>
+
+</Layout>
+
+<script is:inline>
+
+  // Tab switching
+  document.querySelectorAll('.calc-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var target = this.getAttribute('data-tab');
+
+      document.querySelectorAll('.calc-tab').forEach(function(t) {
+        t.classList.remove('bg-warm-gold', 'text-white');
+        t.classList.add('bg-white', 'text-charcoal');
+      });
+      this.classList.add('bg-warm-gold', 'text-white');
+      this.classList.remove('bg-white', 'text-charcoal');
+
+      document.querySelectorAll('.calc-panel').forEach(function(panel) {
+        panel.classList.add('hidden');
+      });
+      document.getElementById('panel-' + target).classList.remove('hidden');
+    });
+  });
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  function fmtMonths(n) {
+    if (n <= 0) return 'Immediate';
+    if (n >= 1200) return 'Never';
+    var years = Math.floor(n / 12);
+    var months = Math.round(n % 12);
+    if (years === 0) return months + ' months';
+    if (months === 0) return years + ' yr' + (years > 1 ? 's' : '');
+    return years + ' yr ' + months + ' mo';
+  }
+
+  function calcRateTerm() {
+    var balance = parseFloat(document.getElementById('rt-balance').value) || 0;
+    var remainingTerm = parseFloat(document.getElementById('rt-remaining-term').value) || 0;
+    var currentRate = parseFloat(document.getElementById('rt-current-rate').value) || 0;
+    var newRate = parseFloat(document.getElementById('rt-new-rate').value) || 0;
+    var costs = parseFloat(document.getElementById('rt-closing-costs').value) || 0;
+    var yearsStay = parseFloat(document.getElementById('rt-years-stay').value) || 0;
+
+    if (!balance || !remainingTerm || !currentRate || !newRate || !costs) return;
+
+    var currentMonthlyRate = currentRate / 100 / 12;
+    var newMonthlyRate = newRate / 100 / 12;
+    var totalMonths = remainingTerm * 12;
+
+    var currentPmt = balance * (currentMonthlyRate * Math.pow(1 + currentMonthlyRate, totalMonths)) / (Math.pow(1 + currentMonthlyRate, totalMonths) - 1);
+    var newPmt = balance * (newMonthlyRate * Math.pow(1 + newMonthlyRate, totalMonths)) / (Math.pow(1 + newMonthlyRate, totalMonths) - 1);
+
+    var savings = currentPmt - newPmt;
+    var breakeven = savings > 0 ? costs / savings : null;
+    var stayMonths = yearsStay * 12;
+    var totalSavings = savings > 0 ? (stayMonths * savings) - costs : null;
+
+    document.getElementById('rt-current-payment-display').textContent = fmt(currentPmt);
+    document.getElementById('rt-new-payment-display').textContent = fmt(newPmt);
+    document.getElementById('rt-monthly-savings').textContent = savings > 0 ? fmt(savings) : '$0';
+    document.getElementById('rt-breakeven').textContent = breakeven !== null && savings > 0 ? fmtMonths(breakeven) : 'N/A';
+    document.getElementById('rt-total-savings').textContent = totalSavings !== null && totalSavings > 0 ? fmt(totalSavings) : '$0';
+
+    var verdict = '';
+    if (savings <= 0) {
+      verdict = 'Based on these numbers, the new rate does not lower your payment. The rate difference may not be large enough to benefit from refinancing in this scenario.';
+    } else if (breakeven !== null && yearsStay > 0 && (breakeven / 12) > yearsStay) {
+      verdict = 'Based on these numbers, you would not break even before your planned timeline. The cost of refinancing may outweigh the savings if you do not stay long enough to recover it.';
+    } else {
+      verdict = 'Based on these numbers, you would break even in approximately ' + fmtMonths(breakeven) + ' and could see a net benefit within your planned timeline. Schedule a consultation to review your actual loan and current market options.';
+    }
+    document.getElementById('rt-verdict').textContent = verdict;
+    document.getElementById('rt-result').classList.remove('hidden');
+  }
+
+  // Cash-Out
+  function calcCashOut() {
+    var balance = parseFloat(document.getElementById('co-current-balance').value) || 0;
+    var currentRate = parseFloat(document.getElementById('co-current-rate').value) || 0;
+    var currentPmt = parseFloat(document.getElementById('co-current-payment').value) || 0;
+    var cash = parseFloat(document.getElementById('co-cash-amount').value) || 0;
+    var newRate = parseFloat(document.getElementById('co-new-rate').value) || 0;
+    var costs = parseFloat(document.getElementById('co-closing-costs').value) || 0;
+    var newTerm = parseFloat(document.getElementById('co-new-term').value) || 30;
+
+    if (!balance || !cash || !newRate) return;
+
+    var newLoan = balance + cash + costs;
+    var newMonthlyRate = newRate / 100 / 12;
+    var newTotalMonths = newTerm * 12;
+    var newPmt = newLoan * (newMonthlyRate * Math.pow(1 + newMonthlyRate, newTotalMonths)) / (Math.pow(1 + newMonthlyRate, newTotalMonths) - 1);
+    var increase = newPmt - currentPmt;
+    var netCash = cash - costs;
+
+    document.getElementById('co-current-payment-display').textContent = fmt(currentPmt);
+    document.getElementById('co-new-payment-display').textContent = fmt(newPmt);
+    document.getElementById('co-new-loan').textContent = fmt(newLoan);
+    document.getElementById('co-payment-increase').textContent = increase > 0 ? '+' + fmt(increase) + '/mo' : fmt(0) + '/mo';
+    document.getElementById('co-net-cash').textContent = netCash > 0 ? fmt(netCash) : '$0';
+
+    var verdict = '';
+    if (netCash <= 0) {
+      verdict = 'Based on these numbers, closing costs would consume most or all of the cash accessed. This scenario may need a closer look before proceeding.';
+    } else {
+      verdict = 'Based on these numbers, you would net approximately ' + fmt(netCash) + ' after closing costs, with a monthly payment increase of approximately ' + fmt(increase) + '. Whether that trade-off makes sense depends on your goals and how you plan to use the funds.';
+    }
+    document.getElementById('co-verdict').textContent = verdict;
+    document.getElementById('co-result').classList.remove('hidden');
+  }
+
+</script>

@@ -8,11 +8,6 @@
       "permanent": true
     },
     {
-      "source": "/refinancing",
-      "destination": "/contact",
-      "permanent": true
-    },
-    {
       "source": "/mortgage-calculator",
       "destination": "/buyers-edge",
       "permanent": true
