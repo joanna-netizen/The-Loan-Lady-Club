@@ -16,5 +16,6 @@ export default defineConfig({
     '/tag/cash-needed-to-buy-a-home/': '/',
     '/funded-6-20-25/': '/',
     '/invest/worksheets/': '/investment-properties',
+    '/home/mortgage-calculator/': '/',
   },
 });
