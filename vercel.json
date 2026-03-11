@@ -31,28 +31,6 @@
       "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug*",
       "destination": "/",
       "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "joannaperry.com"
-        }
-      ],
-      "destination": "https://loanladyclub.com/joanna-perry",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.joannaperry.com"
-        }
-      ],
-      "destination": "https://loanladyclub.com/joanna-perry",
-      "permanent": true
     }
   ]
 }
