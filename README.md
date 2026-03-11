@@ -52,7 +52,7 @@ public/
     loan-lady-logo-white.png
     loan-lady-logo-black.png
     theloanladyclublogocolorgoldtransparent.png
-    joanna-headshot.jpg
+    joanna-perry-mortgage-broker-sacramento-loan-lady-club-headshot.jpg
     joanna-buyers-edge.jpg
     joanna-phone.png
     equal-housing-lender2.png
