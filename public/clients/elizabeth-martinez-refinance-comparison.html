@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Refinance Options | The Loan Lady Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--white);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  .header {
+    border-bottom: 1px solid var(--taupe);
+    padding-bottom: 36px;
+    margin-bottom: 48px;
+  }
+
+  .brand-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .header .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--charcoal);
+    opacity: 0.7;
+  }
+
+  .intro {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin-bottom: 52px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .intro p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--charcoal);
+  }
+
+  .intro p + p { margin-top: 14px; }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .current-block { margin-bottom: 52px; }
+
+  .current-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 15px;
+  }
+
+  .data-row:last-child { border-bottom: none; }
+  .data-label { color: var(--charcoal); opacity: 0.75; }
+  .data-value { font-weight: 500; color: var(--charcoal); }
+  .data-value.highlight { color: var(--gold); font-weight: 600; }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 52px;
+  }
+
+  .option-card {
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .option-card-header {
+    background: var(--cream);
+    padding: 22px 26px 18px;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .option-number {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .option-card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--charcoal);
+    line-height: 1.3;
+  }
+
+  .option-card-body { padding: 22px 26px; }
+
+  .option-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 14px;
+  }
+
+  .option-row:last-child { border-bottom: none; }
+  .option-row .label { color: var(--charcoal); opacity: 0.72; }
+  .option-row .value { font-weight: 500; color: var(--charcoal); }
+  .option-row .value.savings { color: #5a7a52; font-weight: 600; }
+  .option-row .value.cashback { color: var(--gold); font-weight: 600; }
+
+  .comparison-block { margin-bottom: 52px; }
+
+  .comparison-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  .compare-table thead th {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    opacity: 0.6;
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--taupe);
+  }
+
+  .compare-table thead th:not(:first-child) { text-align: right; }
+  .compare-table tbody tr { border-bottom: 1px solid var(--taupe); }
+  .compare-table tbody tr:last-child { border-bottom: none; }
+
+  .compare-table tbody td {
+    padding: 12px 16px;
+    vertical-align: middle;
+  }
+
+  .compare-table tbody td:not(:first-child) {
+    text-align: right;
+    font-weight: 500;
+  }
+
+  .compare-table tbody td.row-label { opacity: 0.72; }
+  .compare-table tbody td.winner { color: #5a7a52; font-weight: 600; }
+  .compare-table tbody td.cashback-val { color: var(--gold); font-weight: 600; }
+
+  .compare-table tbody tr.subtotal-row td {
+    background: var(--cream);
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .escrow-block {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin-bottom: 52px;
+  }
+
+  .escrow-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+
+  .escrow-block p { font-size: 15px; line-height: 1.75; color: var(--charcoal); }
+  .escrow-block p + p { margin-top: 12px; }
+
+  .considerations { margin-bottom: 52px; }
+
+  .considerations h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .consideration-item {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--taupe);
+    align-items: flex-start;
+  }
+
+  .consideration-item:last-child { border-bottom: none; }
+
+  .ci-marker {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  .ci-text { font-size: 15px; line-height: 1.7; color: var(--charcoal); }
+
+  .quote-block {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--charcoal);
+    line-height: 1.7;
+    padding: 28px 0;
+    border-top: 1px solid var(--taupe);
+    border-bottom: 1px solid var(--taupe);
+    margin-bottom: 52px;
+    text-align: center;
+  }
+
+  .next-steps { margin-bottom: 52px; }
+
+  .next-steps h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .next-steps p { font-size: 15px; line-height: 1.75; margin-bottom: 14px; }
+
+  .footer {
+    border-top: 1px solid var(--taupe);
+    padding-top: 32px;
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.65;
+    line-height: 1.7;
+  }
+
+  .footer .contact-line {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    opacity: 1;
+    margin-bottom: 10px;
+  }
+
+  .footer a { color: var(--gold); text-decoration: none; }
+
+  .disclaimer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.55;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .page-wrap { padding: 40px 24px 60px; }
+    .options-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 32px; }
+    .compare-table { font-size: 13px; }
+    .compare-table tbody td, .compare-table thead th { padding: 10px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="header">
+    <div class="brand-name">The Loan Lady Club &nbsp;|&nbsp; Where Lending Meets Education</div>
+    <h1>Your Refinance Options</h1>
+    <div class="subtitle">Prepared for Elizabeth Martinez &nbsp;|&nbsp; March 11, 2026</div>
+  </div>
+
+  <div class="intro">
+    <p>Elizabeth, I have put together two refinance scenarios for you to review. Both are at the same interest rate. The differences come down to what each option is designed to accomplish for your household right now.</p>
+    <p>Before we talk through which path makes more sense for you, I want to make sure you understand exactly what your current loan is costing, what the escrow situation means, and what each option actually does. My job is to give you the full picture so you can make a decision with confidence.</p>
+    <p>These numbers are estimates based on today's pricing. They are for educational purposes and are not a loan approval or commitment to lend.</p>
+  </div>
+
+  <div class="current-block">
+    <div class="section-label">Starting Point</div>
+    <h2>Where You Are Today</h2>
+    <div class="data-row">
+      <span class="data-label">Original purchase price (2023)</span>
+      <span class="data-value">$350,000</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Original loan amount</span>
+      <span class="data-value">$339,000</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Current interest rate</span>
+      <span class="data-value">6.625%</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Current principal and interest</span>
+      <span class="data-value">$2,173.00 / mo</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Current PMI</span>
+      <span class="data-value highlight">$186.00 / mo</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Current total monthly payment (P&amp;I, taxes, insurance, PMI)</span>
+      <span class="data-value highlight">$3,000.49 / mo</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Current estimated home value</span>
+      <span class="data-value">$378,000</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Current outstanding loan balance</span>
+      <span class="data-value">approx. $326,408</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Annual property taxes</span>
+      <span class="data-value">$4,316.44</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Annual homeowner's insurance</span>
+      <span class="data-value">$1,572.00</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Escrow account status</span>
+      <span class="data-value highlight">Shortage. Replenishment required.</span>
+    </div>
+  </div>
+
+  <div class="escrow-block">
+    <div class="section-label">Important Context</div>
+    <h2>The Escrow Situation</h2>
+    <p>When your loan was set up, your lender collected less each month than was actually needed to cover your property taxes and homeowner's insurance. Over time, that gap added up. Your escrow account is now empty, and your property taxes are due within the next 60 days.</p>
+    <p>This is not uncommon, and it is not a penalty situation. But it does mean that part of what a refinance can accomplish for you right now is solving that problem cleanly at closing. Both options below include a full replenishment of your escrow account so you are not sitting exposed going into tax season.</p>
+    <p>Both options also allow you to skip your April mortgage payment, which is a standard benefit of refinancing. The interest for that period folds into the new loan rather than being forgiven outright, but it does free up your April cash flow while the new loan gets established.</p>
+  </div>
+
+  <div class="section-label">The Two Paths</div>
+  <div class="options-grid">
+
+    <div class="option-card">
+      <div class="option-card-header">
+        <div class="option-number">Option A</div>
+        <h3>Lower Payment, Lower PMI</h3>
+      </div>
+      <div class="option-card-body">
+        <div class="option-row">
+          <span class="label">New rate</span>
+          <span class="value">6.125%</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New loan amount</span>
+          <span class="value">$340,200</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New P&amp;I payment</span>
+          <span class="value">$2,067.09 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">P&amp;I savings vs. today</span>
+          <span class="value savings">$105.91 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New PMI</span>
+          <span class="value">$99.23 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">PMI savings vs. today</span>
+          <span class="value savings">$86.77 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New total monthly payment</span>
+          <span class="value savings">$2,657.02 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">Total monthly savings vs. today</span>
+          <span class="value savings">$343.47 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">Cash back at closing</span>
+          <span class="value">None (near zero out of pocket)</span>
+        </div>
+        <div class="option-row">
+          <span class="label">April payment skipped</span>
+          <span class="value savings">Yes</span>
+        </div>
+        <div class="option-row">
+          <span class="label">Escrow replenished</span>
+          <span class="value savings">Yes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-card">
+      <div class="option-card-header">
+        <div class="option-number">Option B</div>
+        <h3>Cash Back + Savings</h3>
+      </div>
+      <div class="option-card-body">
+        <div class="option-row">
+          <span class="label">New rate</span>
+          <span class="value">6.125%</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New loan amount</span>
+          <span class="value">$346,900</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New P&amp;I payment</span>
+          <span class="value">$2,107.80 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">P&amp;I savings vs. today</span>
+          <span class="value savings">$65.20 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New PMI</span>
+          <span class="value">$144.54 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">PMI savings vs. today</span>
+          <span class="value savings">$41.46 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">New total monthly payment</span>
+          <span class="value">$2,743.04 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">Total monthly savings vs. today</span>
+          <span class="value savings">$257.45 / mo</span>
+        </div>
+        <div class="option-row">
+          <span class="label">Cash back at closing</span>
+          <span class="value cashback">up to approx. $3,400</span>
+        </div>
+        <div class="option-row">
+          <span class="label">April payment skipped</span>
+          <span class="value savings">Yes</span>
+        </div>
+        <div class="option-row">
+          <span class="label">Escrow replenished</span>
+          <span class="value savings">Yes</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="comparison-block">
+    <div class="section-label">Direct Comparison</div>
+    <h2>Option A vs. Option B</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Today's Loan</th>
+          <th>Option A</th>
+          <th>Option B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">Interest rate</td>
+          <td>6.625%</td>
+          <td class="winner">6.125%</td>
+          <td class="winner">6.125%</td>
+        </tr>
+        <tr>
+          <td class="row-label">Loan balance</td>
+          <td>$326,408</td>
+          <td>$340,200</td>
+          <td>$346,900</td>
+        </tr>
+        <tr>
+          <td class="row-label">Principal and interest</td>
+          <td>$2,173.00</td>
+          <td class="winner">$2,067.09</td>
+          <td>$2,107.80</td>
+        </tr>
+        <tr>
+          <td class="row-label">PMI</td>
+          <td>$186.00</td>
+          <td class="winner">$99.23</td>
+          <td>$144.54</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td class="row-label">P&amp;I + PMI combined</td>
+          <td>$2,359.00</td>
+          <td class="winner">$2,166.32</td>
+          <td>$2,252.34</td>
+        </tr>
+        <tr>
+          <td class="row-label">Monthly savings on P&amp;I + PMI</td>
+          <td>--</td>
+          <td class="winner">approx. $192 / mo</td>
+          <td>approx. $107 / mo</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td class="row-label">Total monthly payment (all in)</td>
+          <td>$3,000.49</td>
+          <td class="winner">$2,657.02</td>
+          <td>$2,743.04</td>
+        </tr>
+        <tr>
+          <td class="row-label">Total monthly savings vs. today</td>
+          <td>--</td>
+          <td class="winner">$343.47 / mo</td>
+          <td>$257.45 / mo</td>
+        </tr>
+        <tr>
+          <td class="row-label">Cash back at closing</td>
+          <td>--</td>
+          <td>None</td>
+          <td class="cashback-val">up to approx. $3,400</td>
+        </tr>
+        <tr>
+          <td class="row-label">April payment skipped</td>
+          <td>--</td>
+          <td>Yes</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td class="row-label">Escrow replenished at closing</td>
+          <td>Shortage active</td>
+          <td>Yes</td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="considerations">
+    <div class="section-label">How to Think About This</div>
+    <h2>What Each Option Is Really Doing</h2>
+
+    <div class="consideration-item">
+      <div class="ci-marker">A</div>
+      <div class="ci-text">Option A is a clean reset. It lowers your payment, cuts your PMI nearly in half, fixes the escrow shortage, and gets you into a lower rate. Your new loan balance is only slightly above your current payoff because the extra amount covers closing costs and replenishes the escrow account. You come to closing with virtually nothing out of pocket, and your total monthly housing cost goes from $3,000.49 down to $2,657.02. That is a difference of $343.47 every single month.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">B</div>
+      <div class="ci-text">Option B is designed for a household that has an immediate cash need. The loan amount is higher, which is what generates the cash back at closing. The fees worksheet shows an estimated cash figure of $4,186.58, but the appraisal and credit report fees are paid upfront before closing, which brings the actual amount you receive back down to approximately $3,400. The trade-off is a higher monthly payment compared to Option A and a PMI figure that stays closer to what you are paying today. You still save $257.45 per month against your current loan, but the ongoing monthly benefit is smaller because the loan is carrying more weight.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">1</div>
+      <div class="ci-text">The rate is 6.125% on both options. The difference is entirely about loan size and what you walk away with at closing versus what your ongoing monthly obligation looks like for the life of the loan.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">2</div>
+      <div class="ci-text">On Option A, you skip April and your existing escrow balance will be returned to you by your current servicer approximately 30 days after closing. Those two things together can create meaningful short-term cash flow relief even without a cash-out component.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">3</div>
+      <div class="ci-text">On Option B, the approximately $3,400 cash back needs to be weighed against the higher ongoing monthly cost relative to Option A. This option makes the most sense when there is a specific use for that cash that provides more value to your household than the additional monthly savings you would receive under Option A.</div>
+    </div>
+
+  </div>
+
+  <div class="quote-block">
+    "Neither option is the wrong answer. The right one depends on what your household needs most right now. That is what we will figure out together."
+  </div>
+
+  <div class="next-steps">
+    <div class="section-label">When You Are Ready</div>
+    <h2>Next Steps</h2>
+    <p>Take your time with this. Look at both scenarios and think about where you are financially right now. If there is a specific reason you need cash at closing, Option B may serve that purpose. If the priority is reducing your monthly obligation as much as possible, Option A does that more effectively.</p>
+    <p>When you are ready to talk through it, I am here. We will go over each line together, answer any questions, and make sure you feel completely clear before anything moves forward.</p>
+    <p>You can schedule time with me directly using the link below, or reach out by phone or email.</p>
+  </div>
+
+  <div class="footer">
+    <div class="contact-line">Joanna Perry, Mortgage Broker &nbsp;|&nbsp; NMLS #243348</div>
+    <div class="contact-line">The Loan Lady Club &nbsp;|&nbsp; Xpert Home Lending Inc. NMLS #2179191</div>
+    <div style="margin-top:6px;">
+      (916) 708-8555 &nbsp;|&nbsp; <a href="mailto:joanna@loanlady.club">joanna@loanlady.club</a> &nbsp;|&nbsp; <a href="https://loanladyclub.com">loanladyclub.com</a>
+    </div>
+    <div style="margin-top:6px;">
+      Schedule a call: <a href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN</a>
+    </div>
+    <div class="disclaimer">
+      These estimates are provided for illustrative and educational purposes only based on the information available at the time of preparation. They are not a loan approval, a commitment to lend, or a guarantee of terms. Rates and costs are subject to change. Until a rate is locked, all terms remain subject to adjustment. An official Loan Estimate will be provided before you choose a loan. Xpert Home Lending Inc. is an equal housing lender.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
