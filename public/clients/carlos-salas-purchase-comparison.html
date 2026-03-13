@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Purchase Options | The Loan Lady Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--white);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--taupe);
+    padding-bottom: 36px;
+    margin-bottom: 48px;
+  }
+
+  .brand-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .header .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--charcoal);
+    opacity: 0.7;
+  }
+
+  /* Intro */
+  .intro {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin-bottom: 52px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .intro p { font-size: 16px; line-height: 1.75; color: var(--charcoal); }
+  .intro p + p { margin-top: 14px; }
+
+  /* Section label */
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  /* Shared info block */
+  .info-block { margin-bottom: 52px; }
+
+  .info-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 15px;
+  }
+
+  .data-row:last-child { border-bottom: none; }
+  .data-label { color: var(--charcoal); opacity: 0.75; }
+  .data-value { font-weight: 500; color: var(--charcoal); }
+
+  /* Price group heading */
+  .price-group {
+    margin-bottom: 56px;
+  }
+
+  .price-group-header {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 18px 28px;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+  }
+
+  .price-group-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .price-group-header .price-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--white);
+    opacity: 0.65;
+  }
+
+  .price-group-body {
+    border: 1px solid var(--taupe);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+
+  /* Two-column card grid inside each price group */
+  .rate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rate-card {
+    padding: 28px 28px 24px;
+  }
+
+  .rate-card:first-child {
+    border-right: 1px solid var(--taupe);
+  }
+
+  .rate-card-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .rate-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .rate-card .rate-desc {
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
+
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 14px;
+  }
+
+  .card-row:last-child { border-bottom: none; }
+  .card-row .cl { color: var(--charcoal); opacity: 0.72; }
+  .card-row .cv { font-weight: 500; color: var(--charcoal); }
+  .card-row .cv.gold { color: var(--gold); font-weight: 600; }
+  .card-row .cv.lower { color: #5a7a52; font-weight: 600; }
+
+  /* Callout boxes */
+  .callout-block {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin-bottom: 52px;
+  }
+
+  .callout-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+
+  .callout-block p { font-size: 15px; line-height: 1.75; color: var(--charcoal); }
+  .callout-block p + p { margin-top: 12px; }
+
+  /* Full comparison table */
+  .comparison-block { margin-bottom: 52px; }
+
+  .comparison-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .compare-table thead th {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    opacity: 0.6;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--taupe);
+    background: var(--white);
+  }
+
+  .compare-table thead th:not(:first-child) { text-align: right; }
+
+  .compare-table thead th.col-header {
+    background: var(--cream);
+    opacity: 1;
+    color: var(--charcoal);
+    font-size: 12px;
+  }
+
+  .compare-table tbody tr { border-bottom: 1px solid var(--taupe); }
+  .compare-table tbody tr:last-child { border-bottom: none; }
+
+  .compare-table tbody td {
+    padding: 11px 14px;
+    vertical-align: middle;
+  }
+
+  .compare-table tbody td:not(:first-child) {
+    text-align: right;
+    font-weight: 500;
+  }
+
+  .compare-table tbody td.row-label { opacity: 0.72; font-size: 14px; }
+  .compare-table tbody td.gold { color: var(--gold); font-weight: 600; }
+  .compare-table tbody td.lower { color: #5a7a52; font-weight: 600; }
+
+  .compare-table tbody tr.subtotal-row td {
+    background: var(--cream);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .compare-table tbody tr.group-divider td {
+    background: var(--charcoal);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    text-align: left;
+  }
+
+  /* Considerations */
+  .considerations { margin-bottom: 52px; }
+
+  .considerations h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .consideration-item {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--taupe);
+    align-items: flex-start;
+  }
+
+  .consideration-item:last-child { border-bottom: none; }
+
+  .ci-marker {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  .ci-text { font-size: 15px; line-height: 1.7; color: var(--charcoal); }
+
+  /* Next steps */
+  .next-steps { margin-bottom: 52px; }
+
+  .next-steps h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--taupe);
+    align-items: flex-start;
+  }
+
+  .step-item:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--white);
+    margin-top: 2px;
+  }
+
+  .step-text { font-size: 15px; line-height: 1.7; color: var(--charcoal); }
+  .step-text a { color: var(--gold); text-decoration: none; }
+
+  /* Quote */
+  .quote-block {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--charcoal);
+    line-height: 1.7;
+    padding: 28px 0;
+    border-top: 1px solid var(--taupe);
+    border-bottom: 1px solid var(--taupe);
+    margin-bottom: 52px;
+    text-align: center;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--taupe);
+    padding-top: 32px;
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.65;
+    line-height: 1.7;
+  }
+
+  .footer .contact-line {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    opacity: 1;
+    margin-bottom: 10px;
+  }
+
+  .footer a { color: var(--gold); text-decoration: none; }
+
+  .disclaimer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.55;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .page-wrap { padding: 40px 20px 60px; }
+    .rate-grid { grid-template-columns: 1fr; }
+    .rate-card:first-child { border-right: none; border-bottom: 1px solid var(--taupe); }
+    .header h1 { font-size: 30px; }
+    .compare-table { font-size: 13px; }
+    .compare-table tbody td, .compare-table thead th { padding: 9px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="brand-name">The Loan Lady Club &nbsp;|&nbsp; Where Lending Meets Education</div>
+    <h1>Your Purchase Options</h1>
+    <div class="subtitle">Prepared for Carlos Salas &nbsp;|&nbsp; March 12, 2026</div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro">
+    <p>Carlos, I have put together four scenarios for you to review as you move forward with your purchase in Woodland. Two are based on a purchase price of $527,000 and two are based on $537,000. Within each price, I am showing you a lower interest rate option and a higher interest rate option that carries a larger lender credit toward your closing costs.</p>
+    <p>Understanding the difference between those two rate strategies is important, and I have explained it clearly below. Take your time reviewing all four options. Once your documents are uploaded through the portal, we can confirm which path fits best and move forward.</p>
+    <p>These numbers are estimates based on today's pricing. They are for educational purposes and are not a loan approval or commitment to lend.</p>
+  </div>
+
+  <!-- Shared loan details -->
+  <div class="info-block">
+    <div class="section-label">What All Four Options Share</div>
+    <h2>Loan Structure</h2>
+    <div class="data-row">
+      <span class="data-label">Loan purpose</span>
+      <span class="data-value">Purchase, primary residence</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Property location</span>
+      <span class="data-value">Woodland, CA 95912</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Property type</span>
+      <span class="data-value">Single family</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Loan product</span>
+      <span class="data-value">30 Year FHA Fixed</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Down payment</span>
+      <span class="data-value">3.5% of purchase price</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Co-borrower</span>
+      <span class="data-value">Father (non-occupying co-signer)</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Lock period</span>
+      <span class="data-value">30 Days</span>
+    </div>
+  </div>
+
+  <!-- Rate strategy explainer -->
+  <div class="callout-block">
+    <div class="section-label">Understanding Your Two Rate Choices</div>
+    <h2>Lower Rate vs. Premium Pricing</h2>
+    <p>Within each purchase price, you have two interest rate options. The first is a lower rate with a small lender credit toward closing. The second is a higher rate that comes with a significantly larger lender credit. That second strategy is called premium pricing.</p>
+    <p>Here is how to think about the difference. When you take a lower rate, your monthly payment is smaller but you bring more cash to closing because the lender credit does not cover as much. When you take a higher rate through premium pricing, the lender pays a larger portion of your closing costs, which reduces what you bring to the table on closing day. The trade-off is a higher monthly payment for the life of the loan.</p>
+    <p>Neither choice is wrong. It depends on your current cash position and your long-term priorities. Both options are presented neutrally below so you can see the full picture and make the decision that fits your household.</p>
+  </div>
+
+  <!-- Price Group 1: $527,000 -->
+  <div class="section-label">Purchase Price: $527,000</div>
+  <div class="price-group">
+    <div class="price-group-header">
+      <h2>$527,000 Purchase Price</h2>
+      <div class="price-sub">3.5% down &nbsp;|&nbsp; Down payment: $18,445 &nbsp;|&nbsp; Loan amount: $515,732</div>
+    </div>
+    <div class="price-group-body">
+      <div class="rate-grid">
+
+        <!-- 527k / 5.75% -->
+        <div class="rate-card">
+          <div class="rate-card-label">Option 1A</div>
+          <h3>5.750% Interest Rate</h3>
+          <div class="rate-desc">Lower rate, smaller lender credit</div>
+          <div class="card-row">
+            <span class="cl">Interest rate</span>
+            <span class="cv">5.750%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">APR</span>
+            <span class="cv">6.483%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Principal and interest</span>
+            <span class="cv lower">$3,009.67 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">FHA mortgage insurance</span>
+            <span class="cv">$230.96 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Homeowner's insurance</span>
+            <span class="cv">$125.00 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Property taxes</span>
+            <span class="cv">$548.96 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Total monthly payment</span>
+            <span class="cv gold">$3,914.59 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Lender credit</span>
+            <span class="cv">$1,480.15</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Estimated cash to close</span>
+            <span class="cv gold">$29,543.52</span>
+          </div>
+        </div>
+
+        <!-- 527k / 6.125% -->
+        <div class="rate-card">
+          <div class="rate-card-label">Option 1B</div>
+          <h3>6.125% Interest Rate</h3>
+          <div class="rate-desc">Premium pricing, larger lender credit</div>
+          <div class="card-row">
+            <span class="cl">Interest rate</span>
+            <span class="cv">6.125%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">APR</span>
+            <span class="cv">6.864%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Principal and interest</span>
+            <span class="cv">$3,133.64 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">FHA mortgage insurance</span>
+            <span class="cv">$231.05 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Homeowner's insurance</span>
+            <span class="cv">$125.00 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Property taxes</span>
+            <span class="cv">$548.96 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Total monthly payment</span>
+            <span class="cv gold">$4,038.65 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Lender credit</span>
+            <span class="cv">$5,312.04</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Estimated cash to close</span>
+            <span class="cv lower">$25,817.60</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Price Group 2: $537,000 -->
+  <div class="section-label">Purchase Price: $537,000</div>
+  <div class="price-group">
+    <div class="price-group-header">
+      <h2>$537,000 Purchase Price</h2>
+      <div class="price-sub">3.5% down &nbsp;|&nbsp; Down payment: $18,795 &nbsp;|&nbsp; Loan amount: $525,382</div>
+    </div>
+    <div class="price-group-body">
+      <div class="rate-grid">
+
+        <!-- 537k / 5.75% -->
+        <div class="rate-card">
+          <div class="rate-card-label">Option 2A</div>
+          <h3>5.750% Interest Rate</h3>
+          <div class="rate-desc">Lower rate, smaller lender credit</div>
+          <div class="card-row">
+            <span class="cl">Interest rate</span>
+            <span class="cv">5.750%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">APR</span>
+            <span class="cv">6.480%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Principal and interest</span>
+            <span class="cv lower">$3,065.99 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">FHA mortgage insurance</span>
+            <span class="cv">$235.28 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Homeowner's insurance</span>
+            <span class="cv">$125.00 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Property taxes</span>
+            <span class="cv">$559.38 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Total monthly payment</span>
+            <span class="cv gold">$3,985.65 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Lender credit</span>
+            <span class="cv">$1,507.85</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Estimated cash to close</span>
+            <span class="cv gold">$29,958.74</span>
+          </div>
+        </div>
+
+        <!-- 537k / 6.125% -->
+        <div class="rate-card">
+          <div class="rate-card-label">Option 2B</div>
+          <h3>6.125% Interest Rate</h3>
+          <div class="rate-desc">Premium pricing, larger lender credit</div>
+          <div class="card-row">
+            <span class="cl">Interest rate</span>
+            <span class="cv">6.125%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">APR</span>
+            <span class="cv">6.757%</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Principal and interest</span>
+            <span class="cv">$3,192.28 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">FHA mortgage insurance</span>
+            <span class="cv">$235.37 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Homeowner's insurance</span>
+            <span class="cv">$125.00 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Property taxes</span>
+            <span class="cv">$559.38 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Total monthly payment</span>
+            <span class="cv gold">$4,112.03 / mo</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Lender credit</span>
+            <span class="cv">$5,448.21</span>
+          </div>
+          <div class="card-row">
+            <span class="cl">Estimated cash to close</span>
+            <span class="cv lower">$26,126.34</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Full comparison table -->
+  <div class="comparison-block">
+    <div class="section-label">All Four Options at a Glance</div>
+    <h2>Side by Side</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-header">1A: $527k / 5.75%</th>
+          <th class="col-header">1B: $527k / 6.125%</th>
+          <th class="col-header">2A: $537k / 5.75%</th>
+          <th class="col-header">2B: $537k / 6.125%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-divider">
+          <td colspan="5">Loan Details</td>
+        </tr>
+        <tr>
+          <td class="row-label">Purchase price</td>
+          <td>$527,000</td>
+          <td>$527,000</td>
+          <td>$537,000</td>
+          <td>$537,000</td>
+        </tr>
+        <tr>
+          <td class="row-label">Down payment</td>
+          <td>$18,445</td>
+          <td>$18,445</td>
+          <td>$18,795</td>
+          <td>$18,795</td>
+        </tr>
+        <tr>
+          <td class="row-label">Loan amount</td>
+          <td>$515,732</td>
+          <td>$515,732</td>
+          <td>$525,382</td>
+          <td>$525,382</td>
+        </tr>
+        <tr>
+          <td class="row-label">Interest rate</td>
+          <td>5.750%</td>
+          <td>6.125%</td>
+          <td>5.750%</td>
+          <td>6.125%</td>
+        </tr>
+        <tr class="group-divider">
+          <td colspan="5">Monthly Payment</td>
+        </tr>
+        <tr>
+          <td class="row-label">Principal and interest</td>
+          <td class="lower">$3,009.67</td>
+          <td>$3,133.64</td>
+          <td class="lower">$3,065.99</td>
+          <td>$3,192.28</td>
+        </tr>
+        <tr>
+          <td class="row-label">FHA mortgage insurance</td>
+          <td>$230.96</td>
+          <td>$231.05</td>
+          <td>$235.28</td>
+          <td>$235.37</td>
+        </tr>
+        <tr>
+          <td class="row-label">Homeowner's insurance</td>
+          <td>$125.00</td>
+          <td>$125.00</td>
+          <td>$125.00</td>
+          <td>$125.00</td>
+        </tr>
+        <tr>
+          <td class="row-label">Property taxes</td>
+          <td>$548.96</td>
+          <td>$548.96</td>
+          <td>$559.38</td>
+          <td>$559.38</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td class="row-label">Total monthly payment</td>
+          <td>$3,914.59</td>
+          <td>$4,038.65</td>
+          <td>$3,985.65</td>
+          <td>$4,112.03</td>
+        </tr>
+        <tr class="group-divider">
+          <td colspan="5">Closing Costs</td>
+        </tr>
+        <tr>
+          <td class="row-label">Lender credit</td>
+          <td>$1,480.15</td>
+          <td class="gold">$5,312.04</td>
+          <td>$1,507.85</td>
+          <td class="gold">$5,448.21</td>
+        </tr>
+        <tr class="subtotal-row">
+          <td class="row-label">Estimated cash to close</td>
+          <td>$29,543.52</td>
+          <td class="lower">$25,817.60</td>
+          <td>$29,958.74</td>
+          <td class="lower">$26,126.34</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Considerations -->
+  <div class="considerations">
+    <div class="section-label">How to Think About This</div>
+    <h2>What Each Choice Really Means</h2>
+
+    <div class="consideration-item">
+      <div class="ci-marker">1</div>
+      <div class="ci-text">The $10,000 difference in purchase price between the two properties adds approximately $56 to your monthly payment at the lower rate and approximately $59 at the higher rate. It also increases your down payment by $350. If both properties are otherwise comparable, the lower price gives you a slightly lower ongoing obligation.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">2</div>
+      <div class="ci-text">The rate strategy is the bigger variable. Choosing the lower rate at 5.750% saves you approximately $124 per month on the $527,000 price and approximately $126 per month on the $537,000 price compared to the 6.125% option. Over 30 years, that difference is meaningful. The question is whether the savings in cash to close today is worth the higher payment over time.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">3</div>
+      <div class="ci-text">The premium pricing options (1B and 2B) reduce your cash to close by approximately $3,700 to $3,800 compared to the lower rate options. If preserving cash at closing matters to your household right now, that lender credit is doing real work for you. If your cash position is comfortable, the lower rate is the better long-term value.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">4</div>
+      <div class="ci-text">All four options include a 20-day prepaid interest calculation. That means closing is estimated to occur around the 10th or 11th of the month. The timing of your closing date affects this number, and it will be confirmed once we are under contract.</div>
+    </div>
+
+    <div class="consideration-item">
+      <div class="ci-marker">5</div>
+      <div class="ci-text">The credit score on all four worksheets is listed as estimated. Your actual qualifying picture, including both you and your father as co-borrower, will be confirmed once documents are reviewed. Pricing may adjust based on verified credit.</div>
+    </div>
+
+  </div>
+
+  <!-- Quote -->
+  <div class="quote-block">
+    "Once your documents are uploaded, we will confirm exactly where you stand and get you moving toward an offer with confidence."
+  </div>
+
+  <!-- Next Steps -->
+  <div class="next-steps">
+    <div class="section-label">What Happens Next</div>
+    <h2>Your Next Step</h2>
+
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text">Your portal invitation was sent on March 11th to <a href="mailto:ek9alvarez@gmail.com">ek9alvarez@gmail.com</a>. Check that inbox, log in, and upload all requested documents directly through the portal. Everything you need to provide is listed there once you are inside.</div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text">Your father's portal invitation was also sent on March 11th to <a href="mailto:coco14mendez@gmail.com">coco14mendez@gmail.com</a>. He will need to log in and upload his documents as the non-occupying co-borrower. If either of you does not see the invitation, check your spam folder first and then reach out so I can resend it.</div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text">Authorize and pay for your credit report using the secure link below. This is how we pull your credit with a single inquiry so it does not impact your score multiple times. Once completed, we can move your file forward immediately.
+        <br>
+        <a href="https://credit.advcredit.com/smartpay/SmartPay.aspx?uid=76099402-a954-40f1-8704-8a79dbefde6d" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:14px;padding:12px 24px;background-color:#B8860B;color:#FFFFFF;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.06em;text-decoration:none;border-radius:4px;">Order Credit Report Here</a>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-text">Once documents and the credit report are in, I will confirm which of these four options fits your qualifying profile and cash position, and we will move into pre-approval. Reach out anytime with questions before then.</div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="contact-line">Joanna Perry, Mortgage Broker &nbsp;|&nbsp; NMLS #243348</div>
+    <div class="contact-line">The Loan Lady Club &nbsp;|&nbsp; Xpert Home Lending Inc. NMLS #2179191</div>
+    <div style="margin-top:6px;">
+      (916) 708-8555 &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#afc5c0cec1c1ceefc3c0cec1c3cecbd681ccc3dacd"><span class="__cf_email__" data-cfemail="711b1e101f1f10311d1e101f1d1015085f121d0413">[email&#160;protected]</span></a> &nbsp;|&nbsp; <a href="https://loanladyclub.com">loanladyclub.com</a>
+    </div>
+    <div style="margin-top:6px;">
+      Schedule a call: <a href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN</a>
+    </div>
+    <div class="disclaimer">
+      These estimates are provided for illustrative and educational purposes only based on the information available at the time of preparation. They are not a loan approval, a commitment to lend, or a guarantee of terms. Rates and costs are subject to change. Until a rate is locked, all terms remain subject to adjustment. An official Loan Estimate will be provided before you choose a loan. Credit score used in these estimates i
