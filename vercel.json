@@ -32,5 +32,17 @@
       "destination": "/",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [{"type": "host", "value": "joannaperry.com"}],
+      "destination": "/joanna-perry"
+    },
+    {
+      "source": "/:path*",
+      "has": [{"type": "host", "value": "www.joannaperry.com"}],
+      "destination": "/joanna-perry"
+    }
   ]
 }
