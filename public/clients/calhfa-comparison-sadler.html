@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalHFA Program Comparison | Brandy & Brett Sadler</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+    --gold-light: #D4A017;
+    --gold-bg: #FBF7EE;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--white);
+    border-bottom: 1px solid var(--taupe);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .header-brand h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--charcoal);
+    letter-spacing: -0.02em;
+  }
+
+  .header-brand p {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .header-meta {
+    text-align: right;
+  }
+
+  .header-meta .borrower-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .header-meta .date-line {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    margin-top: 2px;
+  }
+
+  /* HERO BAND */
+  .hero-band {
+    background: var(--charcoal);
+    padding: 36px 40px;
+    text-align: center;
+  }
+
+  .hero-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-band p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--taupe);
+    margin-top: 8px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .scenario-label {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+  }
+
+  /* MAIN LAYOUT */
+  .container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* PROPERTY CONTEXT */
+  .property-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--taupe);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .prop-item {
+    text-align: center;
+  }
+
+  .prop-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .prop-item .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .prop-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--taupe);
+  }
+
+  /* COMPARISON GRID */
+  .comparison-section {
+    padding: 48px 0 0;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 2px solid var(--taupe);
+    position: relative;
+  }
+
+  .card-header.conventional { border-bottom-color: var(--gold); }
+  .card-header.fha { border-bottom-color: var(--charcoal); }
+
+  .card-program-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+
+  .card-program-sub {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    margin-top: 2px;
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .badge-conventional {
+    background: var(--gold-bg);
+    color: var(--gold);
+    border: 1px solid #D4A01720;
+  }
+
+  .badge-fha {
+    background: var(--cream);
+    color: var(--charcoal);
+    border: 1px solid var(--taupe);
+  }
+
+  /* ROW TABLE INSIDE CARD */
+  .card-body { padding: 0; }
+
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 24px;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .data-row:last-child { border-bottom: none; }
+
+  .data-row.highlight {
+    background: var(--gold-bg);
+  }
+
+  .data-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--charcoal);
+    opacity: 0.75;
+  }
+
+  .data-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: right;
+  }
+
+  .data-value.gold { color: var(--gold); }
+  .data-value.small { font-size: 13px; font-weight: 500; }
+
+  /* HERO NUMBERS */
+  .hero-number-block {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--taupe);
+    text-align: center;
+  }
+
+  .hero-number-block .hn-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .hero-number-block .hn-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  .hero-number-block .hn-sub {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    margin-top: 4px;
+  }
+
+  /* ASSISTANCE BLOCK */
+  .assistance-block {
+    padding: 16px 24px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .assist-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .assist-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 13px;
+  }
+
+  .assist-row .assist-name { color: var(--charcoal); opacity: 0.75; }
+  .assist-row .assist-amount { font-weight: 600; color: var(--charcoal); }
+
+  .assist-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 4px;
+    border-top: 1px solid var(--taupe);
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* DIFF CALLOUT */
+  .diff-band {
+    margin: 32px 0 0;
+    padding: 0;
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* placeholder-diff */
+
+  .diff-card {
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .diff-card .diff-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .diff-card .diff-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.1;
+  }
+
+  .diff-card .diff-note {
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.55;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* EDUCATION SECTION */
+  .education-section {
+    margin: 40px 0 0;
+  }
+
+  .edu-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--charcoal);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .edu-sub {
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.6;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* placeholder-edu */
+
+  .edu-card {
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    padding: 22px 24px;
+  }
+
+  .edu-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+
+  .edu-card p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--charcoal);
+    opacity: 0.8;
+  }
+
+  .edu-card .edu-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+
+  .tag-conv { background: var(--gold-bg); color: var(--gold); }
+  .tag-fha { background: var(--cream); color: var(--charcoal); }
+  .tag-both { background: var(--charcoal); color: var(--white); }
+
+  /* MI COMPARISON */
+  .mi-section {
+    margin: 16px 0 0;
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .mi-header {
+    background: var(--charcoal);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mi-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .mi-header span {
+    font-size: 11px;
+    color: var(--taupe);
+    opacity: 0.8;
+  }
+
+  .mi-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mi-col {
+    padding: 20px 24px;
+  }
+
+  .mi-col:first-child {
+    border-right: 1px solid var(--taupe);
+  }
+
+  .mi-col h5 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .mi-col p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--charcoal);
+    opacity: 0.8;
+  }
+
+  .mi-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+
+  .mi-amount span {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.5;
+  }
+
+  /* QUOTE */
+  .quote-block {
+    margin: 40px 0 0;
+    padding: 28px 32px;
+    background: var(--charcoal);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .quote-block blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--cream);
+    line-height: 1.65;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .quote-block cite {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 14px;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin: 48px 0 0;
+    padding: 28px 40px;
+    background: var(--white);
+    border-top: 1px solid var(--taupe);
+  }
+
+  .footer-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-contact p {
+    font-size: 13px;
+    color: var(--charcoal);
+    line-height: 1.7;
+    opacity: 0.75;
+  }
+
+  .footer-contact strong {
+    font-weight: 600;
+    opacity: 1;
+    color: var(--charcoal);
+  }
+
+  .footer-disclaimer p {
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.45;
+    line-height: 1.6;
+    max-width: 520px;
+    text-align: right;
+  }
+
+  /* placeholder-footer */
+
+  /* SECTION SPACER */
+  .spacer { height: 40px; }
+  .spacer-sm { height: 24px; }
+
+  /* NEXT STEPS */
+  .next-steps {
+    margin: 32px 0 0;
+    background: var(--gold-bg);
+    border: 1px solid #D4A01730;
+    border-radius: 4px;
+    padding: 24px 28px;
+  }
+
+  .next-steps h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+
+  .steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .steps-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  @media print {
+    body { background: white; }
+    .hero-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* =============================================
+     RESPONSIVE: TABLET 768px and below
+     ============================================= */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 16px;
+    }
+
+    .diff-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+  }
+
+  /* =============================================
+     RESPONSIVE: MOBILE 640px and below
+     ============================================= */
+  @media (max-width: 640px) {
+
+    /* HEADER: stack brand and meta vertically */
+    .header {
+      padding: 18px 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .header-meta {
+      text-align: left;
+      width: 100%;
+      padding-top: 10px;
+      border-top: 1px solid var(--taupe);
+    }
+
+    .header-meta .borrower-name {
+      font-size: 15px;
+    }
+
+    .header-meta .date-line {
+      font-size: 11px;
+    }
+
+    /* HERO BAND */
+    .hero-band {
+      padding: 28px 16px;
+    }
+
+    .hero-band h2 {
+      font-size: 22px;
+    }
+
+    .hero-band p {
+      font-size: 13px;
+    }
+
+    /* PROPERTY BAR: wrap and hide dividers */
+    .property-bar {
+      padding: 16px;
+      gap: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 14px;
+    }
+
+    .prop-divider {
+      display: none;
+    }
+
+    .prop-item {
+      text-align: left;
+    }
+
+    /* CONTAINER */
+    .container {
+      padding: 0 12px;
+    }
+
+    /* COMPARISON SECTION */
+    .comparison-section {
+      padding: 28px 0 0;
+    }
+
+    /* CARDS: single column */
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* HERO NUMBER BLOCKS: tighten up */
+    .hero-number-block .hn-value {
+      font-size: 34px;
+    }
+
+    /* DATA ROWS: allow label to wrap, prevent overflow */
+    .data-row {
+      padding: 11px 16px;
+      gap: 8px;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+    }
+
+    .data-label {
+      font-size: 12px;
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    .data-value {
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .data-value.small {
+      font-size: 12px;
+    }
+
+    /* ASSISTANCE BLOCK: tighten */
+    .assistance-block {
+      padding: 14px 16px;
+    }
+
+    .assist-row {
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+
+    .assist-row .assist-amount {
+      margin-left: auto;
+    }
+
+    /* CARD HEADER: give badge more room */
+    .card-header {
+      padding: 16px 16px 14px;
+    }
+
+    .card-badge {
+      position: static;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .card-program-name {
+      font-size: 18px;
+    }
+
+    /* DIFF GRID: single column on mobile */
+    .diff-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* MI SECTION: stack columns */
+    .mi-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 14px 16px;
+    }
+
+    .mi-header span {
+      font-size: 11px;
+    }
+
+    .mi-body {
+      grid-template-columns: 1fr;
+    }
+
+    .mi-col:first-child {
+      border-right: none;
+      border-bottom: 1px solid var(--taupe);
+    }
+
+    .mi-col {
+      padding: 18px 16px;
+    }
+
+    /* EDUCATION GRID: single column */
+    .edu-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .edu-card {
+      padding: 18px 16px;
+    }
+
+    /* QUOTE: smaller font */
+    .quote-block {
+      padding: 24px 20px;
+    }
+
+    .quote-block blockquote {
+      font-size: 16px;
+    }
+
+    .quote-block cite {
+      font-size: 11px;
+    }
+
+    /* NEXT STEPS */
+    .next-steps {
+      padding: 20px 16px;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 24px 16px;
+    }
+
+    .footer-disclaimer p {
+      text-align: left;
+      max-width: 100%;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 9px;
+    }
+  }
+
+  /* =============================================
+     RESPONSIVE: VERY SMALL 380px and below
+     ============================================= */
+  @media (max-width: 380px) {
+    .hero-band h2 { font-size: 19px; }
+    .hn-value { font-size: 28px !important; }
+    .diff-card .diff-value { font-size: 24px; }
+    .data-label { font-size: 11px; }
+    .data-value { font-size: 12px; }
+    .header-brand h1 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-brand">
+    <h1>The Loan Lady Club</h1>
+    <p>Where Lending Meets Education</p>
+  </div>
+  <div class="header-meta">
+    <div class="borrower-name">Brandy &amp; Brett Sadler</div>
+    <div class="date-line">Prepared March 19, 2026 &nbsp;|&nbsp; For educational comparison only</div>
+  </div>
+</div>
+
+<!-- HERO BAND -->
+<div class="hero-band">
+  <h2>CalHFA Program Comparison</h2>
+  <p>Two ways to purchase your home with CalHFA down payment and closing cost assistance. This comparison helps you understand the trade-offs between each structure.</p>
+  <span class="scenario-label">If Dream For All is not selected: your backup plan is strong</span>
+</div>
+
+<!-- PROPERTY BAR -->
+<div class="property-bar">
+  <div class="prop-item">
+    <span class="label">Purchase Price</span>
+    <span class="value">$400,000</span>
+  </div>
+  <div class="prop-divider"></div>
+  <div class="prop-item">
+    <span class="label">Property Type</span>
+    <span class="value">Single Family</span>
+  </div>
+  <div class="prop-divider"></div>
+  <div class="prop-item">
+    <span class="label">Occupancy</span>
+    <span class="value">Primary Residence</span>
+  </div>
+  <div class="prop-divider"></div>
+  <div class="prop-item">
+    <span class="label">Term</span>
+    <span class="value">30 Year Fixed</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <div class="comparison-section">
+    <div class="section-label">Side-by-Side Program Comparison</div>
+
+    <div class="cards-grid">
+
+      <!-- CONVENTIONAL CARD -->
+      <div class="card">
+        <div class="card-header conventional">
+          <span class="card-badge badge-conventional">Conventional</span>
+          <div class="card-program-name">CalPLUS Conventional</div>
+          <div class="card-program-sub">2% ZIP + MyHome Assistance</div>
+        </div>
+        <div class="card-body">
+
+          <div class="hero-number-block">
+            <div class="hn-label">Estimated Monthly Payment (PITI)</div>
+            <div class="hn-value">$3,188</div>
+            <div class="hn-sub">Principal, Interest, Taxes, Insurance + PMI</div>
+          </div>
+
+          <div class="hero-number-block" style="padding: 16px 24px;">
+            <div class="hn-label">Estimated Cash to Close</div>
+            <div class="hn-value" style="font-size: 32px;">$6,722</div>
+            <div class="hn-sub">After all CalHFA assistance applied</div>
+          </div>
+
+          <div class="assistance-block">
+            <div class="assist-title">Assistance Applied</div>
+            <div class="assist-row">
+              <span class="assist-name">Down Payment (3% of purchase)</span>
+              <span class="assist-amount">$12,000</span>
+            </div>
+            <div class="assist-row">
+              <span class="assist-name">MyHome (2nd lien, deferred)</span>
+              <span class="assist-amount">$12,000</span>
+            </div>
+            <div class="assist-row">
+              <span class="assist-name">ZIP 2% Closing Cost Assist (3rd lien, 0% interest, deferred)</span>
+              <span class="assist-amount">$7,760</span>
+            </div>
+            <div class="assist-total-row">
+              <span>Total Assistance</span>
+              <span style="color: var(--gold);">$19,760</span>
+            </div>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">First Loan Amount</span>
+            <span class="data-value">$388,000</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Interest Rate</span>
+            <span class="data-value">7.000%</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">APR</span>
+            <span class="data-value small">7.406%</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">First Mortgage P&amp;I</span>
+            <span class="data-value">$2,581.37</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Mortgage Insurance (PMI)</span>
+            <span class="data-value">$90.53 / mo</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Homeowner's Insurance</span>
+            <span class="data-value small">$100.00 / mo</span>
+          </div>
+          <div class="data-row highlight">
+            <span class="data-label">Property Taxes (estimated)</span>
+            <span class="data-value small">$416.67 / mo</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Down Payment Required</span>
+            <span class="data-value">3.0% ($12,000)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">MI Cancellation</span>
+            <span class="data-value small" style="color: #2C7A2C;">Cancellable at 80% LTV</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Min. Credit Score</span>
+            <span class="data-value small">680</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Max DTI</span>
+            <span class="data-value small">45% (680 score) / 50% (700+)</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FHA CARD -->
+      <div class="card">
+        <div class="card-header fha">
+          <span class="card-badge badge-fha">FHA</span>
+          <div class="card-program-name">CalPLUS FHA</div>
+          <div class="card-program-sub">ZIP + MyHome Assistance (3.5%)</div>
+        </div>
+        <div class="card-body">
+
+          <div class="hero-number-block">
+            <div class="hn-label">Estimated Monthly Payment (PITI)</div>
+            <div class="hn-value">$3,240</div>
+            <div class="hn-sub">Principal, Interest, Taxes, Insurance + MIP</div>
+          </div>
+
+          <div class="hero-number-block" style="padding: 16px 24px;">
+            <div class="hn-label">Estimated Cash to Close</div>
+            <div class="hn-value" style="font-size: 32px;">$5,798</div>
+            <div class="hn-sub">After all CalHFA assistance applied</div>
+          </div>
+
+          <div class="assistance-block">
+            <div class="assist-title">Assistance Applied</div>
+            <div class="assist-row">
+              <span class="assist-name">Down Payment (3.5% of purchase)</span>
+              <span class="assist-amount">$14,000</span>
+            </div>
+            <div class="assist-row">
+              <span class="assist-name">MyHome (2nd lien, deferred)</span>
+              <span class="assist-amount">$14,000</span>
+            </div>
+            <div class="assist-row">
+              <span class="assist-name">ZIP Closing Cost Assist (3rd lien, 0% interest, deferred)</span>
+              <span class="assist-amount">$7,720</span>
+            </div>
+            <div class="assist-total-row">
+              <span>Total Assistance</span>
+              <span style="color: var(--gold);">$21,720</span>
+            </div>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">Total Loan Amount (incl. UFMIP)</span>
+            <span class="data-value">$392,755</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">FHA Upfront MIP (financed)</span>
+            <span class="data-value small">$6,755 (1.75%)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Interest Rate</span>
+            <span class="data-value">6.750%</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">APR</span>
+            <span class="data-value small">7.716%</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">First Mortgage P&amp;I</span>
+            <span class="data-value">$2,547.40</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Monthly MIP</span>
+            <span class="data-value">$176.06 / mo</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Homeowner's Insurance</span>
+            <span class="data-value small">$100.00 / mo</span>
+          </div>
+          <div class="data-row highlight">
+            <span class="data-label">Property Taxes (estimated)</span>
+            <span class="data-value small">$416.67 / mo</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Down Payment Required</span>
+            <span class="data-value">3.5% ($14,000)</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">MIP Cancellation</span>
+            <span class="data-value small" style="color: #8C4A00;">Remains for life of loan*</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Min. Credit Score</span>
+            <span class="data-value small">640</span>
+          </div>
+          <div class="data-row">
+            <span class="data-label">Max DTI</span>
+            <span class="data-value small">45% (640 score) / 50% (700+)</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DIFF CALLOUTS -->
+  <div class="diff-band">
+    <div class="section-label">Key Differences at a Glance</div>
+    <div class="diff-grid">
+
+      <div class="diff-card">
+        <div class="diff-label">Monthly Payment Difference</div>
+        <div class="diff-value">$51.56</div>
+        <div class="diff-note">Conventional is lower each month. FHA carries higher MIP than PMI on this scenario.</div>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-label">Cash to Close Difference</div>
+        <div class="diff-value">$924.58</div>
+        <div class="diff-note">FHA requires less cash at closing. The additional MyHome assistance covers the higher down payment requirement.</div>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-label">Total Assistance Difference</div>
+        <div class="diff-value">$1,960</div>
+        <div class="diff-note">FHA unlocks $1,960 more in total CalHFA assistance due to the higher MyHome cap (3.5% vs 3%).</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MI EDUCATION -->
+  <div class="spacer-sm"></div>
+  <div class="mi-section">
+    <div class="mi-header">
+      <h4>Understanding Mortgage Insurance</h4>
+      <span>One of the most important differences between these two programs</span>
+    </div>
+    <div class="mi-body">
+      <div class="mi-col">
+        <h5>Conventional: Private MI (PMI)</h5>
+        <div class="mi-amount">$90.53 <span>/ month</span></div>
+        <p>PMI on a conventional loan can be requested for removal once the loan balance reaches 80% of the original home value. It is automatically cancelled when the loan reaches 78% LTV based on the original amortization schedule. You are not paying this fee forever.</p>
+      </div>
+      <div class="mi-col">
+        <h5>FHA: Mortgage Insurance Premium (MIP)</h5>
+        <div class="mi-amount">$176.06 <span>/ month</span></div>
+        <p>FHA MIP includes both an upfront premium (financed into the loan at 1.75%) and a monthly premium. For most FHA loans with less than 10% down, the monthly MIP remains for the life of the loan. The most common way to remove FHA MIP is to refinance into a conventional loan once sufficient equity is built.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION SECTION -->
+  <div class="education-section">
+    <div class="spacer-sm"></div>
+    <div class="section-label">What This Means for Your Decision</div>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <span class="edu-tag tag-conv">Conventional Strength</span>
+        <h4>Lower long-term insurance cost</h4>
+        <p>The conventional PMI at $90.53 per month is significantly lower than the FHA MIP at $176.06. As you build equity, the PMI goes away. The FHA MIP is structured differently and stays on the loan unless you refinance. Over time, the conventional structure becomes less expensive on this line item.</p>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-tag tag-fha">FHA Strength</span>
+        <h4>Lower cash to close today</h4>
+        <p>FHA brings your cash to close to $5,798 compared to $6,722 on the conventional side. The additional MyHome assistance under FHA (3.5% cap vs 3%) covers the higher down payment requirement, and you arrive at closing with less out of pocket. If cash reserves are a priority right now, FHA has a structural advantage.</p>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-tag tag-fha">FHA Strength</span>
+        <h4>Lower minimum credit score</h4>
+        <p>FHA allows a minimum qualifying score of 640 compared to 680 for the conventional program. If either borrower's qualifying score is below 680, the FHA path may be the more accessible option without adjusting the loan structure.</p>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-tag tag-conv">Conventional Strength</span>
+        <h4>Lower note rate on this scenario</h4>
+        <p>The conventional note rate shown is 7.000%. The FHA note rate shown is 6.750%. While FHA has a lower note rate here, the APR tells a fuller story: the FHA APR is 7.716% vs the conventional APR of 7.406%. The financed upfront MIP increases the effective cost of borrowing under FHA, which the APR reflects.</p>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-tag tag-both">Both Programs</span>
+        <h4>ZIP and MyHome are deferred, not forgiven</h4>
+        <p>Both programs use CalHFA's Zero Interest Program (ZIP) and MyHome Assistance. These are real liens recorded on your property. They carry no interest and no monthly payments, but repayment is due when you sell, refinance, or pay off the first mortgage. This is not free money. It is structured assistance that defers cost to a future transaction.</p>
+      </div>
+
+      <div class="edu-card">
+        <span class="edu-tag tag-both">Both Programs</span>
+        <h4>Homebuyer education is required</h4>
+        <p>CalHFA requires completion of an approved homebuyer education course before closing. Certificates are valid for one year. This applies to all first-time homebuyers using either the conventional or FHA CalHFA program with subordinate financing. Planning ahead on this requirement avoids delays at the end of the process.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUOTE BLOCK -->
+  <div class="quote-block">
+    <blockquote>
+      There is no universally better option here. The right program depends on your credit profile, your cash on hand, and your plan for the home over the next several years. My job is to make sure you understand exactly what each structure means before we decide together.
+    </blockquote>
+    <cite>Joanna Perry, California Licensed Mortgage Broker | NMLS #243348</cite>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="next-steps">
+    <h3>How We Move Forward Together</h3>
+    <ul class="steps-list">
+      <li>
+        <span class="step-num">1</span>
+        <span>Review this comparison at your own pace. Write down any questions that come up. There are no wrong questions.</span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>We will connect during your Buyer's Edge session to walk through the numbers side by side, confirm your qualifying profile, and identify which program fits your actual situation.</span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>No credit is pulled and no application is submitted until you have reviewed all disclosures, confirmed the program selection, and provided explicit authorization during Buyer's Edge.</span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <span>If you are selected for Dream For All, this comparison is your backup. Either way, you have a clear path to homeownership.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="spacer"></div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <p><strong>Joanna Perry</strong> | California Licensed Mortgage Broker<br>
+      NMLS #243348 | The Loan Lady Club | Company NMLS #2179191<br>
+      (916) 708-8555 &nbsp;|&nbsp; joanna@loanlady.club &nbsp;|&nbsp; loanladyclub.com</p>
+    </div>
+    <div class="footer-disclaimer">
+      <p>This document is provided for educational and illustrative purposes only. It is not a loan approval, commitment to lend, or guarantee of program availability. Rates and program terms shown reflect estimates as of 03/19/2026 and are subject to change. CalHFA income limits apply. All borrowers must qualify based on credit, income, and property requirements. A full Loan Estimate will be provided following application. CalHFA program guidelines sourced from published matrices updated January 2026.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
