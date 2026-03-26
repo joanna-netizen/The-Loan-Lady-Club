@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Professional Loan Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0ebe3;
+    font-family: 'Inter', sans-serif;
+    color: #2C2C2C;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border-top: 4px solid #B8860B;
+    border-radius: 2px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 52px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 36px;
+  }
+  .brand-block {}
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #2C2C2C;
+    line-height: 1.2;
+  }
+  .brand-tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #B8860B;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+  }
+  .contact-block {
+    text-align: right;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(44,44,44,0.72);
+    line-height: 1.7;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid #E8E2D9;
+    margin: 0 0 32px 0;
+  }
+
+  /* GREETING */
+  .greeting {
+    margin-bottom: 32px;
+  }
+  .greeting h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: #2C2C2C;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+  .greeting p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #2C2C2C;
+    line-height: 1.7;
+  }
+  .greeting p + p {
+    margin-top: 10px;
+  }
+
+  /* PROGRAM BADGE */
+  .program-badge {
+    display: inline-block;
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    border-left: 3px solid #B8860B;
+    padding: 8px 14px;
+    margin-bottom: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #2C2C2C;
+  }
+  .program-badge span {
+    color: #B8860B;
+    font-weight: 600;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #2C2C2C;
+    margin-bottom: 16px;
+  }
+
+  /* SCENARIO CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: #2C2C2C;
+    padding: 10px 14px;
+    text-align: center;
+  }
+  .card-header .option-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #B8860B;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .card-header .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #FFFFFF;
+    margin-top: 2px;
+  }
+
+  .card-body {
+    padding: 14px;
+  }
+
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid #E8E2D9;
+    font-size: 13px;
+  }
+  .line-item:last-child {
+    border-bottom: none;
+  }
+  .line-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: rgba(44,44,44,0.75);
+    font-size: 12px;
+  }
+  .line-value {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #2C2C2C;
+    font-size: 13px;
+    text-align: right;
+  }
+  .line-value.gold {
+    color: #B8860B;
+    font-weight: 600;
+  }
+  .line-value.negative {
+    color: #2C7A4B;
+    font-weight: 600;
+  }
+
+  /* Monthly total row */
+  .total-row {
+    border-top: 2px solid #B8860B !important;
+    margin-top: 4px;
+    padding-top: 8px !important;
+  }
+  .total-row .line-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #2C2C2C;
+  }
+  .total-row .line-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #2C2C2C;
+  }
+
+  /* DISCOUNT NOTE */
+  .discount-note {
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    border-left: 3px solid #B8860B;
+    padding: 14px 16px;
+    margin-bottom: 32px;
+  }
+  .discount-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #2C2C2C;
+    line-height: 1.6;
+  }
+
+  /* WHAT THIS MEANS */
+  .summary-section {
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    padding: 22px 24px;
+    margin-bottom: 32px;
+  }
+  .summary-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: #2C2C2C;
+    margin-bottom: 12px;
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid #E8E2D9;
+    font-size: 13px;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-row .s-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: rgba(44,44,44,0.75);
+  }
+  .summary-row .s-value {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #2C2C2C;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: #2C2C2C;
+    padding: 28px 28px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .cta-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  .cta-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: rgba(245,240,232,0.80);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #B8860B;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 28px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-radius: 1px;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(44,44,44,0.60);
+    line-height: 1.7;
+    border-top: 1px solid #E8E2D9;
+    padding-top: 20px;
+  }
+  .disclaimer p + p { margin-top: 6px; }
+
+  /* MOBILE */
+  @media (max-width: 540px) {
+    .page { padding: 32px 20px; }
+    .header { flex-direction: column; gap: 12px; }
+    .contact-block { text-align: left; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .greeting h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="brand-tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry, NMLS #243348<br>
+      joanna@loanlady.club<br>
+      (916) 708-8555<br>
+      loanladyclub.com
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <h1>Your Medical Professional Loan Options</h1>
+    <p>Prepared for you in connection with your referral from Shawn Hill. The scenarios below are based on a $700,000 purchase at 0% down using the Windsor Mortgage Medical Professionals Program.</p>
+    <p>Three rate options are shown so you can see how the tradeoff between rate and closing costs works across each scenario. All figures are estimates and labeled as such.</p>
+  </div>
+
+  <!-- PROGRAM BADGE -->
+  <div class="program-badge">
+    Program: <span>Windsor Mortgage Medical Professionals</span> &nbsp;|&nbsp; 30-Year Fixed &nbsp;|&nbsp; 0% Down &nbsp;|&nbsp; No MI Required &nbsp;|&nbsp; Manual Underwrite
+  </div>
+
+  <!-- SCENARIO CARDS -->
+  <div class="section-label">Side-by-Side Comparison</div>
+  <div class="cards-grid">
+
+    <!-- Option A: 7.500% -->
+    <div class="card">
+      <div class="card-header">
+        <div class="option-label">Option A</div>
+        <div class="card-title">7.500% Rate</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="line-label">Loan Amount</span>
+          <span class="line-value">$700,000</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Down Payment</span>
+          <span class="line-value gold">$0</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Interest Rate</span>
+          <span class="line-value">7.500%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">APR (est.)</span>
+          <span class="line-value">7.500%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Points</span>
+          <span class="line-value">-0.227</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Base Closing Costs</span>
+          <span class="line-value negative">($1,589)</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">1.5% Discount Cost</span>
+          <span class="line-value">$10,500</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Cash to Close (est.)</span>
+          <span class="line-value gold">$8,911</span>
+        </div>
+        <div class="line-item total-row">
+          <span class="line-label">Monthly P&amp;I</span>
+          <span class="line-value">$4,894.50</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option B: 7.375% -->
+    <div class="card">
+      <div class="card-header">
+        <div class="option-label">Option B</div>
+        <div class="card-title">7.375% Rate</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="line-label">Loan Amount</span>
+          <span class="line-value">$700,000</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Down Payment</span>
+          <span class="line-value gold">$0</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Interest Rate</span>
+          <span class="line-value">7.375%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">APR (est.)</span>
+          <span class="line-value">7.395%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Points</span>
+          <span class="line-value">0.195</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Base Closing Costs</span>
+          <span class="line-value">$1,365</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">1.5% Discount Cost</span>
+          <span class="line-value">$10,500</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Cash to Close (est.)</span>
+          <span class="line-value gold">$11,865</span>
+        </div>
+        <div class="line-item total-row">
+          <span class="line-label">Monthly P&amp;I</span>
+          <span class="line-value">$4,834.73</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option C: 7.625% -->
+    <div class="card">
+      <div class="card-header">
+        <div class="option-label">Option C</div>
+        <div class="card-title">7.625% Rate</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="line-label">Loan Amount</span>
+          <span class="line-value">$700,000</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Down Payment</span>
+          <span class="line-value gold">$0</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Interest Rate</span>
+          <span class="line-value">7.625%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">APR (est.)</span>
+          <span class="line-value">7.625%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Points</span>
+          <span class="line-value">-0.586</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Base Closing Costs</span>
+          <span class="line-value negative">($4,102)</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">1.5% Discount Cost</span>
+          <span class="line-value">$10,500</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Cash to Close (est.)</span>
+          <span class="line-value gold">$6,398</span>
+        </div>
+        <div class="line-item total-row">
+          <span class="line-label">Monthly P&amp;I</span>
+          <span class="line-value">$4,954.56</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DISCOUNT NOTE -->
+  <div class="discount-note">
+    <p>The 1.5% discount cost ($10,500) is a lender fee associated with this program and is shown as a separate line item in each scenario so you can see exactly how it affects your cash to close.</p>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="summary-section">
+    <h3>Quick Comparison at a Glance</h3>
+    <div class="summary-row">
+      <span class="s-label"></span>
+      <span class="s-value" style="width:30%;text-align:right;font-size:11px;color:#B8860B;">Option A</span>
+      <span class="s-value" style="width:30%;text-align:right;font-size:11px;color:#B8860B;">Option B</span>
+      <span class="s-value" style="width:30%;text-align:right;font-size:11px;color:#B8860B;">Option C</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Rate</span>
+      <span class="s-value" style="width:30%;text-align:right;">7.500%</span>
+      <span class="s-value" style="width:30%;text-align:right;">7.375%</span>
+      <span class="s-value" style="width:30%;text-align:right;">7.625%</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Monthly P&amp;I</span>
+      <span class="s-value" style="width:30%;text-align:right;">$4,894.50</span>
+      <span class="s-value" style="width:30%;text-align:right;">$4,834.73</span>
+      <span class="s-value" style="width:30%;text-align:right;">$4,954.56</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Cash to Close (est.)</span>
+      <span class="s-value" style="width:30%;text-align:right;">$8,911</span>
+      <span class="s-value" style="width:30%;text-align:right;">$11,865</span>
+      <span class="s-value" style="width:30%;text-align:right;">$6,398</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Ready to Move Forward?</h3>
+    <p>The next step is a structured consultation where we walk through these figures together, answer your questions, and map out the right path for your situation.</p>
+    <a class="cta-btn" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">Schedule Your Consultation</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p>All interest rates, APR figures, closing costs, and monthly payment amounts shown are estimates based on pricing dated 03/25/2026 and are provided for illustrative purposes only. Rates and costs are subject to change without notice. This is not a loan approval, commitment to lend, or guarantee of any specific loan terms.</p>
+    <p>The 1.5% discount cost shown reflects a lender-level program cost and is included as a separate line item for transparency. Actual cash to close will vary based on final loan terms, prepaid items, escrow setup, and applicable fees determined at the time of loan application.</p>
+    <p>Monthly payment shown reflects principal and interest only. Taxes, homeowners insurance, and any applicable assessments are not included and will increase the total monthly obligation.</p>
+    <p>Lock period: 30 days assumed. Escrow account required for LTVs above 90.01% per Windsor Mortgage program guidelines.</p>
+    <p>Joanna Perry, NMLS #243348 | Xpert Home Lending Inc., NMLS #2179191 | California Licensed Mortgage Broker | Equal Housing Opportunity</p>
+    <p>Windsor Mortgage is a service provided by Plains Commerce Bank, NMLS #463950. All loans subject to credit approval.</p>
+  </div>
+
+</div>
+</body>
+</html>
