@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Loan Comparison — Gabrial & Jeiran Nessar</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-light: #555;
+    --ink-faint: #888;
+    --rule: #e2e2de;
+    --bg: #f5f5f2;
+    --card: #ffffff;
+    --accent: #2d6a4f;
+    --gold: #b5830f;
+    --gold-light: #fdf6e3;
+    --gold-border: #e8cc80;
+    --blue: #1a4a7a;
+    --blue-light: #f0f7ff;
+    --blue-border: #cce0ff;
+    --red: #c0392b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0 0 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--ink);
+    color: white;
+    padding: 28px 20px 22px;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 24px;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+  .header-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .header-meta strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+
+  /* ── SCENARIO PILLS ── */
+  .scenario-strip {
+    background: white;
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 20px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scenario-strip::-webkit-scrollbar { display: none; }
+  .pill {
+    flex-shrink: 0;
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11.5px;
+    color: var(--ink-light);
+    white-space: nowrap;
+  }
+  .pill strong { color: var(--ink); font-weight: 600; }
+
+  /* ── ADVISOR NOTE ── */
+  .advisor-note {
+    margin: 16px 16px 4px;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 13px 15px;
+    font-size: 13px;
+    color: #5a3e00;
+    line-height: 1.6;
+  }
+  .advisor-note strong { color: var(--gold); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    padding: 20px 16px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ── CARDS ── */
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 16px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .card.pick {
+    border: 2px solid var(--accent);
+    box-shadow: 0 2px 12px rgba(45,106,79,0.15);
+  }
+
+  /* Card header */
+  .card-head {
+    padding: 16px 18px 14px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card.pick .card-head { background: var(--accent); }
+  .card.baseline .card-head { background: #f7f7f4; }
+
+  .card-rate {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .card.pick .card-rate { color: white; }
+  .card.baseline .card-rate { color: var(--ink-faint); }
+
+  .card-rate-sub {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-top: 3px;
+  }
+  .card.pick .card-rate-sub { color: rgba(255,255,255,0.7); }
+
+  .pick-badge {
+    background: white;
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .baseline-badge {
+    background: var(--rule);
+    color: var(--ink-faint);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* Card section label */
+  .card-section-label {
+    padding: 9px 18px 5px;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: #fafaf8;
+    border-bottom: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    margin-top: 2px;
+  }
+
+  /* Rows */
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 18px;
+    border-bottom: 1px solid #f0f0ec;
+    font-size: 13.5px;
+  }
+  .row:last-child { border-bottom: none; }
+  .row .rlabel {
+    color: var(--ink-light);
+    font-size: 13px;
+    flex: 1;
+    padding-right: 12px;
+  }
+  .row .rval {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .row.sub .rlabel { color: var(--ink-faint); font-size: 12px; padding-left: 8px; }
+  .row.sub .rval { font-size: 13px; font-weight: 400; color: var(--ink-light); }
+
+  /* PITI total */
+  .row.piti { background: var(--ink); }
+  .row.piti .rlabel { color: #aaa; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .row.piti .rval { color: white; font-size: 18px; }
+
+  /* Savings */
+  .row.savings .rval { color: var(--accent); }
+  .row.savings .rval.neutral { color: var(--ink-faint); font-weight: 400; font-style: italic; font-size: 12px; }
+
+  /* Cash to close */
+  .row.cash { background: var(--blue-light); border-top: 1px solid var(--blue-border); border-bottom: 1px solid var(--blue-border); }
+  .row.cash .rlabel { color: var(--blue); font-weight: 600; }
+  .row.cash .rval { color: var(--blue); font-size: 15px; }
+
+  /* Extra cash */
+  .row.extra .rval { color: var(--red); }
+  .row.extra .rval.neutral { color: var(--ink-faint); font-weight: 400; font-style: italic; font-size: 12px; }
+
+  /* Breakeven */
+  .row.breakeven { background: var(--gold-light); border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border); }
+  .row.breakeven .rlabel { color: var(--gold); font-weight: 600; }
+  .row.breakeven .rval { color: var(--gold); font-size: 15px; }
+  .row.breakeven .rval.neutral { color: var(--ink-faint); font-weight: 400; font-style: italic; font-size: 12px; }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    margin: 24px 16px 0;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+  .footnote strong { color: var(--ink-light); }
+
+  /* ── DESKTOP ── */
+  @media (min-width: 700px) {
+    .header { padding: 36px 40px 28px; }
+    .header h1 { font-size: 30px; }
+    .scenario-strip { padding: 14px 40px; }
+    .advisor-note { margin: 20px 40px 4px; }
+    .section-label { padding: 24px 40px 10px; }
+    .cards { flex-direction: row; flex-wrap: wrap; padding: 0 40px; gap: 18px; }
+    .card { flex: 1 1 calc(50% - 9px); min-width: 280px; }
+    .footnote { margin: 28px 40px 0; }
+  }
+  @media (min-width: 1100px) {
+    .cards { flex-wrap: nowrap; }
+    .card { flex: 1 1 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Rate &amp; Cost Comparison</h1>
+  <div class="header-meta">
+    <strong>Gabrial &amp; Jeiran Nessar</strong> &nbsp;·&nbsp; 30-Year Conventional Fixed &nbsp;·&nbsp; 20% Down<br>
+    Joanna Perry, NMLS #243348 &nbsp;·&nbsp; The Loan Lady Club &nbsp;·&nbsp; March 26, 2026
+  </div>
+</div>
+
+<div class="scenario-strip">
+  <div class="pill">Purchase <strong>$1,275,000</strong></div>
+  <div class="pill">Loan <strong>$1,020,000</strong></div>
+  <div class="pill">Down <strong>$255,000 (20%)</strong></div>
+  <div class="pill">ZIP <strong>95605 CA</strong></div>
+  <div class="pill">Primary Residence</div>
+  <div class="pill">30-Day Lock</div>
+</div>
+
+<div class="advisor-note">
+  <strong>⭐ Advisor's Pick: 6.125%</strong> &nbsp;·&nbsp; Of the three buydown options, 6.125% reaches breakeven the fastest (~3.75 years) — strong monthly savings with the least time needed to recover the upfront cost. The 6.25% option takes the longest to break even (month 61), making it the least efficient of the three.
+</div>
+
+<div class="section-label">Your 4 Options</div>
+<div class="cards">
+
+  <!-- 6.000% -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-rate">6.000%</div>
+        <div class="card-rate-sub">APR 6.193% &nbsp;·&nbsp; 1.663 pts</div>
+      </div>
+    </div>
+    <div class="card-section-label">Monthly Payment</div>
+    <div class="row sub"><span class="rlabel">Principal &amp; Interest</span><span class="rval">$6,115.42</span></div>
+    <div class="row sub"><span class="rlabel">Taxes</span><span class="rval">$1,328.13</span></div>
+    <div class="row sub"><span class="rlabel">Insurance</span><span class="rval">$250.00</span></div>
+    <div class="row sub"><span class="rlabel">HOA</span><span class="rval">$326.00</span></div>
+    <div class="row piti"><span class="rlabel">Total PITI + HOA</span><span class="rval">$8,019.55</span></div>
+    <div class="row savings"><span class="rlabel">Monthly savings vs. 6.375%</span><span class="rval">$248.05 / mo</span></div>
+    <div class="card-section-label">Cash to Close</div>
+    <div class="row cash"><span class="rlabel">Estimated Cash to Close</span><span class="rval">$294,273.83</span></div>
+    <div class="row extra"><span class="rlabel">Extra upfront vs. 6.375%</span><span class="rval">+$11,713.85</span></div>
+    <div class="card-section-label">Discount Points Breakeven</div>
+    <div class="row breakeven"><span class="rlabel">⏱ Break even at</span><span class="rval">Month 48 (~4 yrs)</span></div>
+  </div>
+
+  <!-- 6.125% — PICK -->
+  <div class="card pick">
+    <div class="card-head">
+      <div>
+        <div class="card-rate">6.125%</div>
+        <div class="card-rate-sub">APR 6.278% &nbsp;·&nbsp; 1.234 pts</div>
+      </div>
+      <div class="pick-badge">⭐ Advisor's Pick</div>
+    </div>
+    <div class="card-section-label">Monthly Payment</div>
+    <div class="row sub"><span class="rlabel">Principal &amp; Interest</span><span class="rval">$6,197.63</span></div>
+    <div class="row sub"><span class="rlabel">Taxes</span><span class="rval">$1,328.13</span></div>
+    <div class="row sub"><span class="rlabel">Insurance</span><span class="rval">$250.00</span></div>
+    <div class="row sub"><span class="rlabel">HOA</span><span class="rval">$326.00</span></div>
+    <div class="row piti"><span class="rlabel">Total PITI + HOA</span><span class="rval">$8,101.76</span></div>
+    <div class="row savings"><span class="rlabel">Monthly savings vs. 6.375%</span><span class="rval">$165.84 / mo</span></div>
+    <div class="card-section-label">Cash to Close</div>
+    <div class="row cash"><span class="rlabel">Estimated Cash to Close</span><span class="rval">$289,947.61</span></div>
+    <div class="row extra"><span class="rlabel">Extra upfront vs. 6.375%</span><span class="rval">+$7,387.63</span></div>
+    <div class="card-section-label">Discount Points Breakeven</div>
+    <div class="row breakeven"><span class="rlabel">⏱ Break even at</span><span class="rval">Month 45 (~3.75 yrs)</span></div>
+  </div>
+
+  <!-- 6.250% -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-rate">6.250%</div>
+        <div class="card-rate-sub">APR 6.382% &nbsp;·&nbsp; 1.000 pt</div>
+      </div>
+    </div>
+    <div class="card-section-label">Monthly Payment</div>
+    <div class="row sub"><span class="rlabel">Principal &amp; Interest</span><span class="rval">$6,280.32</span></div>
+    <div class="row sub"><span class="rlabel">Taxes</span><span class="rval">$1,328.13</span></div>
+    <div class="row sub"><span class="rlabel">Insurance</span><span class="rval">$250.00</span></div>
+    <div class="row sub"><span class="rlabel">HOA</span><span class="rval">$326.00</span></div>
+    <div class="row piti"><span class="rlabel">Total PITI + HOA</span><span class="rval">$8,184.45</span></div>
+    <div class="row savings"><span class="rlabel">Monthly savings vs. 6.375%</span><span class="rval">$83.15 / mo</span></div>
+    <div class="card-section-label">Cash to Close</div>
+    <div class="row cash"><span class="rlabel">Estimated Cash to Close</span><span class="rval">$287,610.40</span></div>
+    <div class="row extra"><span class="rlabel">Extra upfront vs. 6.375%</span><span class="rval">+$5,050.42</span></div>
+    <div class="card-section-label">Discount Points Breakeven</div>
+    <div class="row breakeven"><span class="rlabel">⏱ Break even at</span><span class="rval">Month 61 (~5 yrs)</span></div>
+  </div>
+
+  <!-- 6.375% — Baseline -->
+  <div class="card baseline">
+    <div class="card-head">
+      <div>
+        <div class="card-rate">6.375%</div>
+        <div class="card-rate-sub">APR 6.460% &nbsp;·&nbsp; 0.500 pts</div>
+      </div>
+      <div class="baseline-badge">Baseline</div>
+    </div>
+    <div class="card-section-label">Monthly Payment</div>
+    <div class="row sub"><span class="rlabel">Principal &amp; Interest</span><span class="rval">$6,363.47</span></div>
+    <div class="row sub"><span class="rlabel">Taxes</span><span class="rval">$1,328.13</span></div>
+    <div class="row sub"><span class="rlabel">Insurance</span><span class="rval">$250.00</span></div>
+    <div class="row sub"><span class="rlabel">HOA</span><span class="rval">$326.00</span></div>
+    <div class="row piti"><span class="rlabel">Total PITI + HOA</span><span class="rval">$8,267.60</span></div>
+    <div class="row savings"><span class="rlabel">Monthly savings vs. 6.375%</span><span class="rval neutral">— baseline —</span></div>
+    <div class="card-section-label">Cash to Close</div>
+    <div class="row cash"><span class="rlabel">Estimated Cash to Close</span><span class="rval">$282,559.98</span></div>
+    <div class="row extra"><span class="rlabel">Extra upfront vs. 6.375%</span><span class="rval neutral">— baseline —</span></div>
+    <div class="card-section-label">Discount Points Breakeven</div>
+    <div class="row breakeven"><span class="rlabel">⏱ Break even at</span><span class="rval neutral">No extra pts cost</span></div>
+  </div>
+
+</div>
+
+<div class="footnote">
+  <strong>How to read the breakeven:</strong> The number of months your monthly savings take to recover the extra upfront points cost vs. the 6.375% baseline. If you keep this loan past that month, you come out ahead. If you sell or refinance before then, the lower-points option preserves more cash now.<br><br>
+  This worksheet is for informational purposes only. Rates are subject to change and are not a commitment to lend. Get an official Loan Estimate before choosing a loan. · Joanna Perry, NMLS #243348 · The Loan Lady Club, NMLS #2179191
+</div>
+
+</body>
+</html>
