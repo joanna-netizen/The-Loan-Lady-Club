@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>Loan Comparison | Anhad Sarang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: #f0ebe3;
+    font-family: 'Inter', sans-serif;
+    color: #2C2C2C;
+    padding: 24px 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border-top: 4px solid #B8860B;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 40px 44px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #2C2C2C;
+    line-height: 1.2;
+  }
+  .brand-tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #B8860B;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .contact-block {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(44,44,44,0.70);
+    line-height: 1.75;
+  }
+
+  .divider { border: none; border-top: 1px solid #E8E2D9; margin: 0 0 28px; }
+
+  /* GREETING */
+  .greeting { margin-bottom: 24px; }
+  .greeting h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(20px, 3.5vw, 26px);
+    color: #2C2C2C;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .greeting p { font-size: 14px; line-height: 1.8; color: #2C2C2C; }
+  .greeting p + p { margin-top: 10px; }
+
+  /* ALERTS */
+  .alert {
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    border-left: 3px solid #B8860B;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+  }
+  .alert-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #B8860B;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 7px;
+  }
+  .alert p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #2C2C2C;
+    line-height: 1.65;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(16px, 2.5vw, 19px);
+    color: #2C2C2C;
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(44,44,44,0.65);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  /* GRIDS */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  /* CARDS */
+  .card {
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-head {
+    background: #2C2C2C;
+    padding: 9px 10px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .card-option {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    color: #B8860B;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #FFFFFF;
+    margin-top: 2px;
+    line-height: 1.2;
+  }
+  .card-body { padding: 11px; flex: 1; }
+
+  .li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid #E8E2D9;
+    gap: 6px;
+  }
+  .li:last-child { border-bottom: none; }
+  .ll { font-size: 11px; color: rgba(44,44,44,0.68); font-weight: 400; flex-shrink: 0; }
+  .lv { font-size: 11.5px; color: #2C2C2C; font-weight: 500; text-align: right; word-break: break-all; }
+  .lv.gold  { color: #B8860B; font-weight: 600; }
+  .lv.green { color: #2C7A4B; font-weight: 600; }
+  .lv.red   { color: #9B3A3A; font-weight: 500; }
+
+  .total-row {
+    border-top: 2px solid #B8860B !important;
+    margin-top: 4px;
+    padding-top: 7px !important;
+  }
+  .total-row .ll { font-weight: 600; color: #2C2C2C; }
+  .total-row .lv {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #2C2C2C;
+  }
+
+  /* CALLOUT BOXES */
+  .callout {
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    border-left: 3px solid #B8860B;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+  }
+  .callout-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: #2C2C2C;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 7px;
+  }
+  .callout p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #2C2C2C;
+    line-height: 1.65;
+  }
+
+  /* 5-YEAR TABLE */
+  .scroll-hint {
+    font-size: 11px;
+    color: rgba(44,44,44,0.50);
+    font-style: italic;
+    margin-bottom: 6px;
+    display: none;
+  }
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 28px;
+    border: 1px solid #E8E2D9;
+  }
+  .summary-table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .summary-table thead tr { background: #2C2C2C; }
+  .summary-table thead th {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    color: #B8860B;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 9px 11px;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .summary-table thead th:first-child { text-align: left; }
+  .summary-table tbody tr { border-bottom: 1px solid #E8E2D9; }
+  .summary-table tbody tr:nth-child(odd)  { background: #F5F0E8; }
+  .summary-table tbody tr:nth-child(even) { background: #FFFFFF; }
+  .summary-table tbody tr.phys-row { background: #EDE8DF; }
+  .summary-table tbody td { padding: 8px 11px; text-align: right; white-space: nowrap; }
+  .summary-table tbody td:first-child { text-align: left; font-weight: 500; }
+  .summary-table tbody td.gold { color: #B8860B; font-weight: 600; }
+  .summary-table tbody td.red  { color: #9B3A3A; }
+
+  /* INSIGHTS */
+  .insight-box {
+    background: #F5F0E8;
+    border: 1px solid #E8E2D9;
+    padding: 22px 24px;
+    margin-bottom: 28px;
+  }
+  .insight-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: #2C2C2C;
+    margin-bottom: 14px;
+  }
+  .insight-item {
+    padding: 9px 0;
+    border-bottom: 1px solid #E8E2D9;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #2C2C2C;
+  }
+  .insight-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .insight-item strong { font-weight: 600; color: #B8860B; }
+
+  /* CTA */
+  .cta-block {
+    background: #2C2C2C;
+    padding: 28px 24px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .cta-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(17px, 2.8vw, 21px);
+    color: #FFFFFF;
+    margin-bottom: 10px;
+  }
+  .cta-block p {
+    font-size: 13px;
+    color: rgba(245,240,232,0.80);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #B8860B;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 30px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-radius: 1px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    font-size: 11px;
+    color: rgba(44,44,44,0.56);
+    line-height: 1.75;
+    border-top: 1px solid #E8E2D9;
+    padding-top: 20px;
+  }
+  .disclaimer p + p { margin-top: 6px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 620px) {
+    .page { padding: 28px 20px; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .contact-block { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  @media (max-width: 420px) {
+    body { padding: 0; }
+    .page { padding: 22px 16px; box-shadow: none; }
+    .grid-4 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .header { flex-direction: column; gap: 8px; }
+    .greeting h1 { font-size: 19px; }
+    .card-title { font-size: 12px; }
+    .total-row .lv { font-size: 13px; }
+    .cta-btn { display: block; padding: 14px 20px; }
+    .insight-box { padding: 16px; }
+    .insight-item { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="brand-tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry, NMLS #243348<br>
+      joanna@loanlady.club<br>
+      (916) 708-8555<br>
+      loanladyclub.com
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <h1>Anhad, here is a full picture of your options.</h1>
+    <p>Thank you for reaching out. I want to make sure you have clear, complete information before making any decisions. You mentioned comparing a conventional loan at 20% down versus the physician program at 10% down. I want to show you more than that.</p>
+    <p>One of the most common questions I get is whether 20% down is required on a conventional loan. It is not. Conventional financing is available at 5%, 10%, 15%, and 20% down. Each option carries different tradeoffs in monthly payment, mortgage insurance, and cash to close. Below you will see all four conventional scenarios alongside three physician loan options so you can compare them side by side.</p>
+    <p>These figures are estimates based on pricing dated 03/26/2026 and are for educational purposes only. Nothing here is a loan approval or commitment to lend.</p>
+  </div>
+
+  <!-- FICO ALERT -->
+  <div class="alert">
+    <div class="alert-title">Important: Credit Score Note</div>
+    <p>All figures below are based on an estimated FICO score of 760. Your actual credit score has not yet been verified and will directly affect your rate, mortgage insurance cost, and which programs you qualify for. These estimates are a starting point for education. Your verified credit profile is part of a later step in the process, after we have had a chance to talk through your full picture together.</p>
+  </div>
+
+  <!-- CONVENTIONAL -->
+  <div class="section-label">Conventional Loan Options</div>
+  <div class="section-sub">30-Year Fixed | $700,000 Purchase Price | Primary Residence | Sacramento, CA</div>
+
+  <div class="grid-4">
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-option">5% Down</div>
+        <div class="card-title">6.250% Fixed</div>
+      </div>
+      <div class="card-body">
+        <div class="li"><span class="ll">Loan Amount</span><span class="lv">$665,000</span></div>
+        <div class="li"><span class="ll">Down Payment</span><span class="lv gold">$35,000</span></div>
+        <div class="li"><span class="ll">Rate / APR</span><span class="lv">6.25% / 6.507%</span></div>
+        <div class="li"><span class="ll">P&amp;I</span><span class="lv">$4,094.52</span></div>
+        <div class="li"><span class="ll">Mortgage Ins.</span><span class="lv red">$166.25</span></div>
+        <div class="li"><span class="ll">Tax &amp; Insurance</span><span class="lv">$845.84</span></div>
+        <div class="li"><span class="ll">Cash to Close</span><span class="lv gold">$47,674</span></div>
+        <div class="li total-row"><span class="ll">Total Monthly</span><span class="lv">$5,106.61</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-option">10% Down</div>
+        <div class="card-title">6.250% Fixed</div>
+      </div>
+      <div class="card-body">
+        <div class="li"><span class="ll">Loan Amount</span><span class="lv">$630,000</span></div>
+        <div class="li"><span class="ll">Down Payment</span><span class="lv gold">$70,000</span></div>
+        <div class="li"><span class="ll">Rate / APR</span><span class="lv">6.25% / 6.595%</span></div>
+        <div class="li"><span class="ll">P&amp;I</span><span class="lv">$3,879.02</span></div>
+        <div class="li"><span class="ll">Mortgage Ins.</span><span class="lv red">$126.00</span></div>
+        <div class="li"><span class="ll">Tax &amp; Insurance</span><span class="lv">$845.84</span></div>
+        <div class="li"><span class="ll">Cash to Close</span><span class="lv gold">$92,899</span></div>
+        <div class="li total-row"><span class="ll">Total Monthly</span><span class="lv">$4,850.86</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-option">15% Down</div>
+        <div class="card-title">6.375% Fixed</div>
+      </div>
+      <div class="card-body">
+        <div class="li"><span class="ll">Loan Amount</span><span class="lv">$595,000</span></div>
+        <div class="li"><span class="ll">Down Payment</span><span class="lv gold">$105,000</span></div>
+        <div class="li"><span class="ll">Rate / APR</span><span class="lv">6.375% / 6.626%</span></div>
+        <div class="li"><span class="ll">P&amp;I</span><span class="lv">$3,712.03</span></div>
+        <div class="li"><span class="ll">Mortgage Ins.</span><span class="lv red">$59.50</span></div>
+        <div class="li"><span class="ll">Tax &amp; Insurance</span><span class="lv">$845.84</span></div>
+        <div class="li"><span class="ll">Cash to Close</span><span class="lv gold">$127,393</span></div>
+        <div class="li total-row"><span class="ll">Total Monthly</span><span class="lv">$4,617.37</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-option">20% Down</div>
+        <div class="card-title">6.250% Fixed</div>
+      </div>
+      <div class="card-body">
+        <div class="li"><span class="ll">Loan Amount</span><span class="lv">$560,000</span></div>
+        <div class="li"><span class="ll">Down Payment</span><span class="lv gold">$140,000</span></div>
+        <div class="li"><span class="ll">Rate / APR</span><span class="lv">6.25% / 6.440%</span></div>
+        <div class="li"><span class="ll">P&amp;I</span><span class="lv">$3,448.02</span></div>
+        <div class="li"><span class="ll">Mortgage Ins.</span><span class="lv green">None</span></div>
+        <div class="li"><span class="ll">Tax &amp; Insurance</span><span class="lv">$845.84</span></div>
+        <div class="li"><span class="ll">Cash to Close</span><span class="lv gold">$161,714</span></div>
+        <div class="li total-row"><span class="ll">Total Monthly</span><span class="lv">$4,293.86</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">About Mortgage Insurance on Conventional Loans</div>
+    <p>Private mortgage insurance (PMI) is required on conventional loans when the down payment is less than 20%. The cost is primarily driven by your credit score and down payment percentage. At an estimated 760 FICO, the PMI shown above is relatively modest. Unlike FHA loans, PMI on a conventional loan can be removed once you reach 20% equity in the home.</p>
+  </div>
+
+  <!-- PHYSICIAN -->
+  <div class="section-label">Medical Professional Loan Options</div>
+  <div class="section-sub">Windsor Mortgage | ~9.99% Down | No Mortgage Insurance | Manual Underwrite Required | Sacramento, CA</div>
+
+  <div class="grid-3">
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-option">Physician Option A</div>
+        <div class="card-title">7.625% 30-Yr Fixed</div>
+      </div>
+      <div class="card-body">
+        <div class="li"><span class="ll">Loan Amount</span><span class="lv">$630,070</span></div>
+        <div class="li"><span class="ll">Down Payment</span><span class="lv gold">$69,930</span></div>
+        <div class="li"><span class="ll">Rate / APR</span><span class="lv">7.625% / 7.832%</span></div>
+        <div class="li"><span class="ll">Points</span><span class="lv">1.500%</span></div>
+        <div class="li"><span class="ll">P&amp;I</span><span class="lv">$4,459.60</span></div>
+        <div class="li"><span class="ll">Mortgage Ins.</span><span class="lv green">None</span></div>
+        <div class="li"><span class="ll">Tax &amp; Insurance</span><span class="lv">$845.84</span></div>
+        <div class="li"><span class="ll">Cash to Close</span><span class="lv gold">$93,047</span></div>
+        <div class="li total-row"><span class="ll">Total Monthly</span><span class="lv">$5,305.44</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-option">Physician Option B</div>
+        <div class="card-title">7.875% 30-Yr Fixed</div>
+      </div>
+      <div class="card-body">
+        <div class="li"><span class="ll">Loan Amount</span><span class="lv">$630,070</span></div>
+        <div class="li"><span class="ll">Down Payment</span><span class="lv gold">$69,930</span></div>
+        <div class="li"><span class="ll">Rate / APR</span><span class="lv">7.875% / 8.005%</span></div>
+        <div class="li"><span class="ll">Points</span><span class="lv">0.750%</span></div>
+        <div class="li"><span class="ll">P&amp;I</span><span class="lv">$4,568.44</span></div>
+        <div class="li"><span class="ll">Mortgage Ins.</span><span class="lv green">None</span></div>
+        <div class="li"><span class="ll">Tax &amp; Insurance</span><span class="lv">$845.84</span></div>
+        <div class="li"><span class="ll">Cash to Close</span><span class="lv gold">$88,352</span></div>
+        <div class="li total-row"><span class="ll">Total Monthly</span><span class="lv">$5,414.28</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-option">Physician Option C</div>
+        <div class="card-title">6.875% 7/6 ARM</div>
+      </div>
+      <div class="card-body">
+        <div class="li"><span class="ll">Loan Amount</span><span class="lv">$630,070</span></div>
+        <div class="li"><span class="ll">Down Payment</span><span class="lv gold">$69,930</span></div>
+        <div class="li"><span class="ll">Rate / APR</span><span class="lv">6.875% / 7.248%</span></div>
+        <div class="li"><span class="ll">Points</span><span class="lv">1.500%</span></div>
+        <div class="li"><span class="ll">P&amp;I</span><span class="lv">$4,139.11</span></div>
+        <div class="li"><span class="ll">Mortgage Ins.</span><span class="lv green">None</span></div>
+        <div class="li"><span class="ll">Tax &amp; Insurance</span><span class="lv">$845.84</span></div>
+        <div class="li"><span class="ll">Cash to Close</span><span class="lv gold">$92,955</span></div>
+        <div class="li total-row"><span class="ll">Total Monthly</span><span class="lv">$4,984.95</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">About the 7/6 ARM (Physician Option C)</div>
+    <p>An adjustable-rate mortgage is fixed for the first 7 years and then adjusts every 6 months based on market conditions. Because you mentioned planning to stay 5 or more years, this is worth discussing carefully. The fixed period covers your full 3-year residency and several years beyond, but rate adjustments after year 7 introduce uncertainty. This is one of the scenarios we can walk through together in detail during your consultation.</p>
+  </div>
+
+  <!-- 5-YEAR TABLE -->
+  <div class="section-label">5-Year Cost Summary</div>
+  <div class="section-sub">Since you plan to stay 5 or more years, here is what each scenario costs over that period. All figures are estimates. The ARM payment reflects the fixed-rate period only.</div>
+
+  <p class="scroll-hint">Scroll right to see all columns.</p>
+  <div class="table-wrap">
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Rate</th>
+          <th>Monthly</th>
+          <th>Cash to Close</th>
+          <th>5-Yr MI</th>
+          <th>5-Yr P&amp;I</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conv 5% Down</td>
+          <td>6.250%</td>
+          <td>$5,106.61</td>
+          <td>$47,674</td>
+          <td class="red">$9,975</td>
+          <td>$245,671</td>
+        </tr>
+        <tr>
+          <td>Conv 10% Down</td>
+          <td>6.250%</td>
+          <td>$4,850.86</td>
+          <td>$92,899</td>
+          <td class="red">$7,560</td>
+          <td>$232,741</td>
+        </tr>
+        <tr>
+          <td>Conv 15% Down</td>
+          <td>6.375%</td>
+          <td>$4,617.37</td>
+          <td>$127,393</td>
+          <td class="red">$3,570</td>
+          <td>$222,722</td>
+        </tr>
+        <tr>
+          <td>Conv 20% Down</td>
+          <td>6.250%</td>
+          <td>$4,293.86</td>
+          <td>$161,714</td>
+          <td class="gold">$0</td>
+          <td>$206,881</td>
+        </tr>
+        <tr class="phys-row">
+          <td>Physician A (Fixed)</td>
+          <td class="red">7.625%</td>
+          <td class="red">$5,305.44</td>
+          <td>$93,047</td>
+          <td class="gold">$0</td>
+          <td class="red">$267,576</td>
+        </tr>
+        <tr class="phys-row">
+          <td>Physician B (Fixed)</td>
+          <td class="red">7.875%</td>
+          <td class="red">$5,414.28</td>
+          <td>$88,352</td>
+          <td class="gold">$0</td>
+          <td class="red">$274,106</td>
+        </tr>
+        <tr class="phys-row">
+          <td>Physician C (7/6 ARM)</td>
+          <td>6.875%</td>
+          <td>$4,984.95</td>
+          <td>$92,955</td>
+          <td class="gold">$0</td>
+          <td>$248,347</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="insight-box">
+    <h3>What the Data Shows</h3>
+    <div class="insight-item">
+      <strong>20% down is not required on a conventional loan.</strong> Conventional financing starts at 5% down. The tradeoff is a monthly mortgage insurance premium, which decreases as your down payment increases and disappears entirely at 20%.
+    </div>
+    <div class="insight-item">
+      <strong>The physician fixed-rate options carry a significant rate premium.</strong> Compared to conventional at 10% down, the physician fixed loans cost $454 to $563 more per month. Over 5 years that is roughly $27,000 to $33,800 in additional interest, which exceeds the MI savings at an estimated 760 FICO.
+    </div>
+    <div class="insight-item">
+      <strong>The physician 7/6 ARM closes the gap considerably.</strong> At 6.875%, the monthly payment of $4,984.95 is only $134 more than conventional at 10% down, with no MI. Whether the ARM makes sense depends on your plans after residency and your comfort with rate adjustment risk after year 7. This is a conversation worth having.
+    </div>
+    <div class="insight-item">
+      <strong>Your actual FICO score changes this picture.</strong> At an estimated 760, conventional PMI is relatively modest. If your score comes in lower, PMI costs rise and the rate advantage of conventional narrows. That is part of what we work through together before any decisions are made.
+    </div>
+    <div class="insight-item">
+      <strong>We do not yet know whether a co-signer is needed.</strong> Medical residents earn documented income through their residency program. Depending on your specific program and employment contract, you may qualify on your own. That is one of the first things we explore together.
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>The Next Step is a Conversation</h3>
+    <p>These numbers are a starting point. The right path depends on your full financial picture, your residency income, your goals for this home, and how much cash you want to preserve. A structured 30-minute consultation is where we sort all of that out and build a strategy specific to your situation. No pressure, no obligation.</p>
+    <a class="cta-btn" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">Schedule Your Consultation</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p>All interest rates, APR figures, monthly payments, mortgage insurance premiums, and cash to close amounts shown are estimates based on pricing dated 03/26/2026 and are provided for illustrative and educational purposes only. This is not a loan approval, commitment to lend, or guarantee of any specific loan terms. Rates and costs are subject to change without notice.</p>
+    <p>Credit score shown as estimated at 760. Actual credit score has not been verified. Final pricing, mortgage insurance cost, and program eligibility are subject to change based on verified credit profile.</p>
+    <p>Monthly payment figures reflect principal and interest, homeowners insurance, property taxes, and mortgage insurance where applicable. Taxes and insurance are estimates and will vary. Lock period assumed at 30 days. Escrow account required per program guidelines.</p>
+    <p>Conventional PMI shown is based on estimated credit score and loan-to-value. PMI on conventional loans may be removed once 20% equity is established, subject to lender requirements. Physician 7/6 ARM: fixed for 7 years, then adjusts every 6 months. 5-year cost for ARM reflects fixed-rate period only and does not account for potential rate adjustments after year 7. Physician loan program underwritten by Windsor Mortgage, a service of Plains Commerce Bank, NMLS #463950. Minimum LTV of 90.01% required for physician program eligibility.</p>
+    <p>Originator compensation reflected as $750 flat across all scenarios. Joanna Perry, NMLS #243348 | Xpert Home Lending Inc., NMLS #2179191 | California Licensed Mortgage Broker | Equal Housing Opportunity</p>
+  </div>
+
+</div>
+</body>
+</html>
