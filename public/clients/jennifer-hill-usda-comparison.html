@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your USDA Loan Options | Jennifer Hill</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #B8860B;
+      --cream: #F5F0E8;
+      --charcoal: #2C2C2C;
+      --taupe: #E8E2D9;
+      --white: #FFFFFF;
+    }
+
+    body {
+      background: #EDEBE6;
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      padding: 32px 16px 48px;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--white);
+      border-top: 4px solid var(--gold);
+      border-radius: 2px;
+      box-shadow: 0 4px 32px rgba(44,44,44,0.10);
+      padding: 52px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 36px;
+      gap: 16px;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+    .contact-block {
+      text-align: right;
+      font-size: 12px;
+      color: rgba(44,44,44,0.72);
+      line-height: 1.7;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--taupe);
+      margin: 0 0 32px;
+    }
+
+    /* GREETING */
+    .greeting {
+      margin-bottom: 36px;
+    }
+    .greeting-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 28px;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .greeting-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--charcoal);
+    }
+    .greeting-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--charcoal);
+      margin-top: 12px;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    /* SCENARIO CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--taupe);
+      border-radius: 2px;
+      padding: 24px 20px 20px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .card-subtitle {
+      font-size: 11px;
+      color: rgba(44,44,44,0.60);
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+    .line-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(232,226,217,0.8);
+      gap: 8px;
+    }
+    .line-item:last-child { border-bottom: none; }
+    .line-label { color: rgba(44,44,44,0.72); flex-shrink: 0; }
+    .line-value { font-weight: 500; text-align: right; }
+    .line-value.gold { color: var(--gold); }
+
+    /* MONTHLY TOTAL ROW */
+    .total-row {
+      border-top: 2px solid var(--gold) !important;
+      border-bottom: none !important;
+      margin-top: 6px;
+      padding-top: 12px !important;
+    }
+    .total-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--charcoal);
+    }
+    .total-amount {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--charcoal);
+    }
+
+    /* CASH TO CLOSE ROW */
+    .ctc-row {
+      border-top: 2px solid var(--taupe) !important;
+      border-bottom: none !important;
+      margin-top: 6px;
+      padding-top: 12px !important;
+    }
+    .ctc-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--charcoal);
+    }
+    .ctc-amount {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--gold);
+    }
+
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+
+    /* SUMMARY BOX */
+    .summary-box {
+      background: var(--cream);
+      border: 1px solid var(--taupe);
+      border-radius: 2px;
+      padding: 28px 28px 24px;
+      margin-bottom: 32px;
+    }
+    .summary-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(232,226,217,0.8);
+      gap: 8px;
+    }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row .s-label { color: rgba(44,44,44,0.72); }
+    .summary-row .s-value { font-weight: 500; }
+    .summary-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(44,44,44,0.80);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* CTA */
+    .cta-block {
+      background: var(--charcoal);
+      border-radius: 2px;
+      padding: 32px 28px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .cta-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .cta-sub {
+      font-size: 14px;
+      color: rgba(245,240,232,0.80);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      padding: 13px 32px;
+      border-radius: 2px;
+    }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      font-size: 11px;
+      color: rgba(44,44,44,0.55);
+      line-height: 1.65;
+    }
+
+    /* MOBILE */
+    @media (max-width: 540px) {
+      body { padding: 0 0 40px; }
+
+      .page {
+        padding: 28px 20px 32px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .contact-block {
+        text-align: left;
+        font-size: 12px;
+      }
+
+      .greeting { margin-bottom: 28px; }
+      .greeting-name { font-size: 22px; }
+      .greeting-body { font-size: 14px; }
+      .greeting-note { font-size: 14px; }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .card { padding: 20px 16px 18px; }
+      .card-subtitle { font-size: 11px; }
+
+      .line-item { font-size: 14px; padding: 9px 0; }
+
+      .total-amount { font-size: 26px; }
+      .ctc-amount { font-size: 26px; }
+      .total-label { font-size: 14px; }
+      .ctc-label { font-size: 14px; }
+
+      .summary-box { padding: 20px 16px 18px; margin-bottom: 24px; }
+      .summary-heading { font-size: 17px; }
+      .summary-row {
+        flex-direction: column;
+        gap: 2px;
+        padding: 10px 0;
+      }
+      .summary-row .s-label { font-size: 12px; }
+      .summary-row .s-value { font-size: 15px; font-weight: 600; }
+      .summary-note { font-size: 14px; }
+
+      .cta-block { padding: 28px 20px; }
+      .cta-heading { font-size: 18px; }
+      .cta-sub { font-size: 13px; }
+      .cta-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: 15px;
+      }
+
+      .disclaimer { font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry | NMLS #243348<br>
+      (916) 708-8555 | joanna&#64;loanlady.club<br>
+      loanladyclub.com
+    </div>
+  </div>
+  <hr class="divider" />
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <div class="greeting-name">Hi Jennifer,</div>
+    <p class="greeting-body">
+      Here are two ways to look at the same home at $300,000. Both are USDA loans, which means no down payment required. The difference comes down to your monthly payment versus what you bring to the table at closing.
+    </p>
+    <p class="greeting-note">These are estimates based on current rates as of 03/28/2026. All figures are for review purposes only.</p>
+  </div>
+
+  <!-- SCENARIO CARDS -->
+  <div class="section-label">Your Two Options Side by Side</div>
+  <div class="cards-grid">
+
+    <!-- OPTION A -->
+    <div class="card">
+      <div class="card-title">Option A</div>
+      <div class="card-subtitle">5.625% Rate | No Seller Credit</div>
+
+      <div class="line-item">
+        <span class="line-label">Down Payment</span>
+        <span class="line-value gold">$0</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Seller Credit</span>
+        <span class="line-value">None</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Principal &amp; Interest</span>
+        <span class="line-value">$1,744.41</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Taxes</span>
+        <span class="line-value">$312.50</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Insurance</span>
+        <span class="line-value">$142.25</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">USDA Fee (monthly)</span>
+        <span class="line-value">$87.86</span>
+      </div>
+      <div class="line-item total-row">
+        <span class="total-label">Monthly Payment</span>
+        <span class="total-amount">$2,287</span>
+      </div>
+      <div class="line-item ctc-row">
+        <span class="ctc-label">Cash to Close</span>
+        <span class="ctc-amount">$14,804</span>
+      </div>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="card">
+      <div class="badge">Lower Payment</div>
+      <div class="card-title">Option B</div>
+      <div class="card-subtitle">5.250% Rate | $5,000 Seller Credit</div>
+
+      <div class="line-item">
+        <span class="line-label">Down Payment</span>
+        <span class="line-value gold">$0</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Seller Credit</span>
+        <span class="line-value">$5,000</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Principal &amp; Interest</span>
+        <span class="line-value">$1,673.34</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Taxes</span>
+        <span class="line-value">$312.50</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">Insurance</span>
+        <span class="line-value">$142.25</span>
+      </div>
+      <div class="line-item">
+        <span class="line-label">USDA Fee (monthly)</span>
+        <span class="line-value">$87.82</span>
+      </div>
+      <div class="line-item total-row">
+        <span class="total-label">Monthly Payment</span>
+        <span class="total-amount">$2,216</span>
+      </div>
+      <div class="line-item ctc-row">
+        <span class="ctc-label">Cash to Close</span>
+        <span class="ctc-amount">$15,113</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-box">
+    <div class="summary-heading">What This Means for You</div>
+    <div class="summary-row">
+      <span class="s-label">Monthly savings with Option B</span>
+      <span class="s-value">$71 less per month</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Difference in cash to close</span>
+      <span class="s-value">$309 more upfront for Option B</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">How long to break even</span>
+      <span class="s-value">About 5 months</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Down payment required</span>
+      <span class="s-value">$0 on both options</span>
+    </div>
+    <p class="summary-note">
+      Option B requires the seller to contribute $5,000 toward your closing costs. That is a negotiating point, not a guarantee. We can talk through whether that is realistic for this property when we connect.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-heading">Your Next Step</div>
+    <div class="cta-sub">
+      To move forward, we will need to pull your credit report. This is a one-time fee of $133 and covers a full tri-merge report across all three bureaus. Click below when you are ready and follow the secure link to complete payment.
+    </div>
+    <a class="cta-button" href="https://credit.advcredit.com/smartpay/SmartPay.aspx?uid=76099402-a954-40f1-8704-8a79dbefde6d" target="_blank" rel="noopener">
+      Pull My Credit Report
+    </a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    This estimate is provided for illustrative and informational purposes only based on the initial basic loan scenario provided. This is not a loan approval or commitment to lend. Rates shown are estimates effective as of 03/28/2026 and are subject to change. Annual Percentage Rate (APR) is an estimate based on criteria provided. Until a rate is locked, APR and terms are subject to change or may not be available at commitment or closing. Escrow: None Waived. Lock period: 30 days. All figures shown are estimates only and are not a guarantee of any specific rate, payment, or approval outcome. Joanna Perry, N
