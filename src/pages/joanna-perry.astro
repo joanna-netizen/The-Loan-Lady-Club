@@ -125,7 +125,6 @@ import Layout from '../layouts/Layout.astro';
   <section class="py-16 md:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 items-start">
-        <!-- Left: Image -->
         <div>
           <img
             src="/images/joanna-perry-mortgage-broker-sacramento-loan-lady-club-headshot.jpg"
@@ -140,7 +139,6 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <!-- Right: Text -->
         <div>
           <h1
             class="text-4xl md:text-5xl lg:text-6xl mb-4 leading-tight"
@@ -196,7 +194,6 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="grid gap-8 md:grid-cols-2">
-        <!-- Item 1 -->
         <div
           class="p-6 rounded-md h-full"
           style="background-color: #F5F0E8; border: 1px solid #E8E2D9;"
@@ -215,7 +212,6 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <!-- Item 2 -->
         <div
           class="p-6 rounded-md h-full"
           style="background-color: #F5F0E8; border: 1px solid #E8E2D9;"
@@ -234,7 +230,6 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <!-- Item 3 -->
         <div
           class="p-6 rounded-md h-full"
           style="background-color: #F5F0E8; border: 1px solid #E8E2D9;"
@@ -253,7 +248,6 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
 
-        <!-- Item 4 -->
         <div
           class="p-6 rounded-md h-full"
           style="background-color: #F5F0E8; border: 1px solid #E8E2D9;"
@@ -268,7 +262,7 @@ import Layout from '../layouts/Layout.astro';
             class="text-sm md:text-base leading-relaxed"
             style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #2C2C2C;"
           >
-            Many clients come through a referral from someone they trust—and others find us through search, social media, or word of mouth. However you found your way here, you are welcome. There is no cold outreach, no paid ads, no pressure. Reach out and let's start a conversation.
+            Many clients come through a referral from someone they trust and others find us through search, social media, or word of mouth. However you found your way here, you are welcome. There is no cold outreach, no paid ads, no pressure. Reach out and let's start a conversation.
           </p>
         </div>
       </div>
@@ -310,7 +304,7 @@ import Layout from '../layouts/Layout.astro';
             style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #2C2C2C;"
           >
             Joanna Perry is a participating Homes for Heroes lender. If you are a teacher, nurse, first responder, military member, or law enforcement officer, you may qualify for meaningful savings on your home purchase or refinance. As the participating lender, Joanna contributes $500 toward your closing costs. Learn more on the dedicated
-            <a
+            
               href="/homes-for-heroes"
               class="underline"
               style="color: #B8860B;"
@@ -329,7 +323,7 @@ import Layout from '../layouts/Layout.astro';
             class="text-base md:text-lg leading-relaxed"
             style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #2C2C2C;"
           >
-            <a
+            
               href="https://www.homesforheroes.com/affiliate/joanna-perry/"
               target="_blank"
               rel="noopener noreferrer"
@@ -344,29 +338,117 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Section 6: Google Reviews Placeholder -->
+  <!-- Section 6: Google Reviews Carousel -->
   <section class="py-16 md:py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <h2
-        class="text-3xl md:text-4xl mb-6 text-center"
+        class="text-3xl md:text-4xl mb-10 text-center"
         style="font-family: 'Playfair Display', 'Times New Roman', serif; color: #2C2C2C;"
       >
         What Clients Are Saying
       </h2>
 
-      <!-- TODO: Replace this section with Google Reviews embed. Task list item 4. Decide between third-party widget or Places API integration. -->
-      <div
-        class="mt-6 p-8 text-center rounded-md"
-        style="border: 1px solid #E8E2D9; background-color: #F5F0E8;"
-      >
-        <p
-          class="text-sm md:text-base leading-relaxed"
-          style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #2C2C2C;"
+      <div style="position: relative;">
+        <button
+          id="carousel-prev"
+          aria-label="Previous reviews"
+          style="position: absolute; left: -20px; top: 50%; transform: translateY(-50%); z-index: 10; width: 40px; height: 40px; border-radius: 50%; background-color: #2C2C2C; color: #FFFFFF; border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"
+        >&#8592;</button>
+
+        <div
+          id="reviews-carousel"
+          style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; padding: 8px 4px 16px 4px;"
         >
-          Client reviews are coming soon. In the meantime, feel free to search Joanna Perry on Google to read verified reviews.
-        </p>
+          <div
+            id="reviews-fallback"
+            class="mt-6 p-8 text-center rounded-md w-full"
+            style="border: 1px solid #E8E2D9; background-color: #F5F0E8; display: none;"
+          >
+            <p style="font-family: 'Inter', system-ui, sans-serif; color: #2C2C2C;">
+              
+                href="https://www.google.com/maps/search/?api=1&query=The+Loan+Lady+Club&query_place_id=ChIJhzVhd_jhmoARQQ30IaF3RC0"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color: #B8860B; text-decoration: underline;"
+              >Visit Google to read verified client reviews.</a>
+            </p>
+          </div>
+        </div>
+
+        <button
+          id="carousel-next"
+          aria-label="Next reviews"
+          style="position: absolute; right: -20px; top: 50%; transform: translateY(-50%); z-index: 10; width: 40px; height: 40px; border-radius: 50%; background-color: #2C2C2C; color: #FFFFFF; border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);"
+        >&#8594;</button>
+      </div>
+
+      <div class="mt-8 text-center">
+        
+          href="https://www.google.com/maps/search/?api=1&query=The+Loan+Lady+Club&query_place_id=ChIJhzVhd_jhmoARQQ30IaF3RC0"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="font-family: 'Inter', system-ui, sans-serif; color: #B8860B; text-decoration: underline; font-size: 16px;"
+        >Read all reviews on Google</a>
       </div>
     </div>
+
+    <style>
+      #reviews-carousel::-webkit-scrollbar { display: none; }
+    </style>
+
+    <script define:vars={{ apiKey: import.meta.env.PUBLIC_GOOGLE_PLACES_API_KEY, placeId: import.meta.env.PUBLIC_GOOGLE_PLACE_ID }}>
+      (function() {
+        function buildCard(review) {
+          const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+          const card = document.createElement('div');
+          card.style.cssText = 'min-width: 320px; max-width: 320px; background: #FFFFFF; border: 1px solid #E8E2D9; border-radius: 4px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex-shrink: 0;';
+          card.innerHTML = `
+            <p style="font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #2C2C2C; margin: 0 0 6px 0;">${review.author_name}</p>
+            <p style="color: #B8860B; font-size: 18px; margin: 0 0 10px 0; letter-spacing: 2px;">${stars}</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 14px; color: #2C2C2C; line-height: 1.6; margin: 0 0 12px 0;">${review.text}</p>
+            <p style="font-family: 'Inter', system-ui, sans-serif; font-size: 12px; color: rgba(44,44,44,0.6); margin: 0;">${review.relative_time_description}</p>
+          `;
+          return card;
+        }
+
+        function loadReviews() {
+          if (!apiKey || !placeId) {
+            document.getElementById('reviews-fallback').style.display = 'block';
+            return;
+          }
+          const script = document.createElement('script');
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
+          script.onload = function() {
+            const service = new google.maps.places.PlacesService(document.createElement('div'));
+            service.getDetails({ placeId: placeId, fields: ['reviews', 'url'] }, function(place, status) {
+              const carousel = document.getElementById('reviews-carousel');
+              const fallback = document.getElementById('reviews-fallback');
+              if (status !== google.maps.places.PlacesServiceStatus.OK || !place.reviews) {
+                fallback.style.display = 'block';
+                return;
+              }
+              const filtered = place.reviews.filter(r => r.rating === 5);
+              if (filtered.length === 0) {
+                fallback.style.display = 'block';
+                return;
+              }
+              filtered.forEach(review => carousel.appendChild(buildCard(review)));
+            });
+          };
+          document.head.appendChild(script);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          loadReviews();
+          document.getElementById('carousel-prev').addEventListener('click', function() {
+            document.getElementById('reviews-carousel').scrollBy({ left: -336, behavior: 'smooth' });
+          });
+          document.getElementById('carousel-next').addEventListener('click', function() {
+            document.getElementById('reviews-carousel').scrollBy({ left: 336, behavior: 'smooth' });
+          });
+        });
+      })();
+    </script>
   </section>
 
   <!-- Section 7: FAQ -->
@@ -505,7 +587,7 @@ import Layout from '../layouts/Layout.astro';
       >
         The first step is a structured 30-minute phone consultation. No pressure. No credit pull. Just clarity.
       </p>
-      <a
+      
         href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN"
         target="_blank"
         rel="noopener noreferrer"
@@ -518,4 +600,3 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
 </Layout>
-
