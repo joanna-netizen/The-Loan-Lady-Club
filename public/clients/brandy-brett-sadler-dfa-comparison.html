@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Home Purchase Options | Brandy & Brett Sadler</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+    --gold-light: rgba(184,134,11,0.10);
+    --gold-mid: rgba(184,134,11,0.22);
+    --charcoal-soft: rgba(44,44,44,0.72);
+    --charcoal-caption: rgba(44,44,44,0.60);
+  }
+
+  body {
+    background: #EDEAE3;
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    -webkit-font-smoothing: antialiased;
+    padding: 32px 16px 48px;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 2px;
+    box-shadow: 0 4px 32px rgba(44,44,44,0.10), 0 1px 4px rgba(44,44,44,0.06);
+    border-top: 4px solid var(--gold);
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 36px 52px 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .brand-block .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--charcoal);
+    letter-spacing: 0.01em;
+  }
+
+  .brand-block .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-top: 3px;
+  }
+
+  .contact-block {
+    text-align: right;
+    font-size: 11.5px;
+    color: var(--charcoal-caption);
+    line-height: 1.7;
+  }
+
+  .contact-block a {
+    color: var(--charcoal-caption);
+    text-decoration: none;
+  }
+
+  /* GREETING */
+  .greeting {
+    padding: 36px 52px 0;
+  }
+
+  .greeting-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .greeting-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .greeting-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.72;
+    color: var(--charcoal-soft);
+    max-width: 560px;
+    margin-bottom: 8px;
+  }
+
+  /* DFA NOTICE */
+  .dfa-notice {
+    margin: 28px 52px 0;
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 2px 2px 0;
+    padding: 14px 20px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--charcoal);
+  }
+
+  .dfa-notice strong {
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    padding: 36px 52px 16px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--charcoal);
+    letter-spacing: 0.01em;
+  }
+
+  /* CARDS */
+  .cards-wrapper {
+    padding: 0 52px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    background: var(--charcoal);
+    padding: 12px 16px 10px;
+  }
+
+  .card-price {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 0.01em;
+  }
+
+  .card-label {
+    font-size: 9.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  .card-body {
+    padding: 14px 16px;
+  }
+
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .line-item:last-child { border-bottom: none; }
+
+  .line-label {
+    color: var(--charcoal-soft);
+    font-weight: 400;
+    flex: 1;
+    padding-right: 8px;
+  }
+
+  .line-value {
+    font-weight: 500;
+    color: var(--charcoal);
+    white-space: nowrap;
+  }
+
+  .line-value.accent {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .monthly-row {
+    border-top: 2px solid var(--gold);
+    padding: 9px 16px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--cream);
+  }
+
+  .monthly-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--charcoal-soft);
+  }
+
+  .monthly-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--charcoal);
+  }
+
+  /* WHAT'S INCLUDED NOTE */
+  .included-note {
+    margin: 20px 52px 0;
+    font-size: 11.5px;
+    color: var(--charcoal-caption);
+    font-style: italic;
+    line-height: 1.6;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+  }
+
+  /* SUMMARY STRIP */
+  .summary-strip {
+    margin: 28px 52px 0;
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 2px;
+    padding: 20px 24px;
+  }
+
+  .summary-strip-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .summary-row:last-child { border-bottom: none; }
+
+  .summary-row .s-label { color: var(--charcoal-soft); font-weight: 400; }
+  .summary-row .s-val { font-weight: 500; color: var(--charcoal); }
+
+  /* CTA */
+  .cta-block {
+    margin: 32px 0 0;
+    background: var(--charcoal);
+    padding: 32px 52px;
+    text-align: center;
+  }
+
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cta-sub {
+    font-size: 13.5px;
+    color: rgba(245,240,232,0.72);
+    line-height: 1.65;
+    margin-bottom: 22px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 32px;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.88; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    padding: 24px 52px 32px;
+    font-size: 10.5px;
+    color: var(--charcoal-caption);
+    line-height: 1.72;
+    border-top: 1px solid var(--taupe);
+  }
+
+  /* MOBILE */
+  @media (max-width: 540px) {
+    body { padding: 0 0 32px; }
+
+    .page { border-radius: 0; box-shadow: none; }
+
+    .header {
+      padding: 24px 24px 20px;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-block { text-align: left; }
+
+    .greeting { padding: 28px 24px 0; }
+    .greeting-headline { font-size: 22px; }
+    .greeting-body { font-size: 15.5px; }
+
+    .dfa-notice { margin: 24px 24px 0; }
+
+    .section-label { padding: 28px 24px 14px; font-size: 16px; }
+
+    .cards-wrapper {
+      padding: 0 24px;
+      grid-template-columns: 1fr;
+    }
+
+    .included-note { margin: 16px 24px 0; }
+    .summary-strip { margin: 24px 24px 0; }
+
+    .cta-block { padding: 28px 24px; }
+
+    .disclaimer { padding: 20px 24px 28px; }
+  }
+
+  /* SMALL MOBILE */
+  @media (max-width: 400px) {
+    .summary-row {
+      flex-direction: column;
+      gap: 3px;
+      padding: 8px 0;
+    }
+
+    .summary-row .s-val {
+      font-size: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-block">
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry &nbsp;|&nbsp; NMLS #243348<br>
+      (916) 708-8555 &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#fe94919f90909fbe92919f90929f9a87d09d928b9c"><span class="__cf_email__" data-cfemail="a3c9ccc2cdcdc2e3cfccc2cdcfc2c7da8dc0cfd6c1">[email&#160;protected]</span></a><br>
+      loanladyclub.com
+    </div>
+  </div>
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <div class="greeting-label">Prepared for Brandy &amp; Brett Sadler</div>
+    <div class="greeting-headline">Your Home Purchase Scenarios at a Glance</div>
+    <div class="greeting-body">
+      House hunting takes a lot out of you, and that is completely normal. There is no rush here.
+      This page is simply a reference so you can come back to the numbers when you are ready,
+      at your own pace, without any pressure. Everything below reflects three price points
+      assuming your CalHFA Dream for All voucher comes through.
+    </div>
+  </div>
+
+  <!-- DFA NOTICE -->
+  <div class="dfa-notice">
+    <strong>About these scenarios:</strong> All three options below assume you receive a
+    CalHFA Dream for All Shared Appreciation Program voucher. The down payment assistance
+    provided through that program is reflected in each scenario. If the lottery does not
+    result in a voucher, we will revisit your options together during your next Buyer's Edge session.
+  </div>
+
+  <!-- CARDS -->
+  <div class="section-label">Side by Side Comparison</div>
+
+  <div class="cards-wrapper">
+
+    <!-- $425K -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-price">$425,000</div>
+        <div class="card-label">Purchase Price</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="line-label">Loan Amount</span>
+          <span class="line-value">$361,250</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Down Payment</span>
+          <span class="line-value accent">$63,750</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Rate / APR</span>
+          <span class="line-value">6.500% / 6.750%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">DFA Assistance</span>
+          <span class="line-value accent">Applied</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Cash to Close</span>
+          <span class="line-value accent">~$5,099</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">P&amp;I</span>
+          <span class="line-value">$2,283</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Taxes</span>
+          <span class="line-value">$443</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Insurance</span>
+          <span class="line-value">$100</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Mortgage Ins.</span>
+          <span class="line-value">$30</span>
+        </div>
+      </div>
+      <div class="monthly-row">
+        <span class="monthly-label">Est. Monthly</span>
+        <span class="monthly-value">$2,856</span>
+      </div>
+    </div>
+
+    <!-- $450K -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-price">$450,000</div>
+        <div class="card-label">Purchase Price</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="line-label">Loan Amount</span>
+          <span class="line-value">$382,500</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Down Payment</span>
+          <span class="line-value accent">$67,500</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Rate / APR</span>
+          <span class="line-value">6.500% / 6.748%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">DFA Assistance</span>
+          <span class="line-value accent">Applied</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Cash to Close</span>
+          <span class="line-value accent">~$5,848</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">P&amp;I</span>
+          <span class="line-value">$2,418</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Taxes</span>
+          <span class="line-value">$469</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Insurance</span>
+          <span class="line-value">$100</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Mortgage Ins.</span>
+          <span class="line-value">$32</span>
+        </div>
+      </div>
+      <div class="monthly-row">
+        <span class="monthly-label">Est. Monthly</span>
+        <span class="monthly-value">$3,018</span>
+      </div>
+    </div>
+
+    <!-- $480K -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-price">$480,000</div>
+        <div class="card-label">Purchase Price</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="line-label">Loan Amount</span>
+          <span class="line-value">$408,000</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Down Payment</span>
+          <span class="line-value accent">$72,000</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Rate / APR</span>
+          <span class="line-value">6.500% / 6.745%</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">DFA Assistance</span>
+          <span class="line-value accent">Applied</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Cash to Close</span>
+          <span class="line-value accent">~$6,745</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">P&amp;I</span>
+          <span class="line-value">$2,579</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Taxes</span>
+          <span class="line-value">$500</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Insurance</span>
+          <span class="line-value">$100</span>
+        </div>
+        <div class="line-item">
+          <span class="line-label">Mortgage Ins.</span>
+          <span class="line-value">$34</span>
+        </div>
+      </div>
+      <div class="monthly-row">
+        <span class="monthly-label">Est. Monthly</span>
+        <span class="monthly-value">$3,213</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="included-note">
+    Monthly payment includes principal and interest, estimated property taxes, homeowner's insurance, and mortgage insurance. All figures are estimates.
+  </div>
+
+  <!-- SUMMARY STRIP -->
+  <div class="summary-strip">
+    <div class="summary-strip-title">Quick Comparison Summary</div>
+    <div class="summary-row">
+      <span class="s-label">Purchase Price</span>
+      <span class="s-val">$425,000 &nbsp;/&nbsp; $450,000 &nbsp;/&nbsp; $480,000</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Estimated Monthly Payment</span>
+      <span class="s-val">$2,856 &nbsp;/&nbsp; $3,018 &nbsp;/&nbsp; $3,213</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Estimated Cash to Close</span>
+      <span class="s-val">~$5,099 &nbsp;/&nbsp; ~$5,848 &nbsp;/&nbsp; ~$6,745</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Down Payment (DFA Assisted)</span>
+      <span class="s-val">$63,750 &nbsp;/&nbsp; $67,500 &nbsp;/&nbsp; $72,000</span>
+    </div>
+    <div class="summary-row">
+      <span class="s-label">Rate (all three scenarios)</span>
+      <span class="s-val">6.500% fixed / 30 years</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-headline">Questions? No rush at all.</div>
+    <div class="cta-sub">
+      When you are ready to talk through these numbers or anything that came up during your
+      home tours, I am here. You can book a time that works for you below.
+    </div>
+    <a href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN" class="cta-btn">Schedule a Conversation</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    This estimate is provided for illustrative and informational purposes only based on the initial basic loan scenario provided. This is not a loan approval or commitment to lend. Rates and APR shown are estimates as of 03/29/2026 and are subject to change. Until a rate is locked, terms are subject to change or may not be available at commitment or closing. Escrow waiver not applicable. Lock period is 30 days. All figures are estimates and actual costs may vary. CalHFA Dream for All Shared Appreciation Program availability is subject to lottery selection and program guidelines. This document does not guarantee program participation or voucher award.
+    <br><br>
+    Joanna Perry, NMLS #243348 &nbsp;|&nbsp; Xpert Home Lendi
