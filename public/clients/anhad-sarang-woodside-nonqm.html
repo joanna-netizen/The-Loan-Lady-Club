@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Summary | Anhad Sarang | The Loan Lady Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  body {
+    background: #f0ebe2;
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    padding: 40px 20px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 32px rgba(44,44,44,0.10);
+    padding: 52px 52px 44px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+  .brand-tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .contact-block {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(44,44,44,0.72);
+    line-height: 1.7;
+  }
+  .contact-block a {
+    color: rgba(44,44,44,0.72);
+    text-decoration: none;
+  }
+
+  /* GREETING */
+  .greeting {
+    margin-bottom: 28px;
+  }
+  .greeting h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--charcoal);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .greeting p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--charcoal);
+  }
+  .greeting .note-italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--charcoal);
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  /* LOAN SNAPSHOT */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    margin-bottom: 32px;
+  }
+  .snapshot-item {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .snapshot-item:nth-child(odd) {
+    border-right: 1px solid var(--taupe);
+  }
+  .snapshot-item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .snap-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(44,44,44,0.60);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+  .snap-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--charcoal);
+  }
+  .snap-value.gold {
+    color: var(--gold);
+  }
+
+  /* COST CARDS */
+  .cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .cost-card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 20px 18px;
+  }
+  .cost-card .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    padding: 4px 0;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+  .line-item .li-label {
+    color: rgba(44,44,44,0.78);
+    padding-right: 8px;
+  }
+  .line-item .li-value {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .line-item .li-value.gold {
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .card-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--gold);
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .card-total-row .ct-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--charcoal);
+  }
+  .card-total-row .ct-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--charcoal);
+  }
+
+  /* FULL WIDTH CARD */
+  .full-card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 20px 18px;
+    margin-bottom: 28px;
+  }
+  .full-card .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .two-col-lines {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+  }
+
+  /* TOTALS FOR SHAWN */
+  .shawn-box {
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    padding: 22px 22px 18px;
+    margin-bottom: 28px;
+  }
+  .shawn-box .shawn-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .shawn-box .shawn-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+  .shawn-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .shawn-line:last-of-type {
+    border-bottom: none;
+  }
+  .shawn-line .sl-label {
+    color: rgba(44,44,44,0.78);
+  }
+  .shawn-line .sl-value {
+    font-weight: 600;
+  }
+  .shawn-grand {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--gold);
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+  .shawn-grand .sg-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--charcoal);
+  }
+  .shawn-grand .sg-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--gold);
+  }
+  .shawn-note {
+    font-size: 12px;
+    color: rgba(44,44,44,0.62);
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  /* MONTHLY TOTAL */
+  .monthly-total-block {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 20px 22px;
+    margin-bottom: 28px;
+  }
+  .monthly-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--gold);
+    padding-top: 14px;
+    margin-top: 4px;
+  }
+  .monthly-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--charcoal);
+  }
+  .monthly-amount {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--charcoal);
+  }
+
+  /* CONTEXT NOTE */
+  .context-note {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 16px 18px;
+    margin-bottom: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--charcoal);
+  }
+
+  /* CTA */
+  .cta-block {
+    background: var(--charcoal);
+    padding: 32px 28px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .cta-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .cta-block p {
+    font-size: 14px;
+    color: rgba(245,240,232,0.75);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    padding: 13px 32px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.88; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    font-size: 11px;
+    color: rgba(44,44,44,0.58);
+    line-height: 1.7;
+    border-top: 1px solid var(--taupe);
+    padding-top: 18px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 540px) {
+    .page { padding: 32px 24px 36px; }
+    .header { flex-direction: column; gap: 12px; }
+    .contact-block { text-align: left; }
+    .greeting h1 { font-size: 22px; }
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .snapshot-item:nth-child(odd) { border-right: none; }
+    .snapshot-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--taupe); }
+    .snapshot-item:last-child { border-bottom: none; }
+    .cards-row { grid-template-columns: 1fr; }
+    .two-col-lines { grid-template-columns: 1fr; }
+    .monthly-amount { font-size: 20px; }
+  }
+
+  @media (max-width: 400px) {
+    .page { padding: 22px 14px 28px; }
+    .greeting h1 { font-size: 19px; }
+    .snap-value { font-size: 15px; }
+    .shawn-grand .sg-value { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="brand-tag">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry | NMLS #243348<br>
+      (916) 708-8555<br>
+      <a href="/cdn-cgi/l/email-protection#02686d636c6c63426e6d636c6e63667b2c616e7760"><span class="__cf_email__" data-cfemail="1a70757b74747b5a76757b74767b7e633479766f78">[email&#160;protected]</span></a><br>
+      loanladyclub.com
+    </div>
+  </div>
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <h1>Woodside New Build<br>Loan Scenario Summary</h1>
+    <p>Prepared for: Anhad Sarang | Purchase Price: $630,000 | Date: April 6, 2026</p>
+    <p class="note-italic">This summary is prepared to give you and your agent, Shawn Hill, a clear picture of the financing structure so you can approach the builder's negotiation with full information.</p>
+  </div>
+
+  <!-- LOAN SNAPSHOT -->
+  <div class="section-label">Loan At a Glance</div>
+  <div class="snapshot-grid">
+    <div class="snapshot-item">
+      <div class="snap-label">Loan Product</div>
+      <div class="snap-value">30-Year NON-QM Fixed</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snap-label">Income Method</div>
+      <div class="snap-value">24-Month Business Bank Statements</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snap-label">Purchase Price</div>
+      <div class="snap-value">$630,000</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snap-label">Loan Amount</div>
+      <div class="snap-value">$504,000</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snap-label">Down Payment</div>
+      <div class="snap-value gold">$126,000 (20%)</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snap-label">Occupancy</div>
+      <div class="snap-value">Primary Residence</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snap-label">Rate / APR (Estimate)</div>
+      <div class="snap-value gold">6.375% / 6.571%</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snap-label">Lock Period</div>
+      <div class="snap-value">30 Days</div>
+    </div>
+  </div>
+
+  <!-- CONTEXT NOTE -->
+  <div class="context-note">
+    The builder's preferred lender is not able to offer bank statement income qualification. This scenario is structured using a 24-month business bank statement program, which is the appropriate path given the income profile reviewed. The figures here reflect what this financing looks like so Shawn has the full cost picture going into offer negotiations.
+  </div>
+
+  <!-- COST CARDS ROW -->
+  <div class="section-label">Closing Cost Breakdown</div>
+  <div class="cards-row">
+
+    <div class="cost-card">
+      <div class="card-title">Lender Fees</div>
+      <div class="line-item">
+        <span class="li-label">Points (1.5% of loan)</span>
+        <span class="li-value gold">$7,560</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Originator Compensation</span>
+        <span class="li-value">$750</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Underwriting Fee</span>
+        <span class="li-value">$1,595</span>
+      </div>
+      <div class="card-total-row">
+        <span class="ct-label">Lender Fees Total</span>
+        <span class="ct-value">$9,905</span>
+      </div>
+    </div>
+
+    <div class="cost-card">
+      <div class="card-title">Third Party Fees</div>
+      <div class="line-item">
+        <span class="li-label">Appraisal</span>
+        <span class="li-value">$700</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Appraisal Re-Inspection</span>
+        <span class="li-value">$225</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Credit Report</span>
+        <span class="li-value">$133</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Flood / MERS / Tax Mon.</span>
+        <span class="li-value">$108</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Title (Lender's)</span>
+        <span class="li-value">$1,450</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Title (Notary)</span>
+        <span class="li-value">$225</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Owner's Title (Optional)</span>
+        <span class="li-value">$2,089</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Escrow / Settlement</span>
+        <span class="li-value">$1,750</span>
+      </div>
+      <div class="card-total-row">
+        <span class="ct-label">Third Party Total</span>
+        <span class="ct-value">$6,680</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PREPAIDS FULL WIDTH -->
+  <div class="full-card" style="margin-bottom:28px;">
+    <div class="card-title">Prepaids and Initial Escrow at Closing</div>
+    <div class="two-col-lines">
+      <div class="line-item">
+        <span class="li-label">Hazard Insurance (12 mo.)</span>
+        <span class="li-value">$1,500</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Hazard Reserve (3 mo.)</span>
+        <span class="li-value">$375</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Prepaid Interest (3 days)</span>
+        <span class="li-value">$268</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Property Tax Reserve (6 mo.)</span>
+        <span class="li-value">$4,977</span>
+      </div>
+    </div>
+    <div class="card-total-row">
+      <span class="ct-label">Prepaids and Escrow Total</span>
+      <span class="ct-value">$7,120</span>
+    </div>
+  </div>
+
+  <!-- SHAWN'S NEGOTIATION BOX -->
+  <div class="shawn-box">
+    <div class="shawn-title">Credit Target for Offer Negotiation</div>
+    <div class="shawn-intro">The figures below are the costs Shawn should consider when structuring the credit ask with the builder's agent. The points line is a key leverage point specific to Non-QM pricing.</div>
+
+    <div class="shawn-line">
+      <span class="sl-label">Lender Fees (including 1.5 points)</span>
+      <span class="sl-value">$9,905</span>
+    </div>
+    <div class="shawn-line">
+      <span class="sl-label">Third Party Fees</span>
+      <span class="sl-value">$6,680</span>
+    </div>
+    <div class="shawn-line">
+      <span class="sl-label">Taxes and Government Fees</span>
+      <span class="sl-value">$200</span>
+    </div>
+    <div class="shawn-line">
+      <span class="sl-label">Prepaids and Initial Escrow</span>
+      <span class="sl-value">$7,120</span>
+    </div>
+
+    <div class="shawn-grand">
+      <span class="sg-label">Total Closing Costs (excluding down payment)</span>
+      <span class="sg-value">$23,905</span>
+    </div>
+
+    <div class="shawn-note">
+      Of the $23,905 in total closing costs, $7,560 represents discount points (1.5% of the loan amount). Non-QM programs carry higher points than conventional financing as a structural feature of bank statement lending. This is a reasonable starting point for a seller credit conversation with the builder. Points and third-party fees together represent approximately $16,585 in costs the builder could partially offset through concessions. All figures are estimates based on the scenario provided.
+    </div>
+  </div>
+
+  <!-- MELLO ROOS NOTE -->
+  <div class="context-note" style="margin-bottom:28px;">
+    Property taxes reflected in this scenario use a total effective rate of 1.58%, which includes the base county tax rate of 1.16% plus the Mello Roos special assessment applicable to this Woodside community. Mello Roos is a builder-imposed district tax common in new construction developments. It is a fixed cost of this property and is included in the monthly payment and escrow figures shown.
+  </div>
+
+  <!-- MONTHLY PAYMENT -->
+  <div class="section-label">Estimated Monthly Housing Expense</div>
+  <div class="monthly-total-block">
+    <div class="two-col-lines" style="margin-bottom:12px;">
+      <div class="line-item">
+        <span class="li-label">Principal and Interest</span>
+        <span class="li-value">$3,144</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Homeowner's Insurance</span>
+        <span class="li-value">$125</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">Property Taxes (1.58% total rate)</span>
+        <span class="li-value">$830</span>
+      </div>
+      <div class="line-item">
+        <span class="li-label">HOA Dues</span>
+        <span class="li-value">$146</span>
+      </div>
+    </div>
+    <div class="monthly-header">
+      <span class="monthly-label">Total Approximated Monthly Payment</span>
+      <span class="monthly-amount">$4,245</span>
+    </div>
+  </div>
+
+  <!-- TOTAL CASH TO CLOSE -->
+  <div class="full-card" style="margin-bottom:32px;">
+    <div class="card-title">Total Estimated Cash to Close</div>
+    <div class="line-item">
+      <span class="li-label">Down Payment (20%)</span>
+      <span class="li-value gold">$126,000</span>
+    </div>
+    <div class="line-item">
+      <span class="li-label">Total Closing Costs</span>
+      <span class="li-value">$23,905</span>
+    </div>
+    <div class="card-total-row">
+      <span class="ct-label">Estimated Cash from Borrower</span>
+      <span class="ct-value" style="font-size:19px;">$149,905</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Questions or Adjustments?</h2>
+    <p>Let me know if you would like to see any other scenarios, adjusted purchase prices, or different down payment structures. Happy to run additional numbers as the negotiation develops.</p>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer" style="padding-bottom: 24px;">
+    This estimate is provided for illustrative and informational purposes only, based on the initial loan scenario provided. This is not a loan approval or commitment to lend. Rates shown (6.375% / 6.571% APR) are estimates effective as of April 6, 2026 and are subject to change. Until a rate lock is confirmed, the rate, APR, and terms are subject to change and may not be available at commitment or closing. Escrow is not waived. Lock period shown is 30 days. All figures are estimates; actual fees may vary. Owner's Title Insurance is optional and listed for reference. This information is intended for educational purposes and does not constitute legal or financial advice. Joanna Perry | NMLS #243348. Xpert Home Lending Inc. | Company NMLS #2179191. California Licensed Mortgage Broker.
+  </div>
+
+</div>
+</body>
+</html>
