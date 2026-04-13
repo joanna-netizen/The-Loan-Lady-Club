@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Options Overview | George & Emily | The Loan Lady Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #B8860B;
+      --cream: #F5F0E8;
+      --charcoal: #2C2C2C;
+      --taupe: #E8E2D9;
+      --white: #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #edeae3;
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      padding: 0;
+      margin: 0;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--white);
+      border-top: 4px solid var(--gold);
+      box-shadow: 0 2px 24px rgba(44,44,44,0.09);
+      padding: 44px 48px 40px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 16px;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--charcoal);
+    }
+    .tagline {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+    .header-contact {
+      text-align: right;
+      font-size: 11.5px;
+      line-height: 1.75;
+      color: rgba(44,44,44,0.65);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--taupe);
+      margin: 0 0 28px;
+    }
+
+    /* GREETING */
+    .greeting { margin-bottom: 32px; }
+    .greeting h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.22;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+    .greeting p {
+      font-size: 14.5px;
+      line-height: 1.78;
+      color: var(--charcoal);
+    }
+    .greeting p + p { margin-top: 10px; }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    /* SCENARIO GRID */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--taupe);
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-header {
+      padding: 16px 18px 13px;
+      border-bottom: 1px solid var(--taupe);
+    }
+    .scenario-tag {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .card-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--charcoal);
+      line-height: 1.28;
+    }
+    .card-subtitle {
+      font-size: 11px;
+      color: rgba(44,44,44,0.58);
+      margin-top: 5px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .card-body {
+      padding: 14px 18px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* LINE ITEMS */
+    .line-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 12.5px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(232,226,217,0.7);
+      gap: 8px;
+    }
+    .line-item .li-label { color: rgba(44,44,44,0.68); line-height: 1.4; }
+    .line-item .li-value { font-weight: 500; color: var(--charcoal); text-align: right; white-space: nowrap; }
+
+    /* COVERS BLOCK */
+    .covers-block {
+      background: rgba(184,134,11,0.07);
+      border: 1px solid rgba(184,134,11,0.22);
+      border-radius: 3px;
+      padding: 10px 13px;
+      margin: 11px 0 12px;
+    }
+    .covers-block .covers-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 7px;
+    }
+    .covers-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      padding: 3px 0;
+      gap: 8px;
+    }
+    .covers-row .cr-label { color: rgba(44,44,44,0.70); }
+    .covers-row .cr-value { font-weight: 500; color: var(--charcoal); white-space: nowrap; }
+    .covers-row.cr-green .cr-label,
+    .covers-row.cr-green .cr-value { color: #3a7a3a; font-weight: 600; }
+
+    /* MONTHLY PAYMENT ROW */
+    .monthly-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--taupe);
+    }
+    .monthly-row .m-label {
+      font-size: 11px;
+      color: rgba(44,44,44,0.65);
+      font-weight: 500;
+    }
+    .monthly-row .m-value {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    /* CASH TO CLOSE HERO */
+    .ctc-hero {
+      border-top: 2px solid var(--gold);
+      margin-top: auto;
+      padding-top: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .ctc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(44,44,44,0.68);
+      line-height: 1.4;
+    }
+    .ctc-label span {
+      display: block;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: none;
+      color: rgba(44,44,44,0.48);
+      margin-top: 2px;
+    }
+    .ctc-amount {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--charcoal);
+    }
+
+    /* SPAN CARD */
+    .card.span { grid-column: 1 / -1; }
+    .span .card-header h2 { font-size: 15px; }
+    .span .card-body { flex-direction: row; gap: 22px; align-items: flex-start; flex-wrap: nowrap; }
+    .span .left-col { flex: 1; min-width: 0; }
+    .span .right-col { flex: 1; min-width: 0; }
+
+    /* SUMMARY TABLE */
+    .summary-banner {
+      background: var(--cream);
+      border: 1px solid var(--taupe);
+      border-left: 4px solid var(--gold);
+      border-radius: 3px;
+      padding: 20px 22px;
+      margin-bottom: 22px;
+    }
+    .summary-banner h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .summary-table th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: rgba(44,44,44,0.58);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--taupe);
+    }
+    .summary-table th:not(:first-child) { text-align: right; }
+    .summary-table td {
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(232,226,217,0.55);
+      vertical-align: middle;
+    }
+    .summary-table td:not(:first-child) { text-align: right; font-weight: 500; }
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table .row-label { color: rgba(44,44,44,0.75); }
+    .summary-table .standout { color: var(--gold); font-weight: 700; }
+    .summary-table .green { color: #3a7a3a; font-weight: 600; }
+
+    /* NOTE */
+    .note-block {
+      margin-bottom: 22px;
+      padding: 16px 20px;
+      border: 1px solid var(--taupe);
+      border-radius: 3px;
+    }
+    .note-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15.5px;
+      line-height: 1.78;
+      color: var(--charcoal);
+    }
+
+    /* CTA */
+    .cta-block {
+      background: var(--charcoal);
+      border-radius: 3px;
+      padding: 28px 32px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .cta-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 9px;
+    }
+    .cta-block p {
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: rgba(245,240,232,0.80);
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13.5px;
+      padding: 12px 28px;
+      text-decoration: none;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      font-size: 10.5px;
+      line-height: 1.72;
+      color: rgba(44,44,44,0.52);
+      border-top: 1px solid var(--taupe);
+      padding-top: 18px;
+    }
+
+    /* ========================
+       MOBILE BREAKPOINTS
+    ======================== */
+
+    @media (max-width: 620px) {
+      .page { padding: 32px 22px 32px; }
+      .span .card-body { flex-direction: column; gap: 0; }
+      .span .right-col {
+        border-top: 1px solid var(--taupe);
+        padding-top: 14px;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      body { background: var(--white); }
+      .page { padding: 24px 16px 28px; box-shadow: none; }
+      .header { flex-direction: column; gap: 8px; }
+      .header-contact { text-align: left; }
+      .scenario-grid { grid-template-columns: 1fr; gap: 12px; }
+      .card.span { grid-column: 1; }
+      .greeting h1 { font-size: 22px; }
+      .ctc-amount { font-size: 28px; }
+      .summary-table { font-size: 11.5px; }
+      .summary-table th { font-size: 9px; }
+      .cta-block { padding: 22px 18px; }
+      .cta-block h3 { font-size: 18px; }
+      .cta-btn { display: block; padding: 14px 16px; }
+    }
+
+    @media (max-width: 400px) {
+      .page { padding: 18px 12px 24px; }
+      .greeting h1 { font-size: 20px; }
+      .ctc-amount { font-size: 24px; }
+    }
+
+    @media (max-width: 375px) {
+      .summary-table thead { display: none; }
+      .summary-table,
+      .summary-table tbody,
+      .summary-table tr,
+      .summary-table td { display: block; width: 100%; }
+      .summary-table tr {
+        background: var(--cream);
+        border: 1px solid var(--taupe);
+        border-radius: 3px;
+        margin-bottom: 8px;
+        padding: 10px 12px;
+      }
+      .summary-table td {
+        text-align: left !important;
+        border-bottom: none;
+        padding: 3px 0;
+        font-size: 12px;
+      }
+      .summary-table td.row-label {
+        font-weight: 700;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: rgba(44,44,44,0.60);
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--taupe);
+        margin-bottom: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="header-contact">
+      Joanna Perry, NMLS #243348<br>
+      (916) 708-8555 &nbsp;|&nbsp; joanna@loanlady.club
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <h1>Your Home Purchase Options, Laid Out Clearly</h1>
+    <p>George and Emily, congratulations on this exciting next step. I want you to feel completely confident about what each path actually costs you out of pocket before we go any further.</p>
+    <p>The single most important number on each scenario below is labeled "What You Bring to Closing." That is the only dollar amount you need to have ready. Everything else, including the down payment, is either covered by assistance or already factored into that one total.</p>
+  </div>
+
+  <!-- OPTION A -->
+  <div class="section-label">Option A: CalHFA Down Payment Assistance Programs</div>
+  <div class="scenario-grid">
+
+    <!-- A-1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="scenario-tag">Scenario A-1</div>
+        <h2>$380,000 Purchase with CalHFA</h2>
+        <div class="card-subtitle">Cal-Plus FHA + MyHome + ZIP 2%</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="li-label">Purchase Price</span>
+          <span class="li-value">$380,000</span>
+        </div>
+        <div class="line-item">
+          <span class="li-label">Est. Interest Rate</span>
+          <span class="li-value">6.625%</span>
+        </div>
+
+        <div class="covers-block">
+          <div class="covers-label">How the Down Payment Gets Covered</div>
+          <div class="covers-row">
+            <span class="cr-label">Down Payment Required</span>
+            <span class="cr-value">$13,300</span>
+          </div>
+          <div class="covers-row cr-green">
+            <span class="cr-label">CalHFA Covers</span>
+            <span class="cr-value">($20,634)</span>
+          </div>
+          <div class="covers-row cr-green">
+            <span class="cr-label">Seller Credit Covers Fees</span>
+            <span class="cr-value">($5,900)</span>
+          </div>
+        </div>
+
+        <div class="monthly-row">
+          <span class="m-label">Est. Monthly Payment</span>
+          <span class="m-value">$3,077 / mo</span>
+        </div>
+
+        <div class="ctc-hero">
+          <div class="ctc-label">
+            What You Bring to Closing
+            <span>Your only out-of-pocket cost (est.)</span>
+          </div>
+          <div class="ctc-amount">$2,480</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A-2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="scenario-tag">Scenario A-2</div>
+        <h2>$400,000 Purchase with CalHFA</h2>
+        <div class="card-subtitle">Cal-Plus FHA + MyHome + ZIP 2%</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="li-label">Purchase Price</span>
+          <span class="li-value">$400,000</span>
+        </div>
+        <div class="line-item">
+          <span class="li-label">Est. Interest Rate</span>
+          <span class="li-value">6.625%</span>
+        </div>
+
+        <div class="covers-block">
+          <div class="covers-label">How the Down Payment Gets Covered</div>
+          <div class="covers-row">
+            <span class="cr-label">Down Payment Required</span>
+            <span class="cr-value">$14,000</span>
+          </div>
+          <div class="covers-row cr-green">
+            <span class="cr-label">CalHFA Covers</span>
+            <span class="cr-value">($21,720)</span>
+          </div>
+          <div class="covers-row cr-green">
+            <span class="cr-label">Seller Credit Covers Fees</span>
+            <span class="cr-value">($5,900)</span>
+          </div>
+        </div>
+
+        <div class="monthly-row">
+          <span class="m-label">Est. Monthly Payment</span>
+          <span class="m-value">$3,233 / mo</span>
+        </div>
+
+        <div class="ctc-hero">
+          <div class="ctc-label">
+            What You Bring to Closing
+            <span>Your only out-of-pocket cost (est.)</span>
+          </div>
+          <div class="ctc-amount">$2,524</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OPTION B -->
+  <div class="section-label">Option B: Your Own Down Payment + Seller Credit Toward Closing Costs</div>
+  <div class="scenario-grid">
+
+    <div class="card span">
+      <div class="card-header">
+        <div class="scenario-tag">Scenario B-1</div>
+        <h2>$425,000 Purchase | You Bring the Down Payment, Seller Credits Closing Costs</h2>
+        <div class="card-subtitle">30-Year FHA Fixed. No layered assistance programs. Lower rate reflects a single first mortgage only.</div>
+      </div>
+      <div class="card-body">
+        <div class="left-col">
+          <div class="line-item">
+            <span class="li-label">Purchase Price</span>
+            <span class="li-value">$425,000</span>
+          </div>
+          <div class="line-item">
+            <span class="li-label">Est. Interest Rate</span>
+            <span class="li-value">5.750%</span>
+          </div>
+          <div class="line-item">
+            <span class="li-label">Lender Fees (admin only)</span>
+            <span class="li-value">$1,075</span>
+          </div>
+          <div class="monthly-row" style="margin-top:14px; padding-top:14px;">
+            <span class="m-label">Est. Monthly Payment</span>
+            <span class="m-value">$3,190 / mo</span>
+          </div>
+        </div>
+        <div class="right-col">
+          <div class="covers-block" style="margin-top:0;">
+            <div class="covers-label">What Makes Up Your Cash to Close</div>
+            <div class="covers-row">
+              <span class="cr-label">Down Payment (3.5%)</span>
+              <span class="cr-value">$14,875</span>
+            </div>
+            <div class="covers-row">
+              <span class="cr-label">Remaining Closing Costs</span>
+              <span class="cr-value">~$17,569</span>
+            </div>
+            <div class="covers-row cr-green">
+              <span class="cr-label">Seller Credit Applied</span>
+              <span class="cr-value">($10,000)</span>
+            </div>
+          </div>
+          <div class="ctc-hero">
+            <div class="ctc-label">
+              What You Bring to Closing
+              <span>Down payment + costs after seller credit (est.)</span>
+            </div>
+            <div class="ctc-amount">$15,267</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="summary-banner">
+    <h3>Side by Side at a Glance</h3>
+    <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th style="min-width:145px;">Factor</th>
+            <th style="min-width:80px;">A-1 ($380k)</th>
+            <th style="min-width:80px;">A-2 ($400k)</th>
+            <th style="min-width:80px;">B-1 ($425k)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Purchase Price</td>
+            <td>$380,000</td>
+            <td>$400,000</td>
+            <td>$425,000</td>
+          </tr>
+          <tr>
+            <td class="row-label">Est. Monthly Payment</td>
+            <td class="standout">$3,077</td>
+            <td>$3,233</td>
+            <td>$3,190</td>
+          </tr>
+          <tr>
+            <td class="row-label">What You Bring to Closing</td>
+            <td class="standout">$2,480</td>
+            <td class="standout">$2,524</td>
+            <td>$15,267</td>
+          </tr>
+          <tr>
+            <td class="row-label">Down Payment Covered By</td>
+            <td class="green">CalHFA</td>
+            <td class="green">CalHFA</td>
+            <td>You</td>
+          </tr>
+          <tr>
+            <td class="row-label">Est. Interest Rate</td>
+            <td>6.625%</td>
+            <td>6.625%</td>
+            <td class="standout">5.750%</td>
+          </tr>
+          <tr>
+            <td class="row-label">Seller Credit</td>
+            <td>$5,900</td>
+            <td>$5,900</td>
+            <td>$10,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-block">
+    <p>With Option A, CalHFA covers the down payment so the only money you need to bring to closing is the small remaining balance after the seller credit is applied. The trade-off is a slightly higher rate and a layered second lien. With Option B, you bring your own down payment along with remaining costs not covered by the seller credit, but the rate is meaningfully lower and the loan structure is simpler. Neither path is wrong. The right one depends on where your savings sit today and what feels right for your family.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Ready to talk through the next step?</h3>
+    <p>When you are ready, I will walk through these numbers with you directly so everything is clear before we move forward. No pressure, no rush. Schedule a time below.</p>
+    <a class="cta-btn" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN" target="_blank" rel="noopener">Schedule Your Consultation</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    This estimate is provided for illustrative and informational purposes only based on the initial loan scenario provided. This is not a loan approval or commitment to lend. Rates and APR are estimates effective as of 04/13/2026 and are subject to change. Until your rate is locked, APR and terms are subject to change or may not be available at commitment or closing. Lock period shown is 30 days. All figures should be verified with an official Loan Estimate prior to making any financial decisions. CalHFA program availability is subject to program guidelines, income limits, and credit qualification requirements. Subordinate financing terms are estimates based on current program parameters and are subject to change.
+    <br><br>
+    Joanna Perry, NMLS #243348 | The Loan Lady Club, powered by Xpert Home Lending Inc., NMLS #2179191 | California Licensed Mortgage Broker | 9278 Madison Ave, Orangevale, CA 95662
+  </div>
+
+</div>
+</body>
+</html>
