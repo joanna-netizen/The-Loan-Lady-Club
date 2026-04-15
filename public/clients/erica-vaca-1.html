@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Initial Fees Worksheet | Erica Vaca | The Loan Lady Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  body {
+    background: #f0ece4;
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    padding: 40px 16px 60px;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 32px rgba(44,44,44,0.10);
+    padding: 52px 52px 44px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--taupe);
+    gap: 16px;
+  }
+  .header-left .brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+  .header-left .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.72;
+    line-height: 1.7;
+  }
+  .header-right a {
+    color: var(--charcoal);
+    opacity: 0.72;
+    text-decoration: none;
+  }
+
+  /* DOCUMENT TITLE BLOCK */
+  .doc-title-block {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .doc-title-block .doc-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .doc-title-block h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+  .doc-title-block .borrower-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--charcoal);
+    margin-top: 6px;
+    opacity: 0.80;
+  }
+
+  /* GREETING */
+  .greeting {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--charcoal);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+  }
+
+  /* LOAN SNAPSHOT */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--taupe);
+    margin-bottom: 32px;
+  }
+  .snapshot-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--taupe);
+    font-size: 13px;
+  }
+  .snapshot-item:nth-child(odd) {
+    border-right: 1px solid var(--taupe);
+  }
+  .snapshot-item:nth-last-child(1),
+  .snapshot-item:nth-last-child(2) {
+    border-bottom: none;
+  }
+  .snapshot-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--charcoal);
+    opacity: 0.55;
+    margin-bottom: 3px;
+  }
+  .snapshot-value {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--charcoal);
+  }
+  .snapshot-value.gold { color: var(--gold); }
+
+  /* SECTION HEADER */
+  .section-header {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  /* FEE TABLE */
+  .fee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-size: 13.5px;
+  }
+  .fee-table th {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--charcoal);
+    opacity: 0.55;
+    padding: 8px 0;
+    text-align: left;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .fee-table th:last-child { text-align: right; }
+  .fee-table td {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--taupe);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+  }
+  .fee-table td:last-child { text-align: right; font-weight: 500; }
+  .fee-table tr:last-child td { border-bottom: none; }
+  .fee-table .subtotal td {
+    font-weight: 600;
+    color: var(--charcoal);
+    border-top: 1px solid var(--taupe);
+    border-bottom: none;
+  }
+  .fee-table .sub-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--gold);
+    padding: 12px 0 4px;
+    border-bottom: none;
+  }
+  .fee-table .sub-label td {
+    padding: 12px 0 4px;
+    border-bottom: none;
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+  }
+
+  /* TWO-COLUMN CARDS */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .summary-card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 20px;
+  }
+  .summary-card .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--taupe);
+    gap: 8px;
+  }
+  .card-row:last-child { border-bottom: none; }
+  .card-row .r-label { color: var(--charcoal); opacity: 0.80; }
+  .card-row .r-value { font-weight: 500; text-align: right; }
+  .card-row.gold-row {
+    border-top: 2px solid var(--gold);
+    margin-top: 6px;
+    padding-top: 8px;
+  }
+  .card-row.gold-row .r-label { font-weight: 600; opacity: 1; }
+  .card-row.gold-row .r-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--gold);
+  }
+
+  /* CREDITS SECTION */
+  .credits-block {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .credits-block .credits-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+  .credits-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .credits-row:last-child { border-bottom: none; }
+  .credits-row.total-row {
+    border-top: 2px solid var(--gold);
+    margin-top: 6px;
+    padding-top: 10px;
+    font-weight: 600;
+  }
+  .credits-row.total-row .cr-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--charcoal);
+  }
+  .credits-row.cash-row {
+    background: var(--charcoal);
+    color: var(--white);
+    margin: 10px -24px -20px;
+    padding: 14px 24px;
+    font-weight: 600;
+  }
+  .credits-row.cash-row .cr-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gold);
+  }
+
+  /* AGENT SECTION */
+  .agent-block {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .agent-block .agent-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .agent-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15.5px;
+    color: var(--charcoal);
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: var(--charcoal);
+    padding: 36px 32px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .cta-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .cta-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--cream);
+    opacity: 0.80;
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+  }
+  .cta-btn:hover { opacity: 0.88; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.60;
+    line-height: 1.7;
+    border-top: 1px solid var(--taupe);
+    padding-top: 20px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 540px) {
+    .page { padding: 28px 20px 36px; }
+    .header { flex-direction: column; }
+    .header-right { text-align: left; }
+    .two-col { grid-template-columns: 1fr; }
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .snapshot-item:nth-child(odd) { border-right: none; }
+    .snapshot-item:nth-last-child(2) { border-bottom: 1px solid var(--taupe); }
+    .doc-title-block h1 { font-size: 22px; }
+    .credits-row.cash-row { margin: 10px -20px -20px; padding: 14px 20px; }
+    .cta-block { padding: 28px 20px; }
+  }
+  @media (max-width: 400px) {
+    .page { padding: 20px 14px 28px; }
+    .card-row { flex-direction: column; gap: 2px; }
+    .card-row .r-value { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="brand">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="header-right">
+      Joanna Perry | NMLS #243348<br>
+      (916) 708-8555<br>
+      joanna@loanlady.club<br>
+      loanladyclub.com
+    </div>
+  </div>
+
+  <!-- DOCUMENT TITLE -->
+  <div class="doc-title-block">
+    <div class="doc-label">Initial Fees Worksheet</div>
+    <h1>Your Home Purchase Estimate</h1>
+    <div class="borrower-name">Prepared for Erica Vaca</div>
+  </div>
+
+  <!-- GREETING -->
+  <div class="greeting">
+    Erica, you have worked hard over the past two months to get your credit where it needs to be, and this estimate reflects exactly what that effort is building toward. The numbers below are based on a 30-year FHA loan for the home at 7839 Dominion Way in Elverta, with a $5,000 seller credit factored in to help reduce what you bring to closing. This is a real picture of what homeownership can look like for you.
+  </div>
+
+  <!-- LOAN SNAPSHOT -->
+  <div class="section-header">Loan at a Glance</div>
+  <div class="snapshot-grid">
+    <div class="snapshot-item">
+      <div class="snapshot-label">Purchase Price</div>
+      <div class="snapshot-value">$370,000</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snapshot-label">Total Loan Amount</div>
+      <div class="snapshot-value">$363,298</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snapshot-label">Loan Product</div>
+      <div class="snapshot-value">30-Year FHA Fixed</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snapshot-label">Property Type</div>
+      <div class="snapshot-value">Single Family Residence</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snapshot-label">Occupancy</div>
+      <div class="snapshot-value">Primary Residence</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snapshot-label">ZIP / State</div>
+      <div class="snapshot-value">95835 / California</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snapshot-label">Rate / APR (estimate)</div>
+      <div class="snapshot-value gold">6.625% / 7.426%</div>
+    </div>
+    <div class="snapshot-item">
+      <div class="snapshot-label">Lock Period</div>
+      <div class="snapshot-value">30 Days</div>
+    </div>
+  </div>
+
+  <!-- MONTHLY / FUNDS TO CLOSE CARDS -->
+  <div class="two-col">
+    <div class="summary-card">
+      <div class="card-title">Estimated Monthly Payment</div>
+      <div class="card-row"><span class="r-label">Principal and Interest</span><span class="r-value">$2,326.24</span></div>
+      <div class="card-row"><span class="r-label">Homeowner's Insurance</span><span class="r-value">$100.00</span></div>
+      <div class="card-row"><span class="r-label">Property Taxes</span><span class="r-value">$385.42</span></div>
+      <div class="card-row"><span class="r-label">Mortgage Insurance (MIP)</span><span class="r-value">$162.84</span></div>
+      <div class="card-row gold-row"><span class="r-label">Total Monthly (est.)</span><span class="r-value">$2,974.50</span></div>
+    </div>
+    <div class="summary-card">
+      <div class="card-title">Estimated Cash to Close</div>
+      <div class="card-row"><span class="r-label">Down Payment</span><span class="r-value">$12,950.00</span></div>
+      <div class="card-row"><span class="r-label">Closing Costs</span><span class="r-value">$17,309.26</span></div>
+      <div class="card-row"><span class="r-label">Seller Credit</span><span class="r-value" style="color:var(--gold);">- $5,000.00</span></div>
+      <div class="card-row"><span class="r-label">FHA MIP Financed</span><span class="r-value" style="color:var(--gold);">- $6,248.00</span></div>
+      <div class="card-row gold-row"><span class="r-label">What You Bring to Closing</span><span class="r-value">$19,011.26</span></div>
+    </div>
+  </div>
+
+  <!-- FEES -->
+  <div class="section-header">Estimated Closing Costs</div>
+  <table class="fee-table">
+    <thead>
+      <tr>
+        <th>Cost Category</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Lender Fees</td><td>$2,000.00</td></tr>
+      <tr><td>Third Party Fees (appraisal, title, credit report, etc.)</td><td>$10,637.33</td></tr>
+      <tr><td>Government Recording Fees</td><td>$200.00</td></tr>
+      <tr><td>Prepaids and Initial Escrow Setup</td><td>$4,471.93</td></tr>
+      <tr class="subtotal"><td>Total Estimated Closing Costs</td><td>$17,309.26</td></tr>
+    </tbody>
+  </table>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--charcoal);opacity:0.72;margin-top:-16px;margin-bottom:28px;line-height:1.6;">We will walk through every line of this in detail during your Buyer's Edge meeting before anything moves forward.</p>
+
+  <!-- AGENT RECOMMENDATION -->
+  <div class="agent-block">
+    <div class="agent-heading">A Note on Your Real Estate Agent</div>
+    <p>
+      When you are ready to tour homes and make offers, I recommend connecting with Denice Dell. Denice has strong experience working with first-time buyers and is skilled at negotiating seller credits, which, as you can see from this estimate, can meaningfully reduce what you bring to the table at closing. She is a great resource to have in your corner as you move through this process.
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Ready to Take the Next Step?</h2>
+    <p>When your FICO score reaches our qualifying threshold, we will move quickly to get you into the Buyer's Edge process. You have done the hard work. Let's schedule a check-in to review where things stand.</p>
+    <a class="cta-btn" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN" target="_blank">Schedule with Joanna</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    This estimate is provided for illustrative and informational purposes only, based on the initial basic loan scenario provided. This is not a loan approval or commitment to lend. Rate of 6.625% and APR of 7.426% are estimates as of 04/14/2026 and are subject to change. APR is calculated based on criteria provided. Until a rate is locked, APR and terms are subject to change or may not be available at commitment or closing. Escrow has not been waived. Lock period is 30 days. All figures reflect a 30-day lock period and estimated closing costs; actual costs may vary. NMLS #243348 (Joanna Perry) | Company NMLS #2179191 (Xpert Home Lending Inc.). California Licensed Mortgage Broker. Equal Housing Opportunity.
+  </div>
+
+</div>
+</body>
+</html>
