@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weir – VA Loan Options Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f0ece4;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #2C2C2C;
+      padding: 40px 16px;
+    }
+
+    .email-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-top: 4px solid #B8860B;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+      padding: 52px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #E8E2D9;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #2C2C2C;
+    }
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #B8860B;
+      margin-top: 4px;
+    }
+    .contact-block {
+      text-align: right;
+      font-size: 12px;
+      color: rgba(44,44,44,0.72);
+      line-height: 1.7;
+    }
+
+    /* Greeting */
+    .greeting {
+      margin-bottom: 28px;
+    }
+    .greeting p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #2C2C2C;
+      margin-bottom: 14px;
+    }
+
+    /* Section headers */
+    .section-label {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: #2C2C2C;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #E8E2D9;
+    }
+
+    /* Net sheet summary boxes */
+    .net-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .net-card {
+      background: #F5F0E8;
+      border: 1px solid #E8E2D9;
+      padding: 20px;
+    }
+    .net-card .card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: #2C2C2C;
+      margin-bottom: 14px;
+    }
+    .net-card .line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 5px 0;
+      border-bottom: 1px solid #E8E2D9;
+      color: #2C2C2C;
+    }
+    .net-card .line:last-child {
+      border-bottom: none;
+    }
+    .net-card .line.total {
+      border-top: 1px solid #B8860B;
+      margin-top: 6px;
+      padding-top: 8px;
+      font-weight: 600;
+    }
+    .net-card .line.total .val {
+      color: #B8860B;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+    }
+
+    /* IFW option cards */
+    .ifws {
+      margin-bottom: 36px;
+    }
+    .ifw-card {
+      background: #F5F0E8;
+      border: 1px solid #E8E2D9;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .ifw-card .ifw-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: #2C2C2C;
+      margin-bottom: 4px;
+    }
+    .ifw-card .ifw-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: #2C2C2C;
+      margin-bottom: 14px;
+    }
+    .ifw-card .line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 5px 0;
+      border-bottom: 1px solid #E8E2D9;
+    }
+    .ifw-card .line:last-child { border-bottom: none; }
+    .ifw-card .line.total {
+      border-top: 1px solid #B8860B;
+      margin-top: 6px;
+      padding-top: 8px;
+      font-weight: 600;
+    }
+    .ifw-card .line.total .val {
+      color: #B8860B;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+    }
+    .ifw-card .line .val { font-weight: 500; }
+    .ifw-card .note {
+      margin-top: 12px;
+      font-size: 13px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: #2C2C2C;
+      line-height: 1.6;
+    }
+
+    /* Closing copy */
+    .closing {
+      margin-bottom: 32px;
+    }
+    .closing p {
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    /* CTA */
+    .cta-block {
+      background: #2C2C2C;
+      padding: 28px 32px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .cta-block p {
+      color: #F5F0E8;
+      font-size: 15px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #B8860B;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 12px 28px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      font-size: 11px;
+      color: rgba(44,44,44,0.6);
+      line-height: 1.7;
+      border-top: 1px solid #E8E2D9;
+      padding-top: 20px;
+    }
+
+    /* Mobile */
+    @media (max-width: 540px) {
+      .email-wrap { padding: 32px 20px; }
+      .header { flex-direction: column; gap: 12px; }
+      .contact-block { text-align: left; }
+      .net-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="email-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry, NMLS #243348<br>
+      Xpert Home Lending Inc., NMLS #2179191<br>
+      California Licensed Mortgage Broker<br>
+      (916) 708-8555 &nbsp;|&nbsp; joanna@loanlady.club<br>
+      loanladyclub.com
+    </div>
+  </div>
+
+  <!-- Greeting -->
+  <div class="greeting">
+    <p>Barrie and Kirk,</p>
+    <p>
+      Congratulations on receiving an offer on Mindy Lane. I have prepared information that covers your replacement property financing at the buyer's offer price of $1,060,000, as well as at your counter price of $1,099,000, so you can see how both scenarios affect your options going forward.
+    </p>
+    <p>
+      Attached to this email you will find your seller's estimated net proceeds at two sale price points, as well as the Initial Fees Worksheets (IFWs) for four VA loan scenarios on the replacement property. Everything below is a summary of what those documents show and how they connect to each other.
+    </p>
+    <p>
+      Please read through at your own pace. We will go over all of it together by phone.
+    </p>
+  </div>
+
+  <!-- Net Proceeds Summary -->
+  <div class="section-label">Estimated Net Proceeds: Mindy Lane Sale</div>
+  <div class="net-grid">
+    <div class="net-card">
+      <div class="card-title">Scenario A: Sale at $1,060,000</div>
+      <div class="line"><span>Sales Price</span><span>$1,060,000</span></div>
+      <div class="line"><span>Loan Payoff (est.)</span><span>$937,077</span></div>
+      <div class="line"><span>Commission</span><span>$53,000</span></div>
+      <div class="line"><span>Title, Escrow, Taxes, Fees (est.)</span><span>$7,671</span></div>
+      <div class="line total"><span>Estimated Net to Seller</span><span class="val">$67,252</span></div>
+    </div>
+    <div class="net-card">
+      <div class="card-title">Scenario B: Sale at $1,099,000</div>
+      <div class="line"><span>Sales Price</span><span>$1,099,000</span></div>
+      <div class="line"><span>Loan Payoff (est.)</span><span>$937,077</span></div>
+      <div class="line"><span>Commission</span><span>$54,950</span></div>
+      <div class="line"><span>Title, Escrow, Taxes, Fees (est.)</span><span>$5,745</span></div>
+      <div class="line total"><span>Estimated Net to Seller</span><span class="val">$104,228</span></div>
+    </div>
+  </div>
+
+  <div class="greeting">
+    <p>
+      These figures come directly from the preliminary estimated statements prepared by Old Republic Title. They are estimates. Your escrow officer will produce a more precise closing statement once loan documents are received. The difference between the two price points is approximately $36,976 in additional net proceeds.
+    </p>
+  </div>
+
+  <!-- IFW Options -->
+  <div class="section-label" style="margin-top: 8px;">VA Loan Options: Replacement Property at $650,000</div>
+
+  <div class="greeting">
+    <p>
+      All four scenarios below are for a 30-year VA fixed rate loan on a primary residence in the 95628 ZIP code. VA does not require a down payment. The loan amount in each scenario reflects a choice about how much of the sale proceeds you want to bring to the new purchase, whether for a lower loan balance, a lower monthly payment, or debt payoff. These are illustrative scenarios. All figures are estimates and subject to change.
+    </p>
+  </div>
+
+  <div class="ifws">
+
+    <!-- Option 1 -->
+    <div class="ifw-card">
+      <div class="ifw-title">Option 1: Loan Amount $637,500 at 5.750%</div>
+      <div style="display:inline-block; background:#B8860B; color:#FFFFFF; font-family:'Inter',sans-serif; font-weight:600; font-size:12px; letter-spacing:0.07em; text-transform:uppercase; padding:6px 14px; margin-bottom:14px;">Available if Mindy Lane sells at $1,060,000 or higher</div>
+      <div class="line"><span>Loan Amount</span><span class="val">$637,500</span></div>
+      <div class="line"><span>Rate / APR (est.)</span><span class="val">5.750% / 5.823%</span></div>
+      <div class="line"><span>Monthly P&I</span><span class="val">$3,720.28</span></div>
+      <div class="line"><span>Total Monthly Payment (est.)</span><span class="val">$4,497.36</span></div>
+      <div class="line total"><span>Estimated Cash to Close</span><span class="val">$26,501</span></div>
+      <div class="note">
+        This option uses the VA funding fee financed into the loan rather than a traditional down payment. The estimated cash to close of $26,501 is well within the net proceeds at the $1,060,000 sale price. The difference between your estimated net proceeds and this cash to close amount leaves room to address consumer debt at closing if that is something you want to discuss.
+      </div>
+    </div>
+
+    <!-- Option 2 -->
+    <div class="ifw-card">
+      <div class="ifw-title">Option 2: Loan Amount $600,000 at 5.750%</div>
+      <div style="display:inline-block; background:#B8860B; color:#FFFFFF; font-family:'Inter',sans-serif; font-weight:600; font-size:12px; letter-spacing:0.07em; text-transform:uppercase; padding:6px 14px; margin-bottom:14px;">Available if Mindy Lane sells at $1,060,000 or higher</div>
+      <div class="line"><span>Loan Amount</span><span class="val">$600,000</span></div>
+      <div class="line"><span>Rate / APR (est.)</span><span class="val">5.750% / 5.824%</span></div>
+      <div class="line"><span>Monthly P&I</span><span class="val">$3,501.44</span></div>
+      <div class="line"><span>Total Monthly Payment (est.)</span><span class="val">$4,278.52</span></div>
+      <div class="line total"><span>Estimated Cash to Close</span><span class="val">$63,802</span></div>
+      <div class="note">
+        This option reduces the loan balance by bringing approximately $50,000 from sale proceeds to closing. The lower loan amount results in a lower monthly payment compared to Option 1. Estimated cash to close falls within the net proceeds at the $1,060,000 sale price, though it uses most of those proceeds.
+      </div>
+    </div>
+
+    <!-- Option 3 -->
+    <div class="ifw-card">
+      <div class="ifw-title">Option 3: Loan Amount $600,000 at 5.500%</div>
+      <div style="display:inline-block; background:#B8860B; color:#FFFFFF; font-family:'Inter',sans-serif; font-weight:600; font-size:12px; letter-spacing:0.07em; text-transform:uppercase; padding:6px 14px; margin-bottom:14px;">Available if Mindy Lane sells at $1,060,000 or higher</div>
+      <div class="line"><span>Loan Amount</span><span class="val">$600,000</span></div>
+      <div class="line"><span>Rate / APR (est.)</span><span class="val">5.500% / 5.637%</span></div>
+      <div class="line"><span>Monthly P&I</span><span class="val">$3,406.73</span></div>
+      <div class="line"><span>Total Monthly Payment (est.)</span><span class="val">$4,183.81</span></div>
+      <div class="line total"><span>Estimated Cash to Close</span><span class="val">$67,973</span></div>
+      <div class="note">
+        This option achieves a lower rate by paying discount points at closing. The trade-off is a higher upfront cost relative to Option 2, and the estimated cash to close of $67,973 is very close to the estimated net proceeds at the $1,060,000 sale price. It is workable at that price point but leaves minimal margin. We will talk through whether the long-term payment savings make that trade-off worthwhile for your situation.
+      </div>
+    </div>
+
+    <!-- Option 4 -->
+    <div class="ifw-card">
+      <div class="ifw-title">Option 4: Loan Amount $570,000 at 5.500%</div>
+      <div style="display:inline-block; background:#2C2C2C; color:#F5F0E8; font-family:'Inter',sans-serif; font-weight:600; font-size:12px; letter-spacing:0.07em; text-transform:uppercase; padding:6px 14px; margin-bottom:14px;">Requires Mindy Lane to sell at or near $1,099,000</div>
+      <div class="line"><span>Loan Amount</span><span class="val">$570,000</span></div>
+      <div class="line"><span>Rate / APR (est.)</span><span class="val">5.500% / 5.638%</span></div>
+      <div class="line"><span>Monthly P&I</span><span class="val">$3,236.40</span></div>
+      <div class="line"><span>Total Monthly Payment (est.)</span><span class="val">$4,013.48</span></div>
+      <div class="line total"><span>Estimated Cash to Close</span><span class="val">$97,615</span></div>
+      <div class="note">
+        This option produces the lowest monthly payment of the four scenarios and reflects bringing approximately $80,000 from sale proceeds toward the purchase. The estimated cash to close of $97,615 exceeds the estimated net at the $1,060,000 sale price. This scenario becomes available if Mindy Lane sells at or near the $1,099,000 counter price, where estimated net proceeds are approximately $104,228.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Closing copy -->
+  <div class="closing">
+    <p>
+      None of these scenarios require a down payment under VA guidelines. The amounts shown as funds from borrower in each IFW reflect a choice to reduce the loan balance, buy down the rate, or both. You are free to structure this differently, and we can model any combination that fits your goals.
+    </p>
+    <p>
+      These worksheets are for planning and education only. They are not loan approvals or commitments to lend. Rates and figures are subject to change until a rate lock is in place.
+    </p>
+    <p>
+      I will call you to walk through everything. If you have questions before then, feel free to reach me directly.
+    </p>
+    <p>
+      Joanna Perry<br>
+      The Loan Lady Club
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <p>Prefer to schedule a time to talk? Use the link below to find a time that works for you.</p>
+    <a class="cta-btn" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">Schedule a Call</a>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    All figures shown are estimates prepared for illustrative and educational purposes only based on information provided at the time of preparation. This is not a loan approval or commitment to lend. Rates shown are effective as of 04/24/2026 and are subject to change. APR is an estimate based on the criteria provided. Until a rate is locked, APR and terms are subject to change or may not be available at commitment or closing. Loan amounts, fees, and cash to close figures will vary based on final loan terms, credit qualification, and transaction details. Net proceeds figures are preliminary estimates provided by Old Republic Title and will be confirmed by your escrow officer at closing. Escrow period assumed through May 26, 2026. Lock period: 30 days. Joanna Perry, NMLS #243348. Xpert Home Lending Inc., NMLS #2179191. California Licensed Mortgage Broker. loanladyclub.com.
+  </div>
+
+</div>
+</body>
+</html>
