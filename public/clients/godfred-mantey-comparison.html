@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Home Purchase Options | The Loan Lady Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0ece4;
+    color: var(--charcoal);
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 32px rgba(44,44,44,0.10);
+    padding: 52px;
+    border-radius: 2px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+    letter-spacing: 0.01em;
+  }
+
+  .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  .contact-block {
+    text-align: right;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(44,44,44,0.72);
+    line-height: 1.7;
+  }
+
+  /* GREETING */
+  .greeting {
+    margin-bottom: 32px;
+  }
+
+  .greeting h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .greeting p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--charcoal);
+    line-height: 1.65;
+  }
+
+  /* COMFORT BAR */
+  .comfort-bar {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin-bottom: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+
+  /* SCENARIO CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .card.featured {
+    border-color: var(--gold);
+  }
+
+  .card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    padding: 10px 16px 8px;
+    background: var(--taupe);
+    color: rgba(44,44,44,0.65);
+  }
+
+  .card.featured .card-label {
+    background: var(--gold);
+    color: var(--white);
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+
+  .card-price-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    color: var(--charcoal);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(232,226,217,0.6);
+    gap: 8px;
+  }
+
+  .line-item:last-child {
+    border-bottom: none;
+  }
+
+  .line-label {
+    color: rgba(44,44,44,0.70);
+    flex-shrink: 0;
+    font-size: 11.5px;
+  }
+
+  .line-value {
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .line-value.gold {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .total-row {
+    background: var(--charcoal);
+    margin: 12px -16px -16px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--gold);
+  }
+
+  .total-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .total-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .cash-row {
+    background: var(--white);
+    border: 1px solid var(--gold);
+    margin: 0 -16px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 12px;
+  }
+
+  .cash-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+  }
+
+  .cash-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .cash-label.gold { color: var(--gold); }
+  .cash-value.gold { color: var(--gold); }
+
+  /* NOTE */
+  .seller-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(44,44,44,0.72);
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.55;
+    padding: 0 8px;
+  }
+
+  /* INTRO BLOCK */
+  .intro-block {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+  }
+
+  .intro-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+
+  .intro-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--charcoal);
+    line-height: 1.65;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: var(--charcoal);
+    padding: 28px 32px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .cta-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.80);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    border-radius: 1px;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    color: rgba(44,44,44,0.55);
+    line-height: 1.65;
+    border-top: 1px solid var(--taupe);
+    padding-top: 20px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 540px) {
+    .page { padding: 32px 22px; }
+    .header { flex-direction: column; gap: 12px; }
+    .contact-block { text-align: left; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .greeting h1 { font-size: 22px; }
+  }
+
+  @media (max-width: 400px) {
+    .page { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry, California Licensed Mortgage Broker<br>
+      NMLS #243348 &nbsp;|&nbsp; (916) 708-8555<br>
+      joanna@loanlady.club
+    </div>
+  </div>
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <h1>Godfred &amp; Pandora, here are your options.</h1>
+    <p>These three scenarios are based on the same loan structure so you can see clearly what changes when you adjust the rate or the purchase price. All figures are estimates prepared for your review tonight.</p>
+  </div>
+
+  <!-- COMFORT BAR -->
+  <div class="comfort-bar">
+    Your stated payment comfort: up to $4,500 per month. Every option below falls within that range.
+  </div>
+
+  <!-- SCENARIO CARDS -->
+  <div class="cards-grid">
+
+    <!-- OPTION B: 1 point, lower rate, featured first -->
+    <div class="card featured">
+      <div class="card-label">Option 1 &nbsp;&middot;&nbsp; Lower Rate</div>
+      <div class="card-body">
+        <div class="card-price-tag">$550,000 Purchase</div>
+        <div class="line-item"><span class="line-label">Rate / APR</span><span class="line-value">5.990% / 6.382%</span></div>
+        <div class="line-item"><span class="line-label">Loan Amount</span><span class="line-value">$533,500</span></div>
+        <div class="line-item"><span class="line-label">Down Payment</span><span class="line-value">$16,500</span></div>
+        <div class="line-item"><span class="line-label">P&amp;I Payment</span><span class="line-value">$3,195</span></div>
+        <div class="line-item"><span class="line-label">Taxes &amp; Insurance</span><span class="line-value">$825</span></div>
+        <div class="line-item"><span class="line-label">Mortgage Insurance</span><span class="line-value">$138</span></div>
+        <div class="total-row">
+          <span class="total-label">Est. Monthly</span>
+          <span class="total-value">$4,021</span>
+        </div>
+        <div class="cash-row">
+          <span class="cash-label gold">Est. Cash to Close</span>
+          <span class="cash-value gold">$34,177</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION A: 0 points, same price -->
+    <div class="card">
+      <div class="card-label">Option 2 &nbsp;&middot;&nbsp; No Points</div>
+      <div class="card-body">
+        <div class="card-price-tag">$550,000 Purchase</div>
+        <div class="line-item"><span class="line-label">Rate / APR</span><span class="line-value">6.375% / 6.678%</span></div>
+        <div class="line-item"><span class="line-label">Loan Amount</span><span class="line-value">$533,500</span></div>
+        <div class="line-item"><span class="line-label">Down Payment</span><span class="line-value">$16,500</span></div>
+        <div class="line-item"><span class="line-label">P&amp;I Payment</span><span class="line-value">$3,328</span></div>
+        <div class="line-item"><span class="line-label">Taxes &amp; Insurance</span><span class="line-value">$825</span></div>
+        <div class="line-item"><span class="line-label">Mortgage Insurance</span><span class="line-value">$138</span></div>
+        <div class="total-row">
+          <span class="total-label">Est. Monthly</span>
+          <span class="total-value">$4,154</span>
+        </div>
+        <div class="cash-row">
+          <span class="cash-label gold">Est. Cash to Close</span>
+          <span class="cash-value gold">$28,939</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION C: more home -->
+    <div class="card">
+      <div class="card-label">Option 3 &nbsp;&middot;&nbsp; More Home</div>
+      <div class="card-body">
+        <div class="card-price-tag">$585,000 Purchase</div>
+        <div class="line-item"><span class="line-label">Rate / APR</span><span class="line-value">6.375% / 6.676%</span></div>
+        <div class="line-item"><span class="line-label">Loan Amount</span><span class="line-value">$567,450</span></div>
+        <div class="line-item"><span class="line-label">Down Payment</span><span class="line-value">$17,550</span></div>
+        <div class="line-item"><span class="line-label">P&amp;I Payment</span><span class="line-value">$3,540</span></div>
+        <div class="line-item"><span class="line-label">Taxes &amp; Insurance</span><span class="line-value">$724</span></div>
+        <div class="line-item"><span class="line-label">Mortgage Insurance</span><span class="line-value">$147</span></div>
+        <div class="total-row">
+          <span class="total-label">Est. Monthly</span>
+          <span class="total-value">$4,411</span>
+        </div>
+        <div class="cash-row">
+          <span class="cash-label gold">Est. Cash to Close</span>
+          <span class="cash-value gold">$30,310</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SELLER CREDIT NOTE -->
+  <p class="seller-note">These figures do not include a seller credit. In many purchase transactions, a seller may contribute toward your closing costs, which can meaningfully reduce the cash you bring to the table. We will talk through how that works tonight.</p>
+
+  <!-- INTRO BLOCK -->
+  <div class="intro-block">
+    <h2>What to expect working with Joanna</h2>
+    <p>Joanna Perry is a California Licensed Mortgage Broker who specializes in working with first-time buyers. She personally handles every step of your file from the first conversation through closing day. There is no handoff to another team member, no confusion about who to call, and no surprises you were not prepared for. Her process is built to keep you informed, protected, and in control at every stage.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <p>You have completed your Buyer's Edge session and selected your loan. The final step is to authorize and pay for your credit report. This is how Joanna pulls your credit, calculates your exact debt ratios, and issues your pre-approval letter.</p>
+    <a class="cta-button" href="https://credit.advcredit.com/smartpay/SmartPay.aspx?uid=76099402-a954-40f1-8704-8a79dbefde6d">Complete Step 5: Authorize Credit Pull ($133)</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    All figures shown are estimates prepared for illustrative and informational purposes only based on the initial loan scenarios provided. This is not a loan approval or commitment to lend. Rates are effective as of 04/27/2026 and are subject to change. Annual Percentage Rate (APR) is an estimate based on criteria provided. Until a rate is locked, the APR and loan terms are subject to change and may not be available at commitment or closing. Lock period shown is 30 days. Escrow is None Waived. All payments and costs could be higher. Please obtain an official Loan Estimate before choosing a loan.
+    <br><br>
+    Joanna Perry, California Licensed Mortgage Broker | NMLS #243348<br>
+    Xpert Home Lending Inc. | Company NMLS #2179191
+  </div>
+
+</div>
+</body>
+</html>
