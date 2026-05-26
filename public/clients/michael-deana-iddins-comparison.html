@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loan Scenario Comparison | Michael and Deana Iddins</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  body {
+    background: #f0ebe2;
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    padding: 40px 16px 60px;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 32px rgba(44,44,44,0.10);
+    padding: 52px 52px 48px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 36px;
+    gap: 16px;
+  }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+  .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .contact-block {
+    text-align: right;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(44,44,44,0.72);
+    line-height: 1.7;
+  }
+
+  /* GREETING */
+  .greeting {
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--taupe);
+    padding-bottom: 28px;
+  }
+  .greeting h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .greeting p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--charcoal);
+    max-width: 600px;
+  }
+  .greeting p + p { margin-top: 10px; }
+
+  /* SCENARIO LABEL */
+  .section-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .card-full {
+    margin-bottom: 16px;
+  }
+
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .card-header {
+    background: var(--charcoal);
+    padding: 12px 16px;
+  }
+  .card-header .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .card-header .card-rate {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.70);
+    margin-top: 3px;
+  }
+  .card-header.recommended {
+    background: var(--gold);
+  }
+  .card-header.recommended .card-title,
+  .card-header.recommended .card-rate {
+    color: var(--white);
+  }
+  .card-header.recommended .card-rate {
+    color: rgba(255,255,255,0.85);
+  }
+
+  .card-body {
+    padding: 16px;
+  }
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--charcoal);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(232,226,217,0.7);
+  }
+  .line-item:last-child { border-bottom: none; }
+  .line-item .label { color: rgba(44,44,44,0.70); }
+  .line-item .value { font-weight: 500; }
+  .line-item .value.gold { color: var(--gold); font-weight: 600; }
+
+  .total-row {
+    border-top: 2px solid var(--gold) !important;
+    margin-top: 4px;
+    padding-top: 10px !important;
+  }
+  .total-row .label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--charcoal) !important;
+  }
+  .total-row .value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+  }
+  .total-row.gold-total .value { color: var(--gold); }
+
+  /* RECOMMENDED BADGE */
+  .recommended-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+
+  /* SUMMARY SECTION */
+  .summary-section {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-left: 4px solid var(--gold);
+    padding: 24px 24px 20px;
+    margin-bottom: 28px;
+    border-radius: 2px;
+  }
+  .summary-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .summary-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+  }
+  .summary-table td {
+    padding: 6px 8px 6px 0;
+    border-bottom: 1px solid var(--taupe);
+    vertical-align: top;
+  }
+  .summary-table td:last-child { text-align: right; font-weight: 600; padding-right: 0; }
+  .summary-table tr:last-child td { border-bottom: none; }
+  .summary-table .st-label { color: rgba(44,44,44,0.68); font-weight: 400; }
+
+  /* CTA */
+  .cta-block {
+    background: var(--charcoal);
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .cta-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .cta-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px 32px;
+    text-decoration: none;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(44,44,44,0.58);
+    line-height: 1.65;
+    border-top: 1px solid var(--taupe);
+    padding-top: 20px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 540px) {
+    .page { padding: 32px 24px 40px; }
+    .header { flex-direction: column; gap: 12px; }
+    .contact-block { text-align: left; }
+    .greeting h1 { font-size: 21px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .summary-section { padding: 18px 16px; }
+    .cta-block { padding: 22px 16px; }
+  }
+
+  @media (max-width: 400px) {
+    .page { padding: 24px 16px 32px; }
+    .greeting h1 { font-size: 18px; }
+    .brand-name { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry, NMLS #243348<br />
+      (916) 708-8555 | joanna@loanlady.club<br />
+      loanladyclub.com
+    </div>
+  </div>
+
+  <!-- GREETING -->
+  <div class="greeting">
+    <h1>Your Numbers, Three Ways</h1>
+    <p>Michael and Deanna, these three scenarios are built around the same $700,000 purchase price and your $225,000 available for the purchase. Each one shows a different way to use those funds, with the goal of keeping your monthly payment under $4,000 and your cash to close within your budget.</p>
+    <p>All figures are estimates based on current market conditions. These are informational worksheets only, not a loan approval or commitment to lend.</p>
+  </div>
+
+  <!-- SCENARIOS LABEL -->
+  <div class="section-label">The Three Scenarios</div>
+
+  <!-- TOP TWO CARDS: SIDE BY SIDE -->
+  <div class="cards-grid">
+
+    <!-- SCENARIO A -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Scenario A: 25% Down, No Points</div>
+        <div class="card-rate">6.490% Rate / 6.533% APR</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="label">Purchase Price</span>
+          <span class="value">$700,000</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Down Payment</span>
+          <span class="value gold">$175,000 (25%)</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Loan Amount</span>
+          <span class="value">$525,000</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Points Paid</span>
+          <span class="value">None</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Lender Fees</span>
+          <span class="value">$1,175</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Est. Cash to Close</span>
+          <span class="value gold">$187,133</span>
+        </div>
+        <div class="line-item total-row">
+          <span class="label">Monthly Payment</span>
+          <span class="value">$4,164</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENARIO B -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Scenario B: 25% Down, 1 Point Buydown</div>
+        <div class="card-rate">6.250% Rate / 6.383% APR</div>
+      </div>
+      <div class="card-body">
+        <div class="line-item">
+          <span class="label">Purchase Price</span>
+          <span class="value">$700,000</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Down Payment</span>
+          <span class="value gold">$175,000 (25%)</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Loan Amount</span>
+          <span class="value">$525,000</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Points Paid</span>
+          <span class="value">$4,935 (0.94%)</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Lender Fees</span>
+          <span class="value">$6,110</span>
+        </div>
+        <div class="line-item">
+          <span class="label">Est. Cash to Close</span>
+          <span class="value gold">$192,101</span>
+        </div>
+        <div class="line-item total-row">
+          <span class="label">Monthly Payment</span>
+          <span class="value">$4,082</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCENARIO C: FULL WIDTH, RECOMMENDED -->
+  <div class="card-full">
+    <div class="recommended-badge">Recommended Scenario</div>
+    <div class="card">
+      <div class="card-header recommended">
+        <div class="card-title">Scenario C: 30% Down, No Points, Lowest Payment</div>
+        <div class="card-rate">6.375% Rate / 6.418% APR</div>
+      </div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;">
+          <div>
+            <div class="line-item">
+              <span class="label">Purchase Price</span>
+              <span class="value">$700,000</span>
+            </div>
+            <div class="line-item">
+              <span class="label">Down Payment</span>
+              <span class="value gold">$210,000 (30%)</span>
+            </div>
+            <div class="line-item">
+              <span class="label">Loan Amount</span>
+              <span class="value">$490,000</span>
+            </div>
+            <div class="line-item">
+              <span class="label">Points Paid</span>
+              <span class="value">None</span>
+            </div>
+          </div>
+          <div>
+            <div class="line-item">
+              <span class="label">Lender Fees</span>
+              <span class="value">$1,050</span>
+            </div>
+            <div class="line-item">
+              <span class="label">Est. Cash to Close</span>
+              <span class="value gold">$221,990</span>
+            </div>
+            <div class="line-item">&nbsp;</div>
+            <div class="line-item">&nbsp;</div>
+          </div>
+        </div>
+        <div class="line-item total-row gold-total">
+          <span class="label">Monthly Payment</span>
+          <span class="value">$3,906</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-section">
+    <h2>Why Scenario C Works Hardest for You</h2>
+    <p class="summary-note">Your $225,000 is sitting in a brokerage account earning a return that may not outpace the cost of carrying more mortgage. Putting more into the purchase uses that money at a rate of 6.375% and immediately reduces what you owe every month. That is a guaranteed return in the form of a lower payment and less interest over the life of the loan.</p>
+    <table class="summary-table">
+      <tr>
+        <td class="st-label">Payment vs. Scenario A (no points)</td>
+        <td>$258/month lower</td>
+      </tr>
+      <tr>
+        <td class="st-label">Payment vs. Scenario B (with point)</td>
+        <td>$176/month lower</td>
+      </tr>
+      <tr>
+        <td class="st-label">Rate achieved</td>
+        <td>6.375% with no points paid</td>
+      </tr>
+      <tr>
+        <td class="st-label">Stays within your $225,000 budget</td>
+        <td>Yes. Cash to close: $221,990</td>
+      </tr>
+      <tr>
+        <td class="st-label">Payment under $4,000 target</td>
+        <td>Yes. $3,906/month</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Ready to move forward?</h2>
+    <p>The next step is pulling your credit. Use the secure link below to complete your tri-merge credit report.</p>
+    <a class="cta-btn" href="https://credit.advcredit.com/smartpay/SmartPay.aspx?uid=76099402-a954-40f1-8704-8a79dbefde6d">Pull Your Credit ($133)</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    All figures are estimates provided for illustrative and informational purposes only based on initial loan scenario data. Rates shown are as of 05/26/2026 and are subject to change. Annual Percentage Rate (APR) is an estimate based on criteria provided. Until a rate is locked, APR and terms are subject to change or may not be available at commitment or closing. Escrow is shown as None Waived with a 30-day lock period. This is not a loan approval or commitment to lend. Joanna Perry, NMLS #243348. Xpert Home Lending Inc., NMLS #2179191. California Licensed Mortgage Broker.
+  </div>
+
+</div>
+</body>
+</html>
