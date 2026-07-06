@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego Hernandez - Loan Option Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px 12px;
+    background: var(--taupe);
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 24px rgba(44,44,44,0.12);
+    padding: 52px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--taupe);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+    margin: 0;
+  }
+
+  .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 4px 0 0 0;
+  }
+
+  .contact-block {
+    text-align: right;
+    font-size: 12px;
+    opacity: 0.72;
+    line-height: 1.5;
+  }
+
+  h1.headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--charcoal);
+    margin: 0 0 14px 0;
+  }
+
+  p.greeting {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 32px 0;
+  }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 6px;
+    padding: 20px 18px;
+  }
+
+  .card-tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 6px 0;
+  }
+
+  .card-rate {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin: 0 0 14px 0;
+  }
+
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--taupe);
+  }
+
+  .line-item.gold-value .value {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .line-item .label {
+    opacity: 0.85;
+  }
+
+  .line-item .value {
+    font-weight: 500;
+  }
+
+  .monthly-total {
+    border-top: 2px solid var(--gold);
+    border-bottom: none;
+    margin-top: 8px;
+    padding-top: 10px;
+  }
+
+  .monthly-total .value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+  }
+
+  .summary {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .summary h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0 0 12px 0;
+  }
+
+  .summary p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+  }
+
+  .summary p:last-child {
+    margin-bottom: 0;
+  }
+
+  .note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .cta-block {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .cta-block p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 18px 0;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 4px;
+  }
+
+  .disclaimer {
+    font-size: 11px;
+    line-height: 1.6;
+    opacity: 0.65;
+    border-top: 1px solid var(--taupe);
+    padding-top: 16px;
+  }
+
+  @media (max-width: 540px) {
+    body { padding: 12px 0; }
+
+    .page {
+      padding: 32px 22px;
+    }
+
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .contact-block {
+      text-align: left;
+    }
+
+    h1.headline {
+      font-size: 24px;
+    }
+
+    .scenario-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <div>
+      <p class="brand-name">The Loan Lady Club</p>
+      <p class="tagline">Where Lending Meets Education</p>
+    </div>
+    <div class="contact-block">
+      Joanna Perry, NMLS #243348<br>
+      (916) 708-8555<br>
+      joanna@loanlady.club
+    </div>
+  </header>
+
+  <h1 class="headline">Your Loan Options, Side by Side</h1>
+
+  <p class="greeting">
+    Hi Diego. Here is a simple look at three ways to finance your condo at $240,000. Your down payment stays the same in every option. What changes is the interest rate, and that changes two things: your monthly payment and the cash you bring to closing.
+  </p>
+
+  <div class="scenario-grid">
+
+    <div class="card">
+      <p class="card-tag">Lowest Cash Needed</p>
+      <p class="card-rate">7.250%</p>
+      <div class="line-item">
+        <span class="label">Down Payment</span>
+        <span class="value">$7,200</span>
+      </div>
+      <div class="line-item gold-value">
+        <span class="label">Lender Credit</span>
+        <span class="value">$2,328</span>
+      </div>
+      <div class="line-item gold-value">
+        <span class="label">Cash to Close</span>
+        <span class="value">$7,694.25</span>
+      </div>
+      <div class="line-item monthly-total">
+        <span class="label">Monthly Payment</span>
+        <span class="value">$2,415.93</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-tag">Lowest Monthly Payment</p>
+      <p class="card-rate">7.000%</p>
+      <div class="line-item">
+        <span class="label">Down Payment</span>
+        <span class="value">$7,200</span>
+      </div>
+      <div class="line-item gold-value">
+        <span class="label">Lender Credit</span>
+        <span class="value">$1,164</span>
+      </div>
+      <div class="line-item gold-value">
+        <span class="label">Cash to Close</span>
+        <span class="value">$8,834.00</span>
+      </div>
+      <div class="line-item monthly-total">
+        <span class="label">Monthly Payment</span>
+        <span class="value">$2,273.82</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-tag">Lowest Rate</p>
+      <p class="card-rate">6.875%</p>
+      <div class="line-item">
+        <span class="label">Down Payment</span>
+        <span class="value">$7,200</span>
+      </div>
+      <div class="line-item gold-value">
+        <span class="label">Lender Credit</span>
+        <span class="value">$0</span>
+      </div>
+      <div class="line-item gold-value">
+        <span class="label">Cash to Close</span>
+        <span class="value">$9,985.88</span>
+      </div>
+      <div class="line-item monthly-total">
+        <span class="label">Monthly Payment</span>
+        <span class="value">$2,357.15</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="summary">
+    <h2>What This Means for You</h2>
+    <p>
+      Every option uses the same 3% down payment of $7,200. The difference is how the interest rate is priced.
+    </p>
+    <p>
+      A higher rate brings in more lender credit, which covers more of your closing costs. That is why 7.250% needs the least cash today, about $7,694.
+    </p>
+    <p>
+      A lower rate means less lender credit, so more of the closing costs land on you. That is why 6.875% needs the most cash today, about $9,986, even though the rate itself is lower.
+    </p>
+    <p>
+      In plain terms: 7.250% keeps the most cash in your pocket today. 7.000% gives you the lowest monthly payment. 6.875% has the lowest rate, but it asks for the most cash upfront.
+    </p>
+    <p class="note">
+      Example only: the exact cash needed and payment can shift slightly once your loan is locked and your final costs are confirmed.
+    </p>
+  </div>
+
+  <div class="cta-block">
+    <p>Not sure which option fits your budget best? Let's go over it together, one on one.</p>
+    <a class="cta-button" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">Schedule Your Call</a>
+  </div>
+
+  <div class="disclaimer">
+    All rates, payments, and closing costs shown are estimates only and are not a loan approval or a commitment to lend. Your actual rate, Annual Percentage Rate (APR), payment, and costs could be higher and are subject to change until your rate is locked. Escrow: None Waived. Rate Lock Period: 30 Days. Joanna Perry, NMLS #243348. The Loan Lady Club, operating under Xpert Home Lending, Inc., NMLS #2179191. California Licensed Mortgage Broker.
+  </div>
+
+</div>
+
+</body>
+</html>
