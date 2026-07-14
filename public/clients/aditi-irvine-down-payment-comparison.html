@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Down Payment Comparison for Aditi Irvine | The Loan Lady Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--taupe);
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    padding: 40px 16px;
+  }
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 24px rgba(44,44,44,0.12);
+    padding: 52px;
+  }
+  header.brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+  }
+  .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+  .contact-block {
+    text-align: right;
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.72;
+    line-height: 1.6;
+  }
+  h1.title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--charcoal);
+    opacity: 0.7;
+    margin-bottom: 28px;
+  }
+  .greeting {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .greeting p { margin-bottom: 14px; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-bottom: 40px;
+    border: 1px solid var(--taupe);
+    border-top: 2px solid var(--gold);
+  }
+  .card + .card {
+    border-left: 1px solid var(--taupe);
+  }
+  .card {
+    background: var(--white);
+    padding: 28px 22px;
+  }
+  .card-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+  .card .dp-caption {
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.5;
+    margin-bottom: 22px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 22px;
+  }
+  .stat-box .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--charcoal);
+    opacity: 0.5;
+    margin-bottom: 4px;
+  }
+  .stat-box .stat-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+  .details {
+    padding-top: 18px;
+    border-top: 1px solid var(--taupe);
+  }
+  .line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    padding: 5px 0;
+  }
+  .line .label { color: var(--charcoal); opacity: 0.6; }
+  .line .value { font-weight: 500; color: var(--charcoal); }
+  .monthly-total {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--taupe);
+  }
+  .monthly-total .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--charcoal);
+    opacity: 0.5;
+    margin-bottom: 6px;
+  }
+  .monthly-total .amount {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--charcoal);
+  }
+  .cash-close {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--taupe);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .cash-close .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+    opacity: 0.5;
+  }
+  .cash-close .amount {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--gold);
+  }
+  .summary {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .summary h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .summary p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .summary .note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--charcoal);
+    opacity: 0.85;
+    margin-top: 14px;
+  }
+  .cta {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .cta p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    color: var(--cream);
+    opacity: 0.9;
+  }
+  .cta a.button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--charcoal);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .disclaimer {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--charcoal);
+    opacity: 0.62;
+    border-top: 1px solid var(--taupe);
+    padding-top: 18px;
+  }
+  .disclaimer p { margin-bottom: 8px; }
+
+  @media (max-width: 540px) {
+    .page { padding: 32px 24px; }
+    header.brand { flex-direction: column; }
+    .contact-block { text-align: left; }
+    .cards { grid-template-columns: 1fr; }
+    .card + .card {
+      border-left: none;
+      border-top: 1px solid var(--taupe);
+    }
+    h1.title { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="brand">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="tagline">Where Lending Meets Education</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry, NMLS 243348<br>
+      (916) 708-8555<br>
+      joanna@loanlady.club
+    </div>
+  </header>
+
+  <h1 class="title">Down Payment Comparison</h1>
+  <p class="subtitle">Prepared for Aditi Irvine, purchase price $800,000</p>
+
+  <div class="greeting">
+    <p>Hi Aditi,</p>
+    <p>Here is a side by side look at three down payment options for your home purchase. Each scenario uses the same purchase price and shows how the size of your down payment changes your loan amount, your monthly payment, and the cash needed at closing.</p>
+    <p>These figures are estimates based on the initial information reviewed so far.</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-label">Scenario A</div>
+      <h3>$400,000</h3>
+      <div class="dp-caption">Down Payment</div>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-label">Loan Amount</div>
+          <div class="stat-value">$400,000</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Rate / APR</div>
+          <div class="stat-value">6.375% / 6.506%</div>
+        </div>
+      </div>
+      <div class="details">
+        <div class="line"><span class="label">Principal &amp; Interest</span><span class="value">$2,495.48</span></div>
+        <div class="line"><span class="label">Insurance</span><span class="value">$145.83</span></div>
+        <div class="line"><span class="label">Property Taxes</span><span class="value">$833.33</span></div>
+      </div>
+      <div class="monthly-total">
+        <div class="label">Est. Total Monthly Payment</div>
+        <div class="amount">$3,474.64</div>
+      </div>
+      <div class="cash-close">
+        <span class="label">Est. Cash to Close</span>
+        <span class="amount">$417,155.80</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Scenario B</div>
+      <h3>$450,000</h3>
+      <div class="dp-caption">Down Payment</div>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-label">Loan Amount</div>
+          <div class="stat-value">$350,000</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Rate / APR</div>
+          <div class="stat-value">6.375% / 6.510%</div>
+        </div>
+      </div>
+      <div class="details">
+        <div class="line"><span class="label">Principal &amp; Interest</span><span class="value">$2,183.54</span></div>
+        <div class="line"><span class="label">Insurance</span><span class="value">$145.83</span></div>
+        <div class="line"><span class="label">Property Taxes</span><span class="value">$833.33</span></div>
+      </div>
+      <div class="monthly-total">
+        <div class="label">Est. Total Monthly Payment</div>
+        <div class="amount">$3,162.70</div>
+      </div>
+      <div class="cash-close">
+        <span class="label">Est. Cash to Close</span>
+        <span class="amount">$466,620.39</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Scenario C</div>
+      <h3>$500,000</h3>
+      <div class="dp-caption">Down Payment</div>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-label">Loan Amount</div>
+          <div class="stat-value">$300,000</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Rate / APR</div>
+          <div class="stat-value">6.375% / 6.515%</div>
+        </div>
+      </div>
+      <div class="details">
+        <div class="line"><span class="label">Principal &amp; Interest</span><span class="value">$1,871.61</span></div>
+        <div class="line"><span class="label">Insurance</span><span class="value">$145.83</span></div>
+        <div class="line"><span class="label">Property Taxes</span><span class="value">$833.33</span></div>
+      </div>
+      <div class="monthly-total">
+        <div class="label">Est. Total Monthly Payment</div>
+        <div class="amount">$2,850.77</div>
+      </div>
+      <div class="cash-close">
+        <span class="label">Est. Cash to Close</span>
+        <span class="amount">$516,084.97</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="summary">
+    <h2>What Changes Between These Scenarios</h2>
+    <p>Moving your down payment from $400,000 to $500,000 lowers your estimated monthly payment by about $623.87, while increasing the estimated cash needed at closing by about $98,929.17.</p>
+    <p>Each scenario also carries a slightly different lender fee total and prepaid interest amount, since those figures are tied to the loan amount and the date of closing.</p>
+    <div class="note">All figures shown are rough estimates for comparison purposes only, based on the initial scenario provided. Your actual rate, payment, and costs could be higher once a full Loan Estimate is issued.</div>
+  </div>
+
+  <div class="cta">
+    <h2>Next Step</h2>
+    <p>The next step is to connect Joanna with your real estate agent so she can start coordinating on your behalf as you move forward.</p>
+    <a class="button" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">Schedule a Time to Talk</a>
+  </div>
+
+  <div class="disclaimer">
+    <p>This worksheet is provided for illustrative and informational purposes only, based on the initial basic loan scenarios provided. This is not a loan approval or a commitment to lend. Rate and APR shown are estimates and are subject to change. Until a rate is locked, APR and terms are subject to change and may not be available at commitment or closing. Lock period reflected above is 30 days.</p>
+    <p>Joanna Perry, NMLS 243348. Xpert Home Lending, Inc., Company NMLS 2179191. California Licensed Mortgage Broker.</p>
+  </div>
+
+</div>
+</body>
+</html>
