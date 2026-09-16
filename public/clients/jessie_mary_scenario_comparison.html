@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jessie and Mary: Scenario Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--taupe);
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    padding: 24px 0;
+  }
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 6px 24px rgba(44,44,44,0.12);
+    padding: 52px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--taupe);
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+  }
+  .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .contact-block {
+    text-align: right;
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.72;
+    line-height: 1.6;
+  }
+  .greeting {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .greeting p { margin-bottom: 12px; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 18px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .card-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    margin-bottom: 8px;
+  }
+  .tag-within { background: var(--gold); color: var(--white); }
+  .tag-over { background: var(--charcoal); color: var(--cream); }
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--taupe);
+  }
+  .line-item:last-of-type { border-bottom: none; }
+  .line-item .value { text-align: right; }
+  .accent .value { color: var(--gold); font-weight: 600; }
+  .monthly-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--gold);
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .monthly-total .label { font-size: 13px; font-weight: 500; }
+  .monthly-total .amount {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--charcoal);
+  }
+  .summary-section {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    padding: 20px;
+    margin-bottom: 28px;
+  }
+  .summary-section .section-title { margin-bottom: 10px; }
+  .summary-section p { font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+  .summary-target {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .cta-block {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .cta-block p { font-size: 14px; margin-bottom: 14px; line-height: 1.6; }
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 28px;
+    text-decoration: none;
+  }
+  .note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .disclaimer {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--charcoal);
+    opacity: 0.72;
+    border-top: 1px solid var(--taupe);
+    padding-top: 16px;
+  }
+  @media (max-width: 540px) {
+    .page { padding: 32px 20px; }
+    header { flex-direction: column; }
+    .contact-block { text-align: left; margin-top: 10px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <div>
+        <div class="brand-name">The Loan Lady Club</div>
+        <div class="tagline">Education First Lending</div>
+      </div>
+      <div class="contact-block">
+        Joanna Perry, NMLS 243348<br>
+        (916) 708-8555<br>
+        joanna@loanlady.club
+      </div>
+    </header>
+
+    <div class="greeting">
+      <p>Jessie and Mary, this is the side by side we are walking through together tonight during your Buyer's Edge session. Each column reflects a different combination of purchase price, loan amount, and rate structure, so you can see how each one lands against your monthly comfort level.</p>
+      <p>You told me a monthly PITI target of $3,500 matters most to you. I have marked how each scenario compares to that number so we can talk through the tradeoffs in real terms rather than guesswork.</p>
+    </div>
+
+    <div class="section-title">Scenario Comparison</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <span class="card-tag tag-within">Within Target</span>
+        <div class="card-title">$500,000 Purchase, 80% LTV, 1 Point</div>
+        <div class="line-item"><span>Loan Amount</span><span class="value">$400,000</span></div>
+        <div class="line-item accent"><span>Down Payment</span><span class="value">$100,000</span></div>
+        <div class="line-item"><span>Rate / APR</span><span class="value">6.875% / 7.055%</span></div>
+        <div class="line-item"><span>Points</span><span class="value">1.000% ($4,000)</span></div>
+        <div class="line-item accent"><span>Est. Cash to Close</span><span class="value">$116,912.20</span></div>
+        <div class="monthly-total">
+          <span class="label">Total Monthly PITI</span>
+          <span class="amount">$3,273.55</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tag tag-within">Within Target</span>
+        <div class="card-title">$500,000 Purchase, 80% LTV, No Points</div>
+        <div class="line-item"><span>Loan Amount</span><span class="value">$400,000</span></div>
+        <div class="line-item accent"><span>Down Payment</span><span class="value">$100,000</span></div>
+        <div class="line-item"><span>Rate / APR</span><span class="value">7.125% / 7.207%</span></div>
+        <div class="line-item"><span>Points</span><span class="value">0.000% ($0)</span></div>
+        <div class="line-item accent"><span>Est. Cash to Close</span><span class="value">$112,956.65</span></div>
+        <div class="monthly-total">
+          <span class="label">Total Monthly PITI</span>
+          <span class="amount">$3,340.70</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tag tag-within">Within Target</span>
+        <div class="card-title">$500,000 Purchase, 85% LTV, 1 Point</div>
+        <div class="line-item"><span>Loan Amount</span><span class="value">$425,000</span></div>
+        <div class="line-item accent"><span>Down Payment</span><span class="value">$75,000</span></div>
+        <div class="line-item"><span>Rate / APR</span><span class="value">6.875% / 7.116%</span></div>
+        <div class="line-item"><span>Points</span><span class="value">1.000% ($4,250)</span></div>
+        <div class="line-item accent"><span>Est. Cash to Close</span><span class="value">$92,238.59</span></div>
+        <div class="monthly-total">
+          <span class="label">Total Monthly PITI</span>
+          <span class="amount">$3,480.28</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tag tag-over">Above Target</span>
+        <div class="card-title">$500,000 Purchase, 85% LTV, No Points</div>
+        <div class="line-item"><span>Loan Amount</span><span class="value">$425,000</span></div>
+        <div class="line-item accent"><span>Down Payment</span><span class="value">$75,000</span></div>
+        <div class="line-item"><span>Rate / APR</span><span class="value">7.125% / 7.269%</span></div>
+        <div class="line-item"><span>Points</span><span class="value">0.000% ($0)</span></div>
+        <div class="line-item accent"><span>Est. Cash to Close</span><span class="value">$88,035.81</span></div>
+        <div class="monthly-total">
+          <span class="label">Total Monthly PITI</span>
+          <span class="amount">$3,551.63</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-tag tag-within">At Target</span>
+        <div class="card-title">$525,000 Purchase, 80% LTV, No Points</div>
+        <div class="line-item"><span>Loan Amount</span><span class="value">$420,000</span></div>
+        <div class="line-item accent"><span>Down Payment</span><span class="value">$105,000</span></div>
+        <div class="line-item"><span>Rate / APR</span><span class="value">7.125% / 7.205%</span></div>
+        <div class="line-item"><span>Points</span><span class="value">0.000% ($0)</span></div>
+        <div class="line-item accent"><span>Est. Cash to Close</span><span class="value">$118,215.88</span></div>
+        <div class="monthly-total">
+          <span class="label">Total Monthly PITI</span>
+          <span class="amount">$3,501.50</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="summary-section">
+      <div class="section-title">Your $3,500 Target</div>
+      <p>Four of these five scenarios land at or below your <span class="summary-target">$3,500</span> monthly threshold. The 85% LTV, no points scenario on the $500,000 purchase is the only one that lands above it, by roughly $52 per month.</p>
+      <p>The lowest cash to close belongs to the 85% LTV, 1 point scenario. The lowest monthly payment belongs to the 80% LTV, 1 point scenario. There is no single right answer here. It comes down to what matters more to you between cash reserved today and payment comfort over time, and that is exactly what we will walk through tonight.</p>
+    </div>
+
+    <p class="note">These figures are estimates built from the basic scenario details provided and are meant to support tonight's conversation, not replace it.</p>
+
+    <div class="cta-block">
+      <p>If questions come up after tonight's session, reach out any time or use the link below to find time on my calendar.</p>
+      <a class="cta-button" href="https://link.theradcrm.com/widget/booking/3NaG5jwiaAoLvl0W0qNN">Schedule a Follow Up</a>
+    </div>
+
+    <div class="disclaimer">
+      This comparison is provided for illustrative and informational purposes only, based on the basic loan scenarios discussed. This is not a loan approval or a commitment to lend. Rates and APR shown are estimates based on the criteria provided as of 09/16/2026 and are subject to change. Until a rate is locked, rate, APR, and terms may change or may not be available at commitment or closing. Lock period reflected is 30 days. Escrow is not waived on these scenarios. Joanna Perry, NMLS 243348, California Licensed Mortgage Broker, operating as The Loan Lady Club through Xpert Home Lending, Inc., Company NMLS 2179191.
+    </div>
+
+  </div>
+</body>
+</html>
