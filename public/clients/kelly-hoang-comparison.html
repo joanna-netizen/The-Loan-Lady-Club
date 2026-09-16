@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelly Hoang, Scenario Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8860B;
+    --cream: #F5F0E8;
+    --charcoal: #2C2C2C;
+    --taupe: #E8E2D9;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--white);
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    padding: 24px 12px;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--white);
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 24px rgba(44, 44, 44, 0.10);
+    padding: 52px;
+  }
+
+  header.brand-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--taupe);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--charcoal);
+  }
+
+  .brand-tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+
+  .contact-block {
+    text-align: right;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.72;
+    line-height: 1.6;
+  }
+
+  .greeting h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+
+  .greeting p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 36px 0;
+  }
+
+  .scenario-card {
+    background: var(--cream);
+    border: 1px solid var(--taupe);
+    border-radius: 6px;
+    padding: 22px;
+  }
+
+  .scenario-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--charcoal);
+    margin-bottom: 2px;
+  }
+
+  .scenario-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--charcoal);
+    opacity: 0.65;
+    margin-bottom: 16px;
+  }
+
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(232, 226, 217, 0.7);
+  }
+
+  .line-item .label {
+    color: var(--charcoal);
+    opacity: 0.85;
+  }
+
+  .line-item .value {
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  .line-item.accent .value {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .monthly-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 2px solid var(--gold);
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .monthly-total .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--charcoal);
+    opacity: 0.75;
+  }
+
+  .monthly-total .value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--charcoal);
+  }
+
+  .summary-section {
+    background: var(--white);
+    border: 1px solid var(--taupe);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 24px 26px;
+    margin: 36px 0;
+  }
+
+  .summary-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--charcoal);
+  }
+
+  .summary-section p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+
+  .summary-section p:last-child { margin-bottom: 0; }
+
+  .summary-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--charcoal);
+  }
+
+  .cta-block {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 32px;
+    text-align: center;
+    margin: 36px 0 28px 0;
+  }
+
+  .cta-block p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 4px;
+  }
+
+  .disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--charcoal);
+    opacity: 0.6;
+    border-top: 1px solid var(--taupe);
+    padding-top: 20px;
+    margin-top: 12px;
+  }
+
+  @media (max-width: 540px) {
+    .page { padding: 32px 24px; }
+    header.brand-header { flex-direction: column; }
+    .contact-block { text-align: left; margin-top: 12px; }
+    .greeting h1 { font-size: 24px; }
+    .scenario-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="brand-header">
+    <div>
+      <div class="brand-name">The Loan Lady Club</div>
+      <div class="brand-tagline">Mortgage Education &amp; Advisory</div>
+    </div>
+    <div class="contact-block">
+      Joanna Perry<br>
+      NMLS 243348<br>
+      (916) 708-8555<br>
+      joanna@loanlady.club
+    </div>
+  </header>
+
+  <div class="greeting">
+    <h1>Kelly, here is your side by side comparison</h1>
+    <p>You mentioned wanting to keep your monthly payment near $2,000 with 20 percent down. Below are four ways this purchase could look, so you can see how price, down payment, and property use each move your numbers before you are ready to move forward next year.</p>
+  </div>
+
+  <div class="scenario-grid">
+
+    <div class="scenario-card">
+      <div class="scenario-title">Investment Property</div>
+      <div class="scenario-subtitle">$300,000 Purchase, 20% Down</div>
+      <div class="line-item"><span class="label">Purchase Price</span><span class="value">$300,000.00</span></div>
+      <div class="line-item accent"><span class="label">Down Payment</span><span class="value">$60,000.00</span></div>
+      <div class="line-item"><span class="label">Loan Amount</span><span class="value">$240,000.00</span></div>
+      <div class="line-item"><span class="label">Rate / APR</span><span class="value">7.375% / 7.677%</span></div>
+      <div class="line-item"><span class="label">Principal &amp; Interest</span><span class="value">$1,657.62</span></div>
+      <div class="line-item"><span class="label">Property Taxes</span><span class="value">$312.50</span></div>
+      <div class="line-item"><span class="label">Homeowners Insurance</span><span class="value">$115.00</span></div>
+      <div class="line-item"><span class="label">Mortgage Insurance</span><span class="value">$0.00</span></div>
+      <div class="line-item accent"><span class="label">Estimated Cash to Close</span><span class="value">$75,389.33</span></div>
+      <div class="monthly-total">
+        <span class="label">Total Monthly Payment</span>
+        <span class="value">$2,085.12</span>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-title">Primary Residence</div>
+      <div class="scenario-subtitle">$300,000 Purchase, 15% Down</div>
+      <div class="line-item"><span class="label">Purchase Price</span><span class="value">$300,000.00</span></div>
+      <div class="line-item accent"><span class="label">Down Payment</span><span class="value">$45,000.00</span></div>
+      <div class="line-item"><span class="label">Loan Amount</span><span class="value">$255,000.00</span></div>
+      <div class="line-item"><span class="label">Rate / APR</span><span class="value">6.625% / 7.010%</span></div>
+      <div class="line-item"><span class="label">Principal &amp; Interest</span><span class="value">$1,632.79</span></div>
+      <div class="line-item"><span class="label">Property Taxes</span><span class="value">$312.50</span></div>
+      <div class="line-item"><span class="label">Homeowners Insurance</span><span class="value">$115.00</span></div>
+      <div class="line-item"><span class="label">Mortgage Insurance</span><span class="value">$46.75</span></div>
+      <div class="line-item accent"><span class="label">Estimated Cash to Close</span><span class="value">$60,366.35</span></div>
+      <div class="monthly-total">
+        <span class="label">Total Monthly Payment</span>
+        <span class="value">$2,107.04</span>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-title">Primary Residence</div>
+      <div class="scenario-subtitle">$300,000 Purchase, 20% Down</div>
+      <div class="line-item"><span class="label">Purchase Price</span><span class="value">$300,000.00</span></div>
+      <div class="line-item accent"><span class="label">Down Payment</span><span class="value">$60,000.00</span></div>
+      <div class="line-item"><span class="label">Loan Amount</span><span class="value">$240,000.00</span></div>
+      <div class="line-item"><span class="label">Rate / APR</span><span class="value">6.625% / 6.898%</span></div>
+      <div class="line-item"><span class="label">Principal &amp; Interest</span><span class="value">$1,536.75</span></div>
+      <div class="line-item"><span class="label">Property Taxes</span><span class="value">$312.50</span></div>
+      <div class="line-item"><span class="label">Homeowners Insurance</span><span class="value">$115.00</span></div>
+      <div class="line-item"><span class="label">Mortgage Insurance</span><span class="value">$0.00</span></div>
+      <div class="line-item accent"><span class="label">Estimated Cash to Close</span><span class="value">$75,023.33</span></div>
+      <div class="monthly-total">
+        <span class="label">Total Monthly Payment</span>
+        <span class="value">$1,964.25</span>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-title">Primary Residence</div>
+      <div class="scenario-subtitle">$325,000 Purchase, 20% Down</div>
+      <div class="line-item"><span class="label">Purchase Price</span><span class="value">$325,000.00</span></div>
+      <div class="line-item accent"><span class="label">Down Payment</span><span class="value">$65,000.00</span></div>
+      <div class="line-item"><span class="label">Loan Amount</span><span class="value">$260,000.00</span></div>
+      <div class="line-item"><span class="label">Rate / APR</span><span class="value">6.625% / 6.895%</span></div>
+      <div class="line-item"><span class="label">Principal &amp; Interest</span><span class="value">$1,664.81</span></div>
+      <div class="line-item"><span class="label">Property Taxes</span><span class="value">$338.54</span></div>
+      <div class="line-item"><span class="label">Homeowners Insurance</span><span class="value">$115.00</span></div>
+      <div class="line-item"><span class="label">Mortgage Insurance</span><span class="value">$0.00</span></div>
+      <div class="line-item accent"><span class="label">Estimated Cash to Close</span><span class="value">$80,636.93</span></div>
+      <div class="monthly-total">
+        <span class="label">Total Monthly Payment</span>
+        <span class="value">$2,118.35</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="summary-section">
+    <h2>What this means for your target</h2>
+    <p>Of the four scenarios above, the $300,000 primary residence purchase at 20 percent down is the only one that lands at or under your $2,000 monthly target. Adding 15 percent down financing or purchasing at $325,000 both push the payment above that mark, while the investment property scenario carries the highest rate of the group and the highest cash needed at closing.</p>
+    <p class="summary-note">As an example only, these figures are built on an estimated credit profile. A stronger credit score at the time your credit is actually pulled, such as a profile in the 700 to 740 range, often results in improved pricing compared to what is shown here, though your actual rate will depend on your final credit report and market conditions at the time you lock.</p>
+  </div>
+
+  <div class="cta-block">
+    <p>These numbers are meant to help you plan, not to lock you into a path. An invitation from our secure loan portal was sent to you from joanna@loanlady.club. When you are ready, create your username and password, then upload your income, asset, and credit documents in the client tasks section. This is the next step in confirming that your income supports the loan amount shown above.</p>
+    <a class="cta-button" href="https://link.theradcrm.com/widget/bookings/zoom-buyers-edge">Book the Buyer's Edge Zoom Call</a>
+  </div>
+
+  <div class="disclaimer">
+    This comparison is provided for illustrative and informational purposes only, based on the initial basic loan scenarios provided, and is not a loan approval or commitment to lend. Rate and APR figures shown are estimates based on an estimated credit profile and are subject to change. Actual pricing, payment, and closing costs could be higher and will not be finalized until an official Loan Estimate is issued and your credit has been reviewed. Escrow is none waived and the rate lock period reflected is 30 days, both subject to change based on the loan you ultimately select. Joanna Perry, NMLS 243348. The Loan Lady Club, Company NMLS 2179191. California Licensed Mortgage Broker.
+  </div>
+
+</div>
+</body>
+</html>
